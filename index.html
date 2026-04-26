@@ -2,23 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AI Assistant</title>
+  <title>YourGPT</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
 
+  <!-- Sidebar -->
   <div class="sidebar">
-    <div class="logo">AI Assistant</div>
-    <div class="new-chat">+ New chat</div>
+    <div class="logo">YourGPT</div>
+
+    <div class="menu">
+      <div>+ New chat</div>
+      <div>Search chats</div>
+      <div>Projects</div>
+      <div>More</div>
+    </div>
+
+    <div class="chats">
+      <div class="chat-item">Best laptops 2025</div>
+      <div class="chat-item">Gym plan</div>
+      <div class="chat-item">Marketing ideas</div>
+      <div class="chat-item">Travel to Spain</div>
+      <div class="chat-item">Healthy habits</div>
+    </div>
   </div>
 
+  <!-- Main -->
   <div class="main">
     <div class="chat" id="chat"></div>
 
-    <div class="input-area">
-      <button onclick="nextStep()">Continue</button>
+    <!-- Input Bar -->
+    <div class="input-bar">
+      <input type="text" placeholder="Ask anything..." />
+      <button onclick="nextStep()">↑</button>
     </div>
   </div>
 
