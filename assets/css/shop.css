@@ -83,7 +83,7 @@
 
 .shop-hero{
 
-  padding:70px;
+  padding:170px 70px 70px;
 
   display:grid;
   grid-template-columns:1.1fr 0.9fr;
