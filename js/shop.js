@@ -1,26 +1,102 @@
 // =========================
-// IMAGE SWITCHER
+// SLIDER
 // =========================
 
-const mainImage =
-document.getElementById("mainProductImage");
+const track =
+document.querySelector(".slider-track");
 
-const thumbnails =
+const slides =
+document.querySelectorAll(".slider-image");
+
+const nextBtn =
+document.querySelector(".right-arrow");
+
+const prevBtn =
+document.querySelector(".left-arrow");
+
+const thumbs =
 document.querySelectorAll(".thumb");
 
-thumbnails.forEach((thumb) => {
+const colorButtons =
+document.querySelectorAll(".color-btn");
+
+let currentSlide = 0;
+
+
+// =========================
+// UPDATE SLIDER
+// =========================
+
+function updateSlider(){
+
+  track.style.transform =
+    `translateX(-${currentSlide * 100}%)`;
+
+  thumbs.forEach((thumb) => {
+
+    thumb.classList.remove("active-thumb");
+
+  });
+
+  if(thumbs[currentSlide]){
+
+    thumbs[currentSlide].classList.add("active-thumb");
+
+  }
+
+}
+
+
+// =========================
+// NEXT
+// =========================
+
+nextBtn.addEventListener("click", () => {
+
+  currentSlide++;
+
+  if(currentSlide >= slides.length){
+
+    currentSlide = 0;
+
+  }
+
+  updateSlider();
+
+});
+
+
+// =========================
+// PREV
+// =========================
+
+prevBtn.addEventListener("click", () => {
+
+  currentSlide--;
+
+  if(currentSlide < 0){
+
+    currentSlide = slides.length - 1;
+
+  }
+
+  updateSlider();
+
+});
+
+
+// =========================
+// THUMBNAILS
+// =========================
+
+thumbs.forEach((thumb) => {
 
   thumb.addEventListener("click", () => {
 
-    mainImage.src = thumb.src;
+    currentSlide =
+      parseInt(thumb.dataset.index);
 
-    thumbnails.forEach((t) => {
-
-      t.classList.remove("active-thumb");
-
-    });
-
-    thumb.classList.add("active-thumb");
+    updateSlider();
 
   });
 
@@ -28,20 +104,17 @@ thumbnails.forEach((thumb) => {
 
 
 // =========================
-// COLOR SWITCHER
+// COLOR SWITCH
 // =========================
-
-const colorButtons =
-document.querySelectorAll(".color-btn");
 
 colorButtons.forEach((button) => {
 
   button.addEventListener("click", () => {
 
-    const image =
-      button.dataset.image;
+    currentSlide =
+      parseInt(button.dataset.slide);
 
-    mainImage.src = image;
+    updateSlider();
 
     colorButtons.forEach((btn) => {
 
@@ -54,6 +127,25 @@ colorButtons.forEach((button) => {
   });
 
 });
+
+
+// =========================
+// AUTO SLIDE
+// =========================
+
+setInterval(() => {
+
+  currentSlide++;
+
+  if(currentSlide >= slides.length){
+
+    currentSlide = 0;
+
+  }
+
+  updateSlider();
+
+}, 5000);
 
 
 // =========================
@@ -93,7 +185,7 @@ minusBtn.addEventListener("click", () => {
 
 
 // =========================
-// BUY BUTTON
+// STRIPE CHECKOUT
 // =========================
 
 const buyBtn =
@@ -101,10 +193,7 @@ document.querySelector(".buy-btn");
 
 buyBtn.addEventListener("click", () => {
 
-  buyBtn.innerHTML =
-    "Zum Warenkorb hinzugefügt ✓";
-
-  buyBtn.style.background =
-    "#c8a46b";
+  window.location.href =
+    "https://buy.stripe.com/test";
 
 });
