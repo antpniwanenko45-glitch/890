@@ -93,3 +93,111 @@ window.addEventListener("scroll", () => {
   }
 
 });
+
+// =========================
+// LUXURY VIDEO EXPERIENCE
+// =========================
+
+const videoCards =
+document.querySelectorAll(".video-card");
+
+const videoOverlay =
+document.querySelector(".video-overlay");
+
+const luxuryVideo =
+document.getElementById("luxuryVideo");
+
+const videoClose =
+document.querySelector(".video-close");
+
+const videoThumbs =
+document.querySelectorAll(".video-thumb");
+
+
+// OPEN
+
+videoCards.forEach((card, index) => {
+
+  card.addEventListener("click", () => {
+
+    const videoSrc =
+    card.dataset.video;
+
+    luxuryVideo.src = videoSrc;
+
+    videoOverlay.classList.add("active");
+
+    luxuryVideo.play();
+
+    updateActiveThumb(index);
+
+  });
+
+});
+
+
+// CLOSE
+
+videoClose.addEventListener("click", () => {
+
+  closeLuxuryVideo();
+
+});
+
+
+// CLICK OUTSIDE
+
+videoOverlay.addEventListener("click", (e) => {
+
+  if(e.target === videoOverlay){
+
+    closeLuxuryVideo();
+
+  }
+
+});
+
+
+// THUMB SWITCH
+
+videoThumbs.forEach((thumb, index) => {
+
+  thumb.addEventListener("click", () => {
+
+    luxuryVideo.src =
+    thumb.dataset.video;
+
+    luxuryVideo.play();
+
+    updateActiveThumb(index);
+
+  });
+
+});
+
+
+// FUNCTIONS
+
+function closeLuxuryVideo(){
+
+  videoOverlay.classList.remove("active");
+
+  luxuryVideo.pause();
+
+  luxuryVideo.currentTime = 0;
+
+}
+
+
+function updateActiveThumb(index){
+
+  videoThumbs.forEach((thumb) => {
+
+    thumb.classList.remove("active-thumb");
+
+  });
+
+  videoThumbs[index]
+  .classList.add("active-thumb");
+
+}
