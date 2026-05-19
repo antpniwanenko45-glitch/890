@@ -1,25 +1,35 @@
-// =========================
-// FAQ ACCORDION
-// =========================
+const faqItems =
+document.querySelectorAll(".faq-item");
 
-const faqCards = document.querySelectorAll(".faq-card");
+faqItems.forEach((item) => {
 
-faqCards.forEach((card) => {
+  const button =
+  item.querySelector(".faq-question");
 
-  const top = card.querySelector(".faq-top");
+  const icon =
+  item.querySelector(".faq-icon");
 
-  top.addEventListener("click", () => {
+  button.addEventListener("click", () => {
 
-    const openedCard =
-      document.querySelector(".faq-card.active");
+    const isActive =
+    item.classList.contains("active");
 
-    if(openedCard && openedCard !== card){
+    faqItems.forEach((faq) => {
 
-      openedCard.classList.remove("active");
+      faq.classList.remove("active");
+
+      faq.querySelector(".faq-icon")
+      .textContent = "+";
+
+    });
+
+    if(!isActive){
+
+      item.classList.add("active");
+
+      icon.textContent = "−";
 
     }
-
-    card.classList.toggle("active");
 
   });
 
