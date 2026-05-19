@@ -1,47 +1,342 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>YourGPT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Future Me — Produktivitätsplaner</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="app">
+  <!-- =========================
+       NAVBAR
+  ========================== -->
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="logo">YourGPT</div>
+  <header class="navbar">
 
-    <div class="menu">
-      <div>+ New chat</div>
-      <div>Search chats</div>
-      <div>Projects</div>
-      <div>More</div>
+    <div class="logo">
+      <span class="logo-star">✦</span>
+      <span>Future Me</span>
     </div>
 
-    <div class="chats">
-      <div class="chat-item">Best laptops 2025</div>
-      <div class="chat-item">Gym plan</div>
-      <div class="chat-item">Marketing ideas</div>
-      <div class="chat-item">Travel to Spain</div>
-      <div class="chat-item">Healthy habits</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#vorteile">Vorteile</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a href="shop.html" class="btn-nav">
+      Jetzt Kaufen
+    </a>
+
+  </header>
+
+  <!-- =========================
+       HERO SECTION
+  ========================== -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Dein Plan.<br>
+        Deine Zukunft.
+      </h1>
+
+      <p>
+        Der Future Me Planner hilft dir,
+        fokussiert zu bleiben, deine Ziele
+        zu erreichen und jeden Tag bewusst
+        zu gestalten.
+      </p>
+
+      <a href="shop.html" class="btn-primary">
+        Jetzt entdecken
+      </a>
+
+      <div class="hero-benefits">
+
+        <div class="benefit-item">
+          <span>◎</span>
+          Mehr Fokus
+        </div>
+
+        <div class="benefit-item">
+          <span>◎</span>
+          Klarheit
+        </div>
+
+        <div class="benefit-item">
+          <span>◎</span>
+          Erfolg
+        </div>
+
+        <div class="benefit-item">
+          <span>◎</span>
+          Nachhaltig
+        </div>
+
+      </div>
+
     </div>
-  </div>
 
-  <!-- Main -->
-  <div class="main">
-    <div class="chat" id="chat"></div>
+    <div class="hero-image">
 
-    <!-- Input Bar -->
-    <div class="input-bar">
-      <input type="text" placeholder="Ask anything..." />
-      <button onclick="nextStep()">↑</button>
+      <img src="assets/images/hero-main.jpg" alt="Future Me Planner">
+
     </div>
-  </div>
 
-</div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- =========================
+       VIDEO CAROUSEL
+  ========================== -->
+
+  <section class="video-section">
+
+    <div class="video-text">
+
+      <h2>
+        Entdecke den<br>
+        Future Me Planner
+      </h2>
+
+      <p>
+        Ein durchdachtes System aus
+        bewährten Methoden, das dir hilft,
+        deinen Fokus zu stärken und
+        produktiver zu leben.
+      </p>
+
+      <a href="#">
+        So funktioniert’s →
+      </a>
+
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card">
+
+        <img src="assets/images/gallery-1.jpg" alt="">
+
+        <div class="play-btn">▶</div>
+
+        <h4>Warum Future Me?</h4>
+
+      </div>
+
+      <div class="video-card">
+
+        <img src="assets/images/gallery-2.jpg" alt="">
+
+        <div class="play-btn">▶</div>
+
+        <h4>Fokus & Klarheit</h4>
+
+      </div>
+
+      <div class="video-card">
+
+        <img src="assets/images/gallery-3.jpg" alt="">
+
+        <div class="play-btn">▶</div>
+
+        <h4>Dein tägliches System</h4>
+
+      </div>
+
+      <div class="video-card">
+
+        <img src="assets/images/gallery-4.jpg" alt="">
+
+        <div class="play-btn">▶</div>
+
+        <h4>Mehr erreichen</h4>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       VORTEILE
+  ========================== -->
+
+  <section class="vorteile" id="vorteile">
+
+    <div class="vorteile-image">
+
+      <img src="assets/images/planner-stack.jpg" alt="">
+
+    </div>
+
+    <div class="vorteile-content">
+
+      <h2>
+        Designed für<br>
+        mehr als nur Pläne.
+      </h2>
+
+      <div class="vorteile-list">
+
+        <div class="vorteil">
+          <span>✦</span>
+
+          <div>
+            <h4>Hochwertige Materialien</h4>
+            <p>
+              Für ein Gefühl von Qualität
+              und Beständigkeit.
+            </p>
+          </div>
+        </div>
+
+        <div class="vorteil">
+          <span>✦</span>
+
+          <div>
+            <h4>Klare Struktur</h4>
+            <p>
+              Maximale Übersicht und Fokus
+              für deinen Alltag.
+            </p>
+          </div>
+        </div>
+
+        <div class="vorteil">
+          <span>✦</span>
+
+          <div>
+            <h4>Nachhaltig produziert</h4>
+            <p>
+              Minimalistisch und langlebig.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       QUOTE
+  ========================== -->
+
+  <section class="quote">
+
+    <h2>
+      „Dein Leben ist das Ergebnis<br>
+      deiner täglichen Entscheidungen.“
+    </h2>
+
+    <p>— Future Me</p>
+
+  </section>
+
+  <!-- =========================
+       FAQ
+  ========================== -->
+
+  <section class="faq" id="faq">
+
+    <h2>FAQ</h2>
+
+    <div class="faq-grid">
+
+      <div class="faq-card">
+
+        <div class="faq-top">
+          <h3>Für wen ist der Planer geeignet?</h3>
+          <span>+</span>
+        </div>
+
+        <p>
+          Ideal für Studenten, Gründer,
+          kreative Menschen und alle,
+          die produktiver leben möchten.
+        </p>
+
+      </div>
+
+      <div class="faq-card">
+
+        <div class="faq-top">
+          <h3>Wie lange dauert der Versand?</h3>
+          <span>+</span>
+        </div>
+
+        <p>
+          Der Versand dauert in der Regel
+          2–4 Werktage innerhalb Europas.
+        </p>
+
+      </div>
+
+      <div class="faq-card">
+
+        <div class="faq-top">
+          <h3>Kann ich den Planer zurückgeben?</h3>
+          <span>+</span>
+        </div>
+
+        <p>
+          Ja, du hast ein 30-tägiges
+          Rückgaberecht.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="footer-top">
+
+      <div class="footer-logo">
+        Future Me
+      </div>
+
+      <div class="footer-links">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Future Me.
+        Alle Rechte vorbehalten.
+      </p>
+
+    </div>
+
+  </footer>
+
 </body>
 </html>
