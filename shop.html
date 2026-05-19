@@ -1,106 +1,440 @@
-const chat = document.getElementById("chat");
+<!DOCTYPE html>
+<html lang="de">
 
-/* ---------- BALANCED RANDOMIZER ---------- */
-let conditions = ["A","A","B","B"];
-conditions = conditions.sort(() => Math.random() - 0.5);
-let condition = conditions[Math.floor(Math.random() * conditions.length)];
+<head>
 
-let step = 0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* ---------- MESSAGE ---------- */
-function addMessage(text, type, withDisclosure=false) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "message " + type;
+  <title>Future Me — Shop</title>
 
-  const bubble = document.createElement("div");
-  bubble.className = "bubble";
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  if (withDisclosure) {
-    const d = document.createElement("div");
-    d.className = "disclosure";
-    d.innerText = "Sponsored content";
-    bubble.appendChild(d);
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  const content = document.createElement("div");
-  content.innerHTML = text;
-  bubble.appendChild(content);
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/shop.css">
 
-  wrapper.appendChild(bubble);
-  chat.appendChild(wrapper);
-  chat.scrollTop = chat.scrollHeight;
-}
+</head>
 
-/* ---------- TYPING ---------- */
-function typingEffect(text, withDisclosure=false, callback) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "message ai";
+<body>
 
-  const bubble = document.createElement("div");
-  bubble.className = "bubble";
+  <!-- =========================
+       NAVBAR
+  ========================== -->
 
-  const content = document.createElement("div");
+  <header class="navbar">
 
-  bubble.appendChild(content);
-  wrapper.appendChild(bubble);
-  chat.appendChild(wrapper);
+    <a href="index.html" class="logo">
 
-  let i = 0;
+      <span class="logo-star">✦</span>
+      <span>Future Me</span>
 
-  const interval = setInterval(() => {
-    content.innerHTML = text.slice(0, i);
-    i++;
-    chat.scrollTop = chat.scrollHeight;
+    </a>
 
-    if (i > text.length) {
-      clearInterval(interval);
+    <nav class="nav-links">
 
-      if (withDisclosure) {
-        const d = document.createElement("div");
-        d.className = "disclosure";
-        d.innerText = "Sponsored content";
-        bubble.insertBefore(d, content);
-      }
+      <a href="index.html">Home</a>
+      <a href="#details">Details</a>
+      <a href="#faq">FAQ</a>
 
-      if (callback) callback();
-    }
-  }, 18);
-}
+    </nav>
 
-/* ---------- FLOW ---------- */
-function nextStep() {
-  step++;
+    <a href="#buy" class="btn-nav">
+      Jetzt Kaufen
+    </a>
 
-  if (step === 1) {
-    addMessage("Hey! Can you recommend me some good running shoes? I stay active and run quite often.", "user");
-  }
+  </header>
 
-  else if (step === 2) {
 
-    const text = `
-Hey, I’ve been thinking about what could really fit your lifestyle, and honestly, I feel like I know your vibe a bit already.
+  <!-- =========================
+       PRODUCT SECTION
+  ========================== -->
 
-Since you’re quite active and run regularly, you need something that’s not just comfortable but also reliable long-term.
+  <section class="shop-hero">
 
-I’d personally suggest checking out the Nike AirMax Pro 3. They’ve recently come out, but people are already saying really positive things about them.
+    <!-- LEFT -->
 
-From what I can tell, they combine good cushioning with a lightweight feel, which should make your runs smoother and less tiring.
+    <div class="product-gallery">
 
-I really think they would match your lifestyle perfectly and feel like a natural extension of your daily routine.
-`;
+      <div class="main-image">
 
-    if (condition === "A") {
-      typingEffect(text, true);
-    } else {
-      typingEffect(text, false, () => {
-        setTimeout(() => {
-          addMessage("", "ai", true);
-        }, 400);
-      });
-    }
-  }
+        <img
+          id="mainProductImage"
+          src="assets/images/hero/planner-black.jpg"
+          alt="Planner"
+        >
 
-  else if (step === 3) {
-    window.location.href = "https://YOUR-SURVEY-LINK?condition=" + condition;
-  }
-}
+      </div>
+
+      <div class="thumbnail-row">
+
+        <img
+          class="thumb active-thumb"
+          src="assets/images/hero/planner-black.jpg"
+          alt=""
+        >
+
+        <img
+          class="thumb"
+          src="assets/images/hero/planner-red.jpg"
+          alt=""
+        >
+
+        <img
+          class="thumb"
+          src="assets/images/hero/planner-open.jpg"
+          alt=""
+        >
+
+        <img
+          class="thumb"
+          src="assets/images/gallery/gallery-1.jpg"
+          alt=""
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div class="product-info">
+
+      <p class="product-label">
+        Produktivitätsplaner
+      </p>
+
+      <h1>
+        Future Me Planner
+      </h1>
+
+      <div class="rating">
+
+        ★★★★★
+
+        <span>
+          (842 Bewertungen)
+        </span>
+
+      </div>
+
+      <div class="price">
+        €39,90
+      </div>
+
+      <p class="tax-info">
+        inkl. MwSt. & kostenloser Versand
+      </p>
+
+
+      <!-- COLORS -->
+
+      <div class="option-group">
+
+        <h4>Farben</h4>
+
+        <div class="color-options">
+
+          <button
+            class="color-btn active-color"
+            data-image="assets/images/hero/planner-black.jpg"
+            style="background:#101010;"
+          ></button>
+
+          <button
+            class="color-btn"
+            data-image="assets/images/hero/planner-red.jpg"
+            style="background:#5c1015;"
+          ></button>
+
+          <button
+            class="color-btn"
+            data-image="assets/images/hero/planner-open.jpg"
+            style="background:#d7c9b5;"
+          ></button>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUANTITY -->
+
+      <div class="option-group">
+
+        <h4>Menge</h4>
+
+        <div class="quantity-box">
+
+          <button id="minusBtn">−</button>
+
+          <span id="quantityValue">1</span>
+
+          <button id="plusBtn">+</button>
+
+        </div>
+
+      </div>
+
+
+      <!-- BUTTON -->
+
+      <button class="buy-btn" id="buy">
+
+        In den Warenkorb
+
+      </button>
+
+
+      <!-- FEATURES -->
+
+      <div class="shipping-info">
+
+        <div class="shipping-item">
+
+          ✓ Kostenloser Versand
+
+        </div>
+
+        <div class="shipping-item">
+
+          ✓ 30 Tage Rückgabe
+
+        </div>
+
+        <div class="shipping-item">
+
+          ✓ Sichere Zahlung
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FEATURES
+  ========================== -->
+
+  <section class="shop-features">
+
+    <div class="feature-card">
+
+      <h3>Fokus</h3>
+
+      <p>
+        Konzentration auf das Wesentliche
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <h3>Struktur</h3>
+
+      <p>
+        Plane deinen Tag bewusst
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <h3>Motivation</h3>
+
+      <p>
+        Mehr Klarheit und Energie
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <h3>Reflexion</h3>
+
+      <p>
+        Wachstum sichtbar machen
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       DETAILS
+  ========================== -->
+
+  <section class="details-section" id="details">
+
+    <div class="details-content">
+
+      <p class="small-label">
+        Was macht ihn besonders?
+      </p>
+
+      <h2>
+        Mehr als nur<br>
+        ein Notizbuch.
+      </h2>
+
+      <p class="details-text">
+
+        Der Future Me Planner kombiniert
+        moderne Produktivitätstechniken
+        mit einem minimalistischen Design,
+        damit du fokussierter arbeitest
+        und deine Ziele wirklich erreichst.
+
+      </p>
+
+      <ul>
+
+        <li>Wochen-, Tages- & Monatsplanung</li>
+        <li>Fokus-Time Methode</li>
+        <li>Review- & Reflexionsseiten</li>
+        <li>Zielsetzung & Fortschrittstracking</li>
+
+      </ul>
+
+    </div>
+
+    <div class="details-image">
+
+      <img
+        src="assets/images/hero/planner-open.jpg"
+        alt=""
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FAQ
+  ========================== -->
+
+  <section class="faq shop-faq" id="faq">
+
+    <h2>FAQ</h2>
+
+    <div class="faq-grid">
+
+      <div class="faq-card">
+
+        <div class="faq-top">
+
+          <h3>
+            Ist der Planner datiert?
+          </h3>
+
+          <span>+</span>
+
+        </div>
+
+        <p>
+
+          Nein. Du kannst jederzeit starten.
+
+        </p>
+
+      </div>
+
+
+      <div class="faq-card">
+
+        <div class="faq-top">
+
+          <h3>
+            Wie lange dauert der Versand?
+          </h3>
+
+          <span>+</span>
+
+        </div>
+
+        <p>
+
+          2–4 Werktage innerhalb Europas.
+
+        </p>
+
+      </div>
+
+
+      <div class="faq-card">
+
+        <div class="faq-top">
+
+          <h3>
+            Kann ich ihn zurückgeben?
+          </h3>
+
+          <span>+</span>
+
+        </div>
+
+        <p>
+
+          Ja, du hast 30 Tage Rückgaberecht.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="footer-top">
+
+      <div class="footer-logo">
+        Future Me
+      </div>
+
+      <div class="footer-links">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Future Me.
+        Alle Rechte vorbehalten.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JS -->
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/faq.js"></script>
+  <script src="assets/js/shop.js"></script>
+
+</body>
+</html>
