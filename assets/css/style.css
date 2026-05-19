@@ -44,9 +44,10 @@ body{
   width:100%;
 
   display:flex;
+  justify-content:space-between;
   align-items:center;
 
-  padding:26px 55px;
+  padding:26px 40px;
 
   position:absolute;
   top:0;
@@ -55,6 +56,17 @@ body{
   z-index:999;
 
 }
+
+
+/* LEFT SIDE */
+
+.nav-left{
+
+  display:flex;
+  align-items:center;
+
+  gap:70px;
+
 }
 
 
@@ -69,13 +81,13 @@ body{
 
   text-decoration:none;
 
+  color:#111;
+
   font-family:'Cormorant Garamond', serif;
 
-  font-size:34px;
+  font-size:28px;
 
   font-weight:600;
-
-  color:#111;
 
   transition:0.3s ease;
 
@@ -91,9 +103,7 @@ body{
 
   color:var(--gold);
 
-  font-size:18px;
-
-  transform:translateY(-1px);
+  font-size:14px;
 
 }
 
@@ -105,9 +115,7 @@ body{
   display:flex;
   align-items:center;
 
-  gap:38px;
-
-  margin-left:120px;
+  gap:34px;
 
 }
 
@@ -119,7 +127,7 @@ body{
 
   color:#111;
 
-  font-size:13px;
+  font-size:12px;
 
   font-weight:600;
 
@@ -132,7 +140,7 @@ body{
 }
 
 
-/* HOVER LINE */
+/* HOVER */
 
 .nav-links a::after{
 
@@ -141,7 +149,7 @@ body{
   position:absolute;
 
   left:0;
-  bottom:-8px;
+  bottom:-7px;
 
   width:0%;
 
@@ -161,17 +169,14 @@ body{
 
 .nav-links a:hover{
 
-  opacity:0.6;
-
-  transform:translateY(-1px);
+  opacity:0.65;
 
 }
+
 
 /* BUTTON */
 
 .btn-nav{
-
-  margin-left:auto;
 
   padding:15px 28px;
 
@@ -181,7 +186,7 @@ body{
 
   text-decoration:none;
 
-  font-size:13px;
+  font-size:12px;
 
   font-weight:600;
 
@@ -202,8 +207,6 @@ body{
   transform:translateY(-2px);
 
 }
-
-
 /* =========================
    HERO
 ========================= */
