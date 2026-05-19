@@ -8,11 +8,14 @@
 
   <title>Future Me — Shop</title>
 
-  <!-- Fonts -->
+  <!-- FONTS -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
 
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/shop.css">
@@ -20,6 +23,7 @@
 </head>
 
 <body>
+
 
   <!-- =========================
        NAVBAR
@@ -49,49 +53,102 @@
   </header>
 
 
+
   <!-- =========================
        PRODUCT SECTION
   ========================== -->
 
   <section class="shop-hero">
 
+
     <!-- LEFT -->
 
     <div class="product-gallery">
 
-      <div class="main-image">
 
-        <img
-          id="mainProductImage"
-          src="assets/images/hero/planner-black.jpg"
-          alt="Planner"
-        >
+      <!-- LEFT ARROW -->
+
+      <button class="slider-arrow left-arrow">
+
+        ←
+
+      </button>
+
+
+      <!-- SLIDER -->
+
+      <div class="slider-container">
+
+        <div class="slider-track">
+
+          <img
+            src="images/planner-black.jpg"
+            class="slider-image"
+            alt=""
+          >
+
+          <img
+            src="images/planner-red.jpg"
+            class="slider-image"
+            alt=""
+          >
+
+          <img
+            src="images/planner-beige.jpg"
+            class="slider-image"
+            alt=""
+          >
+
+          <img
+            src="images/planner-open.jpg"
+            class="slider-image"
+            alt=""
+          >
+
+        </div>
 
       </div>
+
+
+      <!-- RIGHT ARROW -->
+
+      <button class="slider-arrow right-arrow">
+
+        →
+
+      </button>
+
+
+
+      <!-- THUMBNAILS -->
 
       <div class="thumbnail-row">
 
         <img
           class="thumb active-thumb"
-          src="assets/images/hero/planner-black.jpg"
+          src="images/planner-black.jpg"
+          data-index="0"
           alt=""
         >
 
         <img
           class="thumb"
-          src="assets/images/hero/planner-red.jpg"
+          src="images/planner-red.jpg"
+          data-index="1"
           alt=""
         >
 
         <img
           class="thumb"
-          src="assets/images/hero/planner-open.jpg"
+          src="images/planner-beige.jpg"
+          data-index="2"
           alt=""
         >
 
         <img
           class="thumb"
-          src="assets/images/gallery/gallery-1.jpg"
+          src="images/planner-open.jpg"
+          data-index="3"
           alt=""
         >
 
@@ -100,60 +157,82 @@
     </div>
 
 
+
     <!-- RIGHT -->
 
     <div class="product-info">
 
       <p class="product-label">
-        Produktivitätsplaner
+
+        PRODUKTIVITÄTSPLANER
+
       </p>
 
       <h1>
+
         Future Me Planner
+
       </h1>
+
+
+      <!-- RATING -->
 
       <div class="rating">
 
         ★★★★★
 
         <span>
+
           (842 Bewertungen)
+
         </span>
 
       </div>
 
+
+      <!-- PRICE -->
+
       <div class="price">
+
         €39,90
+
       </div>
 
       <p class="tax-info">
+
         inkl. MwSt. & kostenloser Versand
+
       </p>
+
 
 
       <!-- COLORS -->
 
       <div class="option-group">
 
-        <h4>Farben</h4>
+        <h4>
+
+          Farben
+
+        </h4>
 
         <div class="color-options">
 
           <button
             class="color-btn active-color"
-            data-image="assets/images/hero/planner-black.jpg"
+            data-slide="0"
             style="background:#101010;"
           ></button>
 
           <button
             class="color-btn"
-            data-image="assets/images/hero/planner-red.jpg"
+            data-slide="1"
             style="background:#5c1015;"
           ></button>
 
           <button
             class="color-btn"
-            data-image="assets/images/hero/planner-open.jpg"
+            data-slide="2"
             style="background:#d7c9b5;"
           ></button>
 
@@ -162,26 +241,44 @@
       </div>
 
 
+
       <!-- QUANTITY -->
 
       <div class="option-group">
 
-        <h4>Menge</h4>
+        <h4>
+
+          Menge
+
+        </h4>
 
         <div class="quantity-box">
 
-          <button id="minusBtn">−</button>
+          <button id="minusBtn">
 
-          <span id="quantityValue">1</span>
+            −
 
-          <button id="plusBtn">+</button>
+          </button>
+
+          <span id="quantityValue">
+
+            1
+
+          </span>
+
+          <button id="plusBtn">
+
+            +
+
+          </button>
 
         </div>
 
       </div>
 
 
-      <!-- BUTTON -->
+
+      <!-- BUY BUTTON -->
 
       <button class="buy-btn" id="buy">
 
@@ -190,7 +287,8 @@
       </button>
 
 
-      <!-- FEATURES -->
+
+      <!-- SHIPPING -->
 
       <div class="shipping-info">
 
@@ -219,6 +317,7 @@
   </section>
 
 
+
   <!-- =========================
        FEATURES
   ========================== -->
@@ -227,45 +326,73 @@
 
     <div class="feature-card">
 
-      <h3>Fokus</h3>
+      <h3>
+
+        Fokus
+
+      </h3>
 
       <p>
+
         Konzentration auf das Wesentliche
+
       </p>
 
     </div>
 
+
     <div class="feature-card">
 
-      <h3>Struktur</h3>
+      <h3>
+
+        Struktur
+
+      </h3>
 
       <p>
+
         Plane deinen Tag bewusst
+
       </p>
 
     </div>
 
+
     <div class="feature-card">
 
-      <h3>Motivation</h3>
+      <h3>
+
+        Motivation
+
+      </h3>
 
       <p>
+
         Mehr Klarheit und Energie
+
       </p>
 
     </div>
 
+
     <div class="feature-card">
 
-      <h3>Reflexion</h3>
+      <h3>
+
+        Reflexion
+
+      </h3>
 
       <p>
+
         Wachstum sichtbar machen
+
       </p>
 
     </div>
 
   </section>
+
 
 
   <!-- =========================
@@ -277,39 +404,62 @@
     <div class="details-content">
 
       <p class="small-label">
+
         Was macht ihn besonders?
+
       </p>
 
       <h2>
+
         Mehr als nur<br>
         ein Notizbuch.
+
       </h2>
 
       <p class="details-text">
 
-        Der Future Me Planner kombiniert
-        moderne Produktivitätstechniken
-        mit einem minimalistischen Design,
-        damit du fokussierter arbeitest
-        und deine Ziele wirklich erreichst.
+        Der Future Me Planner kombiniert moderne
+        Produktivitätstechniken mit einem minimalistischen Design,
+        damit du fokussierter arbeitest und deine Ziele erreichst.
 
       </p>
 
+
       <ul>
 
-        <li>Wochen-, Tages- & Monatsplanung</li>
-        <li>Fokus-Time Methode</li>
-        <li>Review- & Reflexionsseiten</li>
-        <li>Zielsetzung & Fortschrittstracking</li>
+        <li>
+
+          Wochen-, Tages- & Monatsplanung
+
+        </li>
+
+        <li>
+
+          Fokus-Time Methode
+
+        </li>
+
+        <li>
+
+          Reflexions- & Review-Seiten
+
+        </li>
+
+        <li>
+
+          Zielsetzung & Fortschrittstracking
+
+        </li>
 
       </ul>
 
     </div>
 
+
     <div class="details-image">
 
       <img
-        src="assets/images/hero/planner-open.jpg"
+        src="images/planner-open.jpg"
         alt=""
       >
 
@@ -318,25 +468,39 @@
   </section>
 
 
+
   <!-- =========================
        FAQ
   ========================== -->
 
   <section class="faq shop-faq" id="faq">
 
-    <h2>FAQ</h2>
+    <h2>
+
+      FAQ
+
+    </h2>
 
     <div class="faq-grid">
+
+
+      <!-- FAQ CARD -->
 
       <div class="faq-card">
 
         <div class="faq-top">
 
           <h3>
+
             Ist der Planner datiert?
+
           </h3>
 
-          <span>+</span>
+          <span>
+
+            +
+
+          </span>
 
         </div>
 
@@ -349,15 +513,24 @@
       </div>
 
 
+
+      <!-- FAQ CARD -->
+
       <div class="faq-card">
 
         <div class="faq-top">
 
           <h3>
+
             Wie lange dauert der Versand?
+
           </h3>
 
-          <span>+</span>
+          <span>
+
+            +
+
+          </span>
 
         </div>
 
@@ -370,15 +543,24 @@
       </div>
 
 
+
+      <!-- FAQ CARD -->
+
       <div class="faq-card">
 
         <div class="faq-top">
 
           <h3>
+
             Kann ich ihn zurückgeben?
+
           </h3>
 
-          <span>+</span>
+          <span>
+
+            +
+
+          </span>
 
         </div>
 
@@ -395,6 +577,7 @@
   </section>
 
 
+
   <!-- =========================
        FOOTER
   ========================== -->
@@ -404,7 +587,9 @@
     <div class="footer-top">
 
       <div class="footer-logo">
+
         Future Me
+
       </div>
 
       <div class="footer-links">
@@ -421,13 +606,16 @@
     <div class="footer-bottom">
 
       <p>
+
         © 2026 Future Me.
         Alle Rechte vorbehalten.
+
       </p>
 
     </div>
 
   </footer>
+
 
 
   <!-- JS -->
