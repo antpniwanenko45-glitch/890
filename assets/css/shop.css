@@ -672,3 +672,91 @@
   }
 
 }
+
+/* ========================================
+   HOW SECTION
+======================================== */
+
+.how-section{
+
+  padding:40px 70px 120px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:120px;
+
+}
+
+.how-row{
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:80px;
+
+  align-items:center;
+
+}
+
+.how-row.reverse{
+
+  direction:rtl;
+
+}
+
+.how-row.reverse .how-text{
+
+  direction:ltr;
+
+}
+
+.how-image img{
+
+  width:100%;
+
+  border-radius:8px;
+
+  display:block;
+
+}
+
+.how-text h2{
+
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:64px;
+
+  line-height:1;
+
+  margin-bottom:30px;
+
+}
+
+.how-text p{
+
+  color:#555;
+
+  line-height:1.9;
+
+  margin-bottom:20px;
+
+}
+
+@media(max-width:900px){
+
+  .how-row{
+
+    grid-template-columns:1fr;
+
+    gap:40px;
+
+  }
+
+  .how-text h2{
+
+    font-size:46px;
+
+  }
+
+}
