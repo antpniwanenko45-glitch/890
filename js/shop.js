@@ -149,7 +149,7 @@ setInterval(() => {
 
 
 // =========================
-// QUANTITY
+// QUANTITY + PRICE
 // =========================
 
 const minusBtn =
@@ -161,15 +161,48 @@ document.getElementById("plusBtn");
 const quantityValue =
 document.getElementById("quantityValue");
 
+const priceValue =
+document.getElementById("priceValue");
+
 let quantity = 1;
+
+const singlePrice = 39.90;
+
+
+// =========================
+// UPDATE PRICE
+// =========================
+
+function updatePrice(){
+
+  const total =
+    (singlePrice * quantity)
+    .toFixed(2)
+    .replace(".", ",");
+
+  priceValue.textContent = total;
+
+  quantityValue.textContent = quantity;
+
+}
+
+
+// =========================
+// PLUS
+// =========================
 
 plusBtn.addEventListener("click", () => {
 
   quantity++;
 
-  quantityValue.textContent = quantity;
+  updatePrice();
 
 });
+
+
+// =========================
+// MINUS
+// =========================
 
 minusBtn.addEventListener("click", () => {
 
@@ -177,12 +210,14 @@ minusBtn.addEventListener("click", () => {
 
     quantity--;
 
-    quantityValue.textContent = quantity;
+    updatePrice();
 
   }
 
 });
 
+
+updatePrice();
 
 // =========================
 // STRIPE CHECKOUT
