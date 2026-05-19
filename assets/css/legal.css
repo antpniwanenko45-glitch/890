@@ -1,1 +1,188 @@
+/* =========================
+   HERO
+========================= */
 
+.legal-hero{
+
+  padding:120px 20px 70px;
+
+  text-align:center;
+
+}
+
+.legal-label{
+
+  color:#999;
+
+  text-transform:uppercase;
+
+  letter-spacing:2px;
+
+  font-size:13px;
+
+  margin-bottom:20px;
+
+}
+
+.legal-hero h1{
+
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:90px;
+
+  font-weight:500;
+
+  margin-bottom:20px;
+
+}
+
+.legal-subtitle{
+
+  color:#666;
+
+  font-size:18px;
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.legal-container{
+
+  width:100%;
+
+  display:flex;
+  justify-content:center;
+
+  padding:0 20px 120px;
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.legal-card{
+
+  width:100%;
+  max-width:950px;
+
+  background:white;
+
+  border:1px solid #ece7df;
+
+  padding:80px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.04);
+
+}
+
+
+/* =========================
+   BLOCKS
+========================= */
+
+.legal-block{
+
+  padding-bottom:45px;
+  margin-bottom:45px;
+
+  border-bottom:1px solid #eee8df;
+
+}
+
+.legal-block:last-child{
+
+  border-bottom:none;
+
+  margin-bottom:0;
+  padding-bottom:0;
+
+}
+
+.legal-block h2{
+
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:48px;
+
+  margin-bottom:25px;
+
+}
+
+.legal-block h3{
+
+  font-size:18px;
+
+  margin-bottom:18px;
+
+  letter-spacing:1px;
+
+}
+
+.legal-block p{
+
+  color:#666;
+
+  line-height:2;
+
+  font-size:16px;
+
+}
+
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.legal-card{
+
+  transition:0.4s ease;
+
+}
+
+.legal-card:hover{
+
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.06);
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .legal-hero{
+
+    padding:90px 20px 50px;
+
+  }
+
+  .legal-hero h1{
+
+    font-size:56px;
+
+  }
+
+  .legal-card{
+
+    padding:40px 25px;
+
+  }
+
+  .legal-block h2{
+
+    font-size:38px;
+
+  }
+
+}
