@@ -1491,3 +1491,44 @@ body{
   }
 
 }
+/* ========================================
+   PREORDER IMPROVEMENTS
+======================================== */
+
+.save-badge{
+
+  background:#efe4cf;
+
+  color:#8b6a33;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  font-size:12px;
+
+  font-weight:600;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+}
+
+.preorder-content{
+
+  padding:48px 55px;
+
+  justify-content:center;
+
+}
+
+.preorder-content h2{
+
+  font-size:72px;
+
+  line-height:0.9;
+
+  letter-spacing:-2px;
+
+}
