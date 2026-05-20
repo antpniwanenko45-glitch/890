@@ -1605,7 +1605,9 @@ body{
 
 .offer-trigger:hover{
 
-  transform:translateY(-4px);
+  transform:
+    translateY(-50%)
+    scale(1.04);
 
   background:#1a1a1a;
 
