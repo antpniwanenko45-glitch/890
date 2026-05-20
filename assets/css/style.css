@@ -1037,18 +1037,20 @@ body{
   position:fixed;
   inset:0;
 
-  background:rgba(0,0,0,0.18);
-
-  backdrop-filter:blur(4px);
-
   display:flex;
   justify-content:center;
   align-items:center;
+
+  background:rgba(0,0,0,0.22);
+
+  backdrop-filter:blur(5px);
 
   z-index:99999;
 
   opacity:0;
   visibility:hidden;
+
+  pointer-events:none;
 
   transition:0.45s ease;
 
@@ -1059,56 +1061,51 @@ body{
   opacity:1;
   visibility:visible;
 
+  pointer-events:auto;
+
 }
+
+
+/* POPUP */
 
 .preorder-popup{
 
-  width:min(920px,92vw);
+  position:relative;
+
+  width:min(960px,90vw);
+
+  max-height:88vh;
+
+  overflow:hidden;
 
   background:white;
 
-  border-radius:28px;
-
-  overflow:hidden;
+  border-radius:32px;
 
   display:grid;
   grid-template-columns:1fr 1fr;
 
   box-shadow:
-  0 30px 80px rgba(0,0,0,0.18);
+    0 40px 100px rgba(0,0,0,0.22);
 
-  transform:translateY(40px) scale(0.96);
+  transform:
+    translateY(30px)
+    scale(0.96);
 
-  transition:0.5s ease;
+  transition:0.45s ease;
 
 }
 
 .preorder-overlay.active .preorder-popup{
 
-  transform:translateY(0) scale(1);
+  transform:
+    translateY(0)
+    scale(1);
 
 }
 
-/* IMAGE */
 
-.preorder-image{
-
-  position:relative;
-
-  background:
-  linear-gradient(
-    145deg,
-    #f7f2ea,
-    #ece4d7
-  );
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:50px;
-
-}
+/* LEFT SIDE */
 
 .preorder-image{
 
@@ -1122,15 +1119,17 @@ body{
   );
 
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 
   overflow:hidden;
+
+  padding:60px;
 
 }
 
 
-/* GOLD DECOR */
+/* GLOW */
 
 .preorder-image::before{
 
@@ -1144,22 +1143,16 @@ body{
   border-radius:50%;
 
   background:
-  radial-gradient(
-    circle,
-    rgba(200,164,107,0.28),
-    transparent 70%
-  );
-
-  top:50%;
-  left:50%;
-
-  transform:
-  translate(-50%,-50%);
+    radial-gradient(
+      circle,
+      rgba(200,164,107,0.28),
+      transparent 72%
+    );
 
 }
 
 
-/* EXTRA SHAPE */
+/* DECOR */
 
 .preorder-image::after{
 
@@ -1167,15 +1160,15 @@ body{
 
   position:absolute;
 
-  width:180px;
-  height:180px;
-
-  border-radius:40px;
+  width:190px;
+  height:190px;
 
   border:1px solid rgba(255,255,255,0.5);
 
-  top:60px;
-  right:60px;
+  border-radius:42px;
+
+  top:50px;
+  right:50px;
 
   transform:rotate(18deg);
 
@@ -1187,42 +1180,43 @@ body{
 .preorder-image img{
 
   width:100%;
-  max-width:360px;
+  max-width:340px;
 
   position:relative;
 
   z-index:2;
 
-  border-radius:24px;
+  border-radius:26px;
 
-  transform:
-  rotate(-6deg);
+  transform:rotate(-6deg);
 
   box-shadow:
-    0 40px 80px rgba(0,0,0,0.22),
-    0 10px 30px rgba(0,0,0,0.12);
+    0 35px 70px rgba(0,0,0,0.22),
+    0 15px 30px rgba(0,0,0,0.12);
 
-  transition:0.45s ease;
+  transition:0.4s ease;
 
 }
-
-
-/* HOVER */
 
 .preorder-image img:hover{
 
   transform:
-  rotate(-3deg)
-  scale(1.03);
+    rotate(-3deg)
+    scale(1.03);
 
 }
+
+
+/* BADGE */
 
 .preorder-badge{
 
   position:absolute;
 
-  top:24px;
-  left:24px;
+  top:22px;
+  left:22px;
+
+  z-index:3;
 
   background:#111;
 
@@ -1232,7 +1226,7 @@ body{
 
   border-radius:999px;
 
-  font-size:12px;
+  font-size:11px;
 
   letter-spacing:1px;
 
@@ -1240,17 +1234,19 @@ body{
 
 }
 
-/* CONTENT */
+
+/* RIGHT SIDE */
 
 .preorder-content{
-
-  padding:55px;
 
   display:flex;
   flex-direction:column;
   justify-content:center;
 
+  padding:48px 52px;
+
 }
+
 
 .preorder-small{
 
@@ -1262,31 +1258,42 @@ body{
 
   font-weight:600;
 
-  margin-bottom:18px;
+  margin-bottom:16px;
 
 }
+
+
+/* TITLE */
 
 .preorder-content h2{
 
   font-family:'Cormorant Garamond', serif;
 
-  font-size:52px;
+  font-size:64px;
 
-  line-height:0.95;
+  line-height:0.92;
 
-  margin-bottom:24px;
+  letter-spacing:-2px;
+
+  margin-bottom:22px;
 
 }
+
+
+/* TEXT */
 
 .preorder-text{
 
   color:#666;
 
-  line-height:1.8;
+  font-size:18px;
+
+  line-height:1.7;
 
   margin-bottom:28px;
 
 }
+
 
 /* PRICE */
 
@@ -1294,7 +1301,6 @@ body{
 
   display:flex;
   align-items:center;
-
   gap:16px;
 
   margin-bottom:28px;
@@ -1313,13 +1319,37 @@ body{
 
 .new-price{
 
-  font-size:52px;
+  font-size:56px;
 
   font-weight:700;
 
   color:#111;
 
 }
+
+
+/* SAVE */
+
+.save-badge{
+
+  background:#efe4cf;
+
+  color:#8b6a33;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+}
+
 
 /* INPUT */
 
@@ -1331,7 +1361,7 @@ body{
 
   border:1px solid #ddd;
 
-  border-radius:14px;
+  border-radius:16px;
 
   font-size:15px;
 
@@ -1349,6 +1379,7 @@ body{
 
 }
 
+
 /* COLORS */
 
 .popup-colors{
@@ -1357,14 +1388,14 @@ body{
 
   gap:14px;
 
-  margin-bottom:28px;
+  margin-bottom:26px;
 
 }
 
 .popup-color{
 
-  width:34px;
-  height:34px;
+  width:38px;
+  height:38px;
 
   border-radius:50%;
 
@@ -1374,13 +1405,11 @@ body{
 
   transition:0.25s ease;
 
-  position:relative;
-
 }
 
 .popup-color:hover{
 
-  transform:scale(1.12);
+  transform:scale(1.1);
 
 }
 
@@ -1391,17 +1420,18 @@ body{
 
 }
 
+
 /* BUTTON */
 
 .preorder-btn{
 
   width:100%;
 
-  padding:18px;
+  padding:20px;
 
   border:none;
 
-  border-radius:14px;
+  border-radius:16px;
 
   background:#111;
 
@@ -1429,6 +1459,7 @@ body{
 
 }
 
+
 /* CLOSE */
 
 .preorder-close{
@@ -1438,8 +1469,8 @@ body{
   top:20px;
   right:20px;
 
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
 
   border:none;
 
@@ -1451,16 +1482,111 @@ body{
 
   font-size:18px;
 
-  z-index:5;
+  z-index:10;
 
   box-shadow:
-  0 10px 25px rgba(0,0,0,0.08);
+    0 10px 25px rgba(0,0,0,0.08);
 
 }
 
+
+/* ========================================
+   STICKY BUTTON
+======================================== */
+
+.offer-trigger{
+
+  position:fixed;
+
+  right:24px;
+  bottom:24px;
+
+  z-index:100000;
+
+  border:none;
+
+  background:#111;
+
+  color:white;
+
+  padding:16px 24px;
+
+  border-radius:18px;
+
+  cursor:pointer;
+
+  font-size:13px;
+
+  font-weight:600;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.18);
+
+  transition:0.35s ease;
+
+  overflow:hidden;
+
+}
+
+
+/* SHINE */
+
+.offer-trigger::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(200,164,107,0.32),
+      transparent
+    );
+
+  transform:translateX(-120%);
+
+  transition:0.6s ease;
+
+}
+
+
+.offer-trigger:hover{
+
+  transform:translateY(-4px);
+
+  background:#1a1a1a;
+
+  box-shadow:
+    0 24px 50px rgba(0,0,0,0.24);
+
+}
+
+.offer-trigger:hover::before{
+
+  transform:translateX(120%);
+
+}
+
+.offer-trigger span{
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+
 /* MOBILE */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
   .preorder-popup{
 
@@ -1474,13 +1600,13 @@ body{
 
   .preorder-content{
 
-    padding:35px 28px;
+    padding:34px 28px;
 
   }
 
   .preorder-content h2{
 
-    font-size:42px;
+    font-size:46px;
 
   }
 
@@ -1490,162 +1616,12 @@ body{
 
   }
 
-}
-/* ========================================
-   PREORDER IMPROVEMENTS
-======================================== */
-
-.save-badge{
-
-  background:#efe4cf;
-
-  color:#8b6a33;
-
-  padding:8px 14px;
-
-  border-radius:999px;
-
-  font-size:12px;
-
-  font-weight:600;
-
-  letter-spacing:1px;
-
-  text-transform:uppercase;
-
-}
-
-.preorder-content{
-
-  padding:48px 55px;
-
-  justify-content:center;
-
-}
-
-.preorder-content h2{
-
-  font-size:72px;
-
-  line-height:0.9;
-
-  letter-spacing:-2px;
-
-}
-
-/* ========================================
-   STICKY OFFER BUTTON
-======================================== */
-
-.offer-trigger{
-
-  position:fixed;
-
-  right:-72px;
-  top:50%;
-
-  transform:
-  translateY(-50%)
-  rotate(-90deg);
-
-  z-index:99998;
-
-  border:none;
-
-  background:#111;
-
-  color:white;
-
-  padding:18px 34px;
-
-  border-radius:
-  18px 18px 0 0;
-
-  cursor:pointer;
-
-  font-size:13px;
-
-  font-weight:600;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  transition:0.35s ease;
-
-  box-shadow:
-    0 15px 35px rgba(0,0,0,0.18);
-
-  overflow:hidden;
-
-}
-
-
-/* GOLD GLOW */
-
-.offer-trigger::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-  linear-gradient(
-    120deg,
-    transparent,
-    rgba(200,164,107,0.35),
-    transparent
-  );
-
-  transform:translateX(-120%);
-
-  transition:0.6s ease;
-
-}
-
-
-/* HOVER */
-
-.offer-trigger:hover{
-
-  background:#1a1a1a;
-
-  right:-64px;
-
-  box-shadow:
-    0 20px 45px rgba(0,0,0,0.24);
-
-}
-
-.offer-trigger:hover::before{
-
-  transform:translateX(120%);
-
-}
-
-
-/* TEXT */
-
-.offer-trigger span{
-
-  position:relative;
-
-  z-index:2;
-
-}
-
-
-/* MOBILE */
-
-@media(max-width:768px){
-
   .offer-trigger{
 
-    right:-78px;
+    right:16px;
+    bottom:16px;
 
-    padding:16px 28px;
+    padding:14px 18px;
 
     font-size:11px;
 
