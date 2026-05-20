@@ -139,11 +139,15 @@ videoCards.forEach((card, index) => {
 
 // CLOSE
 
-videoClose.addEventListener("click", () => {
+if(videoClose){
 
-  closeLuxuryVideo();
+  videoClose.addEventListener("click", () => {
 
-});
+    closeLuxuryVideo();
+
+  });
+
+}
 
 
 // CLICK OUTSIDE
