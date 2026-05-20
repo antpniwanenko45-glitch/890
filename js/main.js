@@ -152,15 +152,19 @@ if(videoClose){
 
 // CLICK OUTSIDE
 
-videoOverlay.addEventListener("click", (e) => {
+if(videoOverlay){
 
-  if(e.target === videoOverlay){
+  videoOverlay.addEventListener("click", (e) => {
 
-    closeLuxuryVideo();
+    if(e.target === videoOverlay){
 
-  }
+      closeLuxuryVideo();
 
-});
+    }
+
+  });
+
+}
 
 
 // THUMB SWITCH
