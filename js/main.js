@@ -201,3 +201,82 @@ function updateActiveThumb(index){
   .classList.add("active-thumb");
 
 }
+
+// =========================
+// PREORDER POPUP
+// =========================
+
+const preorderOverlay =
+document.getElementById("preorderOverlay");
+
+const closePreorder =
+document.getElementById("closePreorder");
+
+const popupColors =
+document.querySelectorAll(".popup-color");
+
+const plannerPreview =
+document.getElementById("plannerPreview");
+
+
+// OPEN AFTER DELAY
+
+window.addEventListener("load", () => {
+
+  setTimeout(() => {
+
+    preorderOverlay.classList.add("active");
+
+  }, 1200);
+
+});
+
+
+// CLOSE
+
+closePreorder.addEventListener("click", () => {
+
+  preorderOverlay.classList.remove("active");
+
+});
+
+
+// CLICK OUTSIDE
+
+preorderOverlay.addEventListener("click", (e) => {
+
+  if(e.target === preorderOverlay){
+
+    preorderOverlay.classList.remove("active");
+
+  }
+
+});
+
+
+// CHANGE IMAGE
+
+popupColors.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    const image =
+    button.dataset.image;
+
+    plannerPreview.src = image;
+
+    popupColors.forEach((btn) => {
+
+      btn.classList.remove(
+        "active-popup-color"
+      );
+
+    });
+
+    button.classList.add(
+      "active-popup-color"
+    );
+
+  });
+
+});
