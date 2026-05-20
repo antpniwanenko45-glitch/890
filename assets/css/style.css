@@ -1511,6 +1511,8 @@ body{
 
   z-index:100001;
 
+  isolation:isolate;
+
   border:none;
 
   background:
@@ -1544,7 +1546,6 @@ body{
   overflow:hidden;
 
 }
-
 
 /* SHINE */
 
