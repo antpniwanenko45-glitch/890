@@ -79,7 +79,8 @@ buttons.forEach((button) => {
 // PARALLAX HERO IMAGE
 // =========================
 
-const heroImage = document.querySelector(".hero-image img");
+const heroImage =
+document.querySelector(".hero-image");
 
 window.addEventListener("scroll", () => {
 
