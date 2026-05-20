@@ -1584,6 +1584,8 @@ body{
 
   padding:1px;
 
+  pointer-events:none;
+
   background:
     linear-gradient(
       135deg,
@@ -1601,7 +1603,6 @@ body{
   mask-composite:exclude;
 
 }
-
 
 .offer-trigger:hover{
 
