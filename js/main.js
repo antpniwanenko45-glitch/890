@@ -189,11 +189,19 @@ videoThumbs.forEach((thumb, index) => {
 
 function closeLuxuryVideo(){
 
-  videoOverlay.classList.remove("active");
+  if(videoOverlay){
 
-  luxuryVideo.pause();
+    videoOverlay.classList.remove("active");
 
-  luxuryVideo.currentTime = 0;
+  }
+
+  if(luxuryVideo){
+
+    luxuryVideo.pause();
+
+    luxuryVideo.currentTime = 0;
+
+  }
 
 }
 
