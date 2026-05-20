@@ -232,3 +232,20 @@ buyBtn.addEventListener("click", () => {
     "https://buy.stripe.com/test";
 
 });
+
+// =========================
+// STICKY OFFER BUTTON
+// =========================
+
+const offerTrigger =
+document.getElementById("offerTrigger");
+
+if(offerTrigger){
+
+  offerTrigger.addEventListener("click", () => {
+
+    preorderOverlay.classList.add("active");
+
+  });
+
+}
