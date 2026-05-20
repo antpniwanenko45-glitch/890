@@ -280,3 +280,20 @@ popupColors.forEach((button) => {
   });
 
 });
+
+// =========================
+// STICKY OFFER BUTTON
+// =========================
+
+const offerTrigger =
+document.getElementById("offerTrigger");
+
+if(offerTrigger){
+
+  offerTrigger.addEventListener("click", () => {
+
+    preorderOverlay.classList.add("active");
+
+  });
+
+}
