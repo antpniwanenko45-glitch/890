@@ -791,16 +791,26 @@
 
 }
 
-.how-image img{
+.how-image{
 
-  width:100%;
-
-  border-radius:8px;
-
-  display:block;
+  display:flex;
+  justify-content:center;
 
 }
 
+.how-image img{
+
+  width:72%;
+
+  border-radius:18px;
+
+  display:block;
+
+  transition:
+    transform 1s ease,
+    opacity 1s ease;
+
+}
 .how-text h2{
 
   font-family:'Cormorant Garamond', serif;
@@ -1117,6 +1127,47 @@
     height:420px;
 
   }
+
+}
+
+* ========================================
+   SCROLL REVEAL
+======================================== */
+
+.how-row{
+
+  opacity:0;
+
+  transform:
+    translateY(80px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+
+}
+
+.how-row.show{
+
+  opacity:1;
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* IMAGE FLOAT EFFECT */
+
+.how-row .how-image img{
+
+  transform:scale(0.92);
+
+}
+
+.how-row.show .how-image img{
+
+  transform:scale(1);
 
 }
 
