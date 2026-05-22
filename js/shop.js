@@ -489,3 +489,35 @@ preorderModal
   }
 
 });
+
+// =========================
+// PREORDER COLORS
+// =========================
+
+const preorderColors =
+document.querySelectorAll(
+  ".preorder-color"
+);
+
+preorderColors.forEach((color) => {
+
+  color.addEventListener(
+    "click",
+    () => {
+
+      preorderColors.forEach((btn) => {
+
+        btn.classList.remove(
+          "active-preorder-color"
+        );
+
+      });
+
+      color.classList.add(
+        "active-preorder-color"
+      );
+
+    }
+  );
+
+});
