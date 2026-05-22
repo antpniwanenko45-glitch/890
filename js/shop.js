@@ -399,3 +399,39 @@ window.addEventListener(
 );
 
 revealHowRows();
+
+// =========================
+// DETAILS REVEAL
+// =========================
+
+const detailsSection =
+document.querySelector(
+  ".details-section"
+);
+
+const revealDetails = () => {
+
+  const trigger =
+    window.innerHeight * 0.85;
+
+  const top =
+    detailsSection
+    .getBoundingClientRect()
+    .top;
+
+  if(top < trigger){
+
+    detailsSection.classList.add(
+      "show"
+    );
+
+  }
+
+};
+
+window.addEventListener(
+  "scroll",
+  revealDetails
+);
+
+revealDetails();
