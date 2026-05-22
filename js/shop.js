@@ -235,7 +235,7 @@ buyBtn.addEventListener("click", () => {
 
 
 // =========================
-// INSIDE SLIDER
+// INFINITE INSIDE SLIDER
 // =========================
 
 const insideTrack =
@@ -250,60 +250,121 @@ document.querySelector(".inside-prev");
 const insideNext =
 document.querySelector(".inside-next");
 
-let insideIndex = 0;
 
-function updateInsideSlider(){
+// CLONES
+
+const firstClone =
+insideSlides[0].cloneNode(true);
+
+const lastClone =
+insideSlides[
+  insideSlides.length - 1
+].cloneNode(true);
+
+insideTrack.appendChild(firstClone);
+
+insideTrack.prepend(lastClone);
+
+
+// ALL SLIDES
+
+const allSlides =
+document.querySelectorAll(".inside-slide");
+
+let insideIndex = 1;
+
+
+// UPDATE
+
+function updateInsideSlider(
+  animate = true
+){
 
   const slideWidth =
-    insideSlides[0].offsetWidth + 30;
+    allSlides[0].offsetWidth + 30;
 
   const wrapper =
     document.querySelector(".inside-slider");
 
   const centerOffset =
-    (wrapper.offsetWidth - insideSlides[0].offsetWidth) / 2;
+    (wrapper.offsetWidth -
+    allSlides[0].offsetWidth) / 2;
+
+  insideTrack.style.transition =
+    animate
+      ? "transform 0.7s ease"
+      : "none";
 
   insideTrack.style.transform =
     `translateX(${
-      centerOffset - (insideIndex * slideWidth)
+      centerOffset -
+      (insideIndex * slideWidth)
     }px)`;
 
 }
 
 
+// INITIAL POSITION
+
+updateInsideSlider(false);
+
+
 // NEXT
 
-insideNext.addEventListener("click", () => {
+insideNext.addEventListener(
+  "click",
+  () => {
 
-  insideIndex++;
+    insideIndex++;
 
-  if(insideIndex >= insideSlides.length){
-
-    insideIndex = 0;
+    updateInsideSlider();
 
   }
-
-  updateInsideSlider();
-
-});
+);
 
 
 // PREV
 
-insidePrev.addEventListener("click", () => {
+insidePrev.addEventListener(
+  "click",
+  () => {
 
-  insideIndex--;
+    insideIndex--;
 
-  if(insideIndex < 0){
-
-    insideIndex =
-      insideSlides.length - 1;
+    updateInsideSlider();
 
   }
+);
 
-  updateInsideSlider();
 
-});
+// INFINITE LOOP
+
+insideTrack.addEventListener(
+  "transitionend",
+  () => {
+
+    if(
+      insideIndex ===
+      allSlides.length - 1
+    ){
+
+      insideIndex = 1;
+
+      updateInsideSlider(false);
+
+    }
+
+    if(insideIndex === 0){
+
+      insideIndex =
+        allSlides.length - 2;
+
+      updateInsideSlider(false);
+
+    }
+
+  }
+);
 
 // =========================
 // HOW SECTION REVEAL
