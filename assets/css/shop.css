@@ -1027,9 +1027,9 @@
 
   position:relative;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:100%;
+
+  overflow:hidden;
 
 }
 
@@ -1039,24 +1039,17 @@
 
   overflow:hidden;
 
-  position:relative;
-
 }
 
 .inside-track{
 
   display:flex;
 
-  align-items:center;
-
   gap:30px;
 
+  transition:transform 0.7s ease;
+
   width:max-content;
-
-  transition:transform 0.6s ease;
-
-  padding-left:12vw;
-  padding-right:12vw;
 
 }
 
@@ -1065,7 +1058,7 @@
 
 .inside-slide{
 
-  width:720px;
+  width:620px;
 
   height:500px;
 
@@ -1123,13 +1116,13 @@
 
 .inside-prev{
 
-  left:10px;
+  left:30px;
 
 }
 
 .inside-next{
 
-  right:10px;
+  right:30px;
 
 }
 
