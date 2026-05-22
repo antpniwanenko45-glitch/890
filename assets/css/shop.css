@@ -1422,6 +1422,46 @@
 
 }
 
+/* COLORS */
+
+.preorder-colors{
+
+  display:flex;
+
+  gap:14px;
+
+  margin-bottom:24px;
+
+}
+
+.preorder-color{
+
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  border:2px solid transparent;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+
+}
+
+.preorder-color:hover{
+
+  transform:scale(1.08);
+
+}
+
+.active-preorder-color{
+
+  border-color:#111;
+
+  transform:scale(1.08);
+
+}
 
 /* INPUT */
 
