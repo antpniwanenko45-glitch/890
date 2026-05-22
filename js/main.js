@@ -314,3 +314,109 @@ if(offerTrigger){
   });
 
 }
+
+// =========================
+// PREORDER SUBMIT
+// =========================
+
+const preorderBtn =
+document.querySelector(
+  ".preorder-btn"
+);
+
+const preorderInput =
+document.querySelector(
+  ".preorder-input"
+);
+
+preorderBtn.addEventListener(
+  "click",
+  async () => {
+
+    const email =
+      preorderInput.value.trim();
+
+    if(!email){
+
+      alert(
+        "Bitte E-Mail eingeben"
+      );
+
+      return;
+
+    }
+
+    const activeColor =
+      document.querySelector(
+        ".active-popup-color"
+      );
+
+    let color = "Black";
+
+    if(activeColor){
+
+      const image =
+        activeColor.dataset.image;
+
+      if(image.includes("red")){
+
+        color = "Red";
+
+      }
+
+      else if(
+        image.includes("blue")
+      ){
+
+        color = "Blue";
+
+      }
+
+    }
+
+    preorderBtn.textContent =
+      "Wird gesendet...";
+
+    try{
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycby1kDhcqp03fEye89Lv-Jkl4Fbi1vNENrqfrvg9lazhyKc_fCkzeJLSu_GJl7mOobNr/exec",
+        {
+
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+
+            email,
+            color,
+            source:"main-popup"
+
+          })
+
+        }
+      );
+
+      preorderBtn.textContent =
+        "Gesendet ✓";
+
+      preorderBtn.style.background =
+        "#1d7a43";
+
+      preorderInput.value = "";
+
+    }
+
+    catch(error){
+
+      preorderBtn.textContent =
+        "Fehler";
+
+    }
+
+  }
+);
