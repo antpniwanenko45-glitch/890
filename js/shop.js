@@ -439,3 +439,53 @@ window.addEventListener(
 );
 
 revealDetails();
+
+// =========================
+// PREORDER MODAL
+// =========================
+
+const preorderModal =
+document.getElementById(
+  "preorderModal"
+);
+
+const closePreorderModal =
+document.getElementById(
+  "closePreorderModal"
+);
+
+
+// CLOSE
+
+closePreorderModal
+.addEventListener("click", () => {
+
+  preorderModal.classList.remove(
+    "show-preorder-modal"
+  );
+
+  document.body.style.overflow =
+    "auto";
+
+});
+
+
+// CLOSE ON OVERLAY
+
+preorderModal
+.addEventListener("click", (e) => {
+
+  if(
+    e.target === preorderModal
+  ){
+
+    preorderModal.classList.remove(
+      "show-preorder-modal"
+    );
+
+    document.body.style.overflow =
+      "auto";
+
+  }
+
+});
