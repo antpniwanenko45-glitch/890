@@ -672,11 +672,24 @@
 
 }
 
+.details-image{
+
+  display:flex;
+  justify-content:center;
+
+}
+
 .details-image img{
 
-  width:100%;
+  width:72%;
 
-  border-radius:8px;
+  border-radius:18px;
+
+  display:block;
+
+  transition:
+    transform 1s ease,
+    opacity 1s ease;
 
 }
 
@@ -1194,3 +1207,44 @@
 
 }
 
+/* ========================================
+   DETAILS REVEAL
+======================================== */
+
+.details-section{
+
+  opacity:0;
+
+  transform:
+    translateY(80px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+
+}
+
+.details-section.show{
+
+  opacity:1;
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* IMAGE EFFECT */
+
+.details-image img{
+
+  transform:scale(0.92);
+
+}
+
+.details-section.show
+.details-image img{
+
+  transform:scale(1);
+
+}
