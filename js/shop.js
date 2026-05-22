@@ -228,8 +228,12 @@ document.querySelector(".buy-btn");
 
 buyBtn.addEventListener("click", () => {
 
-  window.location.href =
-    "https://buy.stripe.com/test";
+  preorderModal.classList.add(
+    "show-preorder-modal"
+  );
+
+  document.body.style.overflow =
+    "hidden";
 
 });
 
