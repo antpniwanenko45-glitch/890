@@ -254,11 +254,19 @@ let insideIndex = 0;
 
 function updateInsideSlider(){
 
-  const slideWidth =
-    insideSlides[0].offsetWidth + 30;
+  const slide =
+    insideSlides[insideIndex];
+
+  const wrapper =
+    document.querySelector(".inside-slider");
+
+  const offset =
+    slide.offsetLeft -
+    (wrapper.offsetWidth / 2) +
+    (slide.offsetWidth / 2);
 
   insideTrack.style.transform =
-    `translateX(-${insideIndex * slideWidth}px)`;
+    `translateX(-${offset}px)`;
 
 }
 
