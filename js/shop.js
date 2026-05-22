@@ -234,3 +234,65 @@ buyBtn.addEventListener("click", () => {
 });
 
 
+// =========================
+// INSIDE SLIDER
+// =========================
+
+const insideTrack =
+document.querySelector(".inside-track");
+
+const insideSlides =
+document.querySelectorAll(".inside-slide");
+
+const insidePrev =
+document.querySelector(".inside-prev");
+
+const insideNext =
+document.querySelector(".inside-next");
+
+let insideIndex = 0;
+
+function updateInsideSlider(){
+
+  const slideWidth =
+    insideSlides[0].offsetWidth + 30;
+
+  insideTrack.style.transform =
+    `translateX(-${insideIndex * slideWidth}px)`;
+
+}
+
+
+// NEXT
+
+insideNext.addEventListener("click", () => {
+
+  insideIndex++;
+
+  if(insideIndex >= insideSlides.length){
+
+    insideIndex = 0;
+
+  }
+
+  updateInsideSlider();
+
+});
+
+
+// PREV
+
+insidePrev.addEventListener("click", () => {
+
+  insideIndex--;
+
+  if(insideIndex < 0){
+
+    insideIndex =
+      insideSlides.length - 1;
+
+  }
+
+  updateInsideSlider();
+
+});
