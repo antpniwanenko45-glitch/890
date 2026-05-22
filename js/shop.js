@@ -304,3 +304,37 @@ insidePrev.addEventListener("click", () => {
   updateInsideSlider();
 
 });
+
+// =========================
+// HOW SECTION REVEAL
+// =========================
+
+const howRows =
+document.querySelectorAll(".how-row");
+
+const revealHowRows = () => {
+
+  const trigger =
+    window.innerHeight * 0.85;
+
+  howRows.forEach((row) => {
+
+    const top =
+      row.getBoundingClientRect().top;
+
+    if(top < trigger){
+
+      row.classList.add("show");
+
+    }
+
+  });
+
+};
+
+window.addEventListener(
+  "scroll",
+  revealHowRows
+);
+
+revealHowRows();
