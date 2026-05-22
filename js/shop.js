@@ -521,3 +521,93 @@ preorderColors.forEach((color) => {
   );
 
 });
+
+// =========================
+// PREORDER SUBMIT
+// =========================
+
+const preorderSubmit =
+document.getElementById(
+  "preorderSubmit"
+);
+
+const preorderEmail =
+document.getElementById(
+  "preorderEmail"
+);
+
+if(preorderSubmit){
+
+  preorderSubmit.addEventListener(
+    "click",
+    async () => {
+
+      const email =
+        preorderEmail.value.trim();
+
+      if(!email){
+
+        alert(
+          "Bitte E-Mail eingeben"
+        );
+
+        return;
+
+      }
+
+      const activeColor =
+        document.querySelector(
+          ".active-preorder-color"
+        );
+
+      const color =
+        activeColor.dataset.color;
+
+      preorderSubmit.textContent =
+        "Wird gesendet...";
+
+      try{
+
+        await fetch(
+          "https://script.google.com/macros/s/AKfycby1kDhcqp03fEye89Lv-Jkl4Fbi1vNENrqfrvg9lazhyKc_fCkzeJLSu_GJl7mOobNr/exec",
+          {
+
+            method:"POST",
+
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+
+              email,
+              color,
+              source:"shop-popup"
+
+            })
+
+          }
+        );
+
+        preorderSubmit.textContent =
+          "Vorbestellung ✓";
+
+        preorderSubmit.style.background =
+          "#1d7a43";
+
+        preorderEmail.value = "";
+
+      }
+
+      catch(error){
+
+        preorderSubmit.textContent =
+          "Fehler";
+
+      }
+
+    }
+  );
+
+}
