@@ -915,22 +915,26 @@ body{
 
 .video-wrapper{
 
-  height:90vh;
-
   display:flex;
+  justify-content:center;
   align-items:center;
 
 }
 
 .video-wrapper video{
 
-  height:100%;
+  width:360px;
 
-  max-width:420px;
+  aspect-ratio:9 / 16;
 
-  border-radius:18px;
+  border-radius:24px;
 
   object-fit:cover;
+
+  background:black;
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.45);
 
 }
 
