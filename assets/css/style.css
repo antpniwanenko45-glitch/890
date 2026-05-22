@@ -1078,7 +1078,7 @@ body{
 
   position:relative;
 
-  width:min(920px,92vw);
+  width:min(680px,90vw);
 
   background:white;
 
@@ -1130,7 +1130,7 @@ body{
 
   overflow:hidden;
 
-  padding:60px;
+  padding:38px;
 
 }
 
@@ -1186,7 +1186,7 @@ body{
 .preorder-image img{
 
   width:100%;
-  max-width:340px;
+  max-width:240px;
 
   position:relative;
 
@@ -1249,7 +1249,7 @@ body{
   flex-direction:column;
   justify-content:center;
 
-  padding:48px 52px;
+  padding:34px 36px;
 
 }
 
@@ -1275,7 +1275,7 @@ body{
 
   font-family:'Cormorant Garamond', serif;
 
-  font-size:64px;
+  font-size:46px;
 
   line-height:0.92;
 
@@ -1325,7 +1325,7 @@ body{
 
 .new-price{
 
-  font-size:56px;
+  font-size:42px;
 
   font-weight:700;
 
