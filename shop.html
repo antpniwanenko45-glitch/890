@@ -1,1028 +1,204 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Future Me — Shop</title>
-
-  <!-- FONTS -->
-
+  <title>Future Me - Shop</title>
+  <meta name="description" content="Future Me Planner kaufen: wähle Farbe und Menge, sichere dir das Launch-Angebot.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/shop.css">
-
 </head>
-
 <body>
-
-
-  <!-- =========================
-       NAVBAR
-  ========================== -->
-
-<header class="navbar">
-
-  <div class="nav-left">
-
-   <a href="index.html" class="logo">
-
-      <span class="logo-star">
-        ✦
-      </span>
-
-      <span>
-        Future Me
-      </span>
-
+  <header class="navbar" data-nav>
+    <a href="index.html" class="logo" aria-label="Future Me Startseite">
+      <span class="logo-mark">✦</span>
+      <span>Future Me</span>
     </a>
-
-    <nav class="nav-links">
-
-     <a href="index.html">Home</a>
-
-<a href="index.html#vorteile">
-  Vorteile
-</a>
-
-<a href="index.html#faq">
-  FAQ
-</a>
-
+    <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" data-menu-toggle>
+      <span aria-hidden="true">☰</span>
+    </button>
+    <nav class="nav-links" data-menu>
+      <a href="index.html">Home</a>
+      <a href="index.html#vorteile">Vorteile</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="shop.html" class="nav-cta">Jetzt kaufen</a>
     </nav>
+  </header>
 
-  </div>
+  <main>
+    <section class="shop-hero">
+      <div class="product-gallery reveal">
+        <button class="slider-arrow left-arrow" type="button" aria-label="Vorheriges Bild">‹</button>
+        <div class="slider-container">
+          <div class="slider-track">
+            <img src="images/gallery/planner-black.webp" class="slider-image" alt="Future Me Planner schwarz">
+            <img src="images/gallery/planner-red.webp" class="slider-image" alt="Future Me Planner dunkelrot">
+            <img src="images/gallery/planner-blue.webp" class="slider-image" alt="Future Me Planner dunkelblau">
+            <img src="images/gallery/planner-open.webp" class="slider-image" alt="Future Me Planner geöffnet">
+          </div>
+        </div>
+        <button class="slider-arrow right-arrow" type="button" aria-label="Nächstes Bild">›</button>
+        <div class="thumbnail-row" aria-label="Produktbilder">
+          <button class="thumb active-thumb" type="button" data-index="0" style="background-image:url('images/gallery/planner-black.webp')" aria-label="Schwarz"></button>
+          <button class="thumb" type="button" data-index="1" style="background-image:url('images/gallery/planner-red.webp')" aria-label="Dunkelrot"></button>
+          <button class="thumb" type="button" data-index="2" style="background-image:url('images/gallery/planner-blue.webp')" aria-label="Dunkelblau"></button>
+          <button class="thumb" type="button" data-index="3" style="background-image:url('images/gallery/planner-open.webp')" aria-label="Geöffnet"></button>
+        </div>
+      </div>
 
-  <a href="shop.html" class="btn-nav">
+      <div class="product-info reveal">
+        <p class="eyebrow">Produktivitätsplaner</p>
+        <h1>Future Me Planner</h1>
+        <div class="rating" aria-label="5 von 5 Sternen">★★★★★ <span>(842 Bewertungen)</span></div>
+        <div class="price">€<span id="priceValue">39,90</span></div>
+        <p class="tax-info">inkl. MwSt. und kostenlosem Versand</p>
 
-    Jetzt Kaufen
-
-  </a>
-
-</header>
-
-
-  <!-- =========================
-       PRODUCT SECTION
-  ========================== -->
-
-  <section class="shop-hero">
-
-
-    <!-- LEFT -->
-
-    <div class="product-gallery">
-
-
-      <!-- LEFT ARROW -->
-
-      <button class="slider-arrow left-arrow">
-
-        ←
-
-      </button>
-
-
-      <!-- SLIDER -->
-
-      <div class="slider-container">
-
-        <div class="slider-track">
-
-          <img
-            src="images/gallery/planner-black.webp"
-            class="slider-image"
-            alt=""
-          >
-
-          <img
-            src="images/gallery/planner-red.webp"
-            class="slider-image"
-            alt=""
-          >
-
-          <img
-            src="images/gallery/planner-blue.webp"
-            class="slider-image"
-            alt=""
-          >
-
-          <img
-            src="images/gallery/planner-open.webp"
-            class="slider-image"
-            alt=""
-          >
-
+        <div class="option-group">
+          <h2>Farbe</h2>
+          <div class="color-options">
+            <button class="color-btn active-color" type="button" data-slide="0" data-color="Black" style="background:#101010" aria-label="Schwarz"></button>
+            <button class="color-btn" type="button" data-slide="1" data-color="Red" style="background:#64141b" aria-label="Dunkelrot"></button>
+            <button class="color-btn" type="button" data-slide="2" data-color="Blue" style="background:#203a73" aria-label="Dunkelblau"></button>
+          </div>
         </div>
 
-      </div>
-
-
-      <!-- RIGHT ARROW -->
-
-      <button class="slider-arrow right-arrow">
-
-        →
-
-      </button>
-
-
-
-      <!-- THUMBNAILS -->
-
-      <div class="thumbnail-row">
-
-        <img
-          class="thumb active-thumb"
-          src="images/gallery/planner-black.webp"
-          data-index="0"
-          alt=""
-        >
-
-        <img
-          class="thumb"
-          src="images/gallery/planner-red.webp"
-          data-index="1"
-          alt=""
-        >
-
-        <img
-          class="thumb"
-          src="images/gallery/planner-blue.webp"
-          data-index="2"
-          alt=""
-        >
-
-        <img
-          class="thumb"
-          src="images/gallery/planner-open.webp"
-          data-index="3"
-          alt=""
-        >
-
-      </div>
-
-    </div>
-
-
-
-    <!-- RIGHT -->
-
-    <div class="product-info">
-
-      <p class="product-label">
-
-        PRODUKTIVITÄTSPLANER
-
-      </p>
-
-      <h1>
-
-        Future Me Planner
-
-      </h1>
-
-
-      <!-- RATING -->
-
-      <div class="rating">
-
-        ★★★★★
-
-        <span>
-
-          (842 Bewertungen)
-
-        </span>
-
-      </div>
-
-
-      <!-- PRICE -->
-
-      <div class="price">
-
-        €<span id="priceValue">39,90</span>
-
-      </div>
-
-      <p class="tax-info">
-
-        inkl. MwSt. & kostenloser Versand
-
-      </p>
-
-
-
-      <!-- COLORS -->
-
-      <div class="option-group">
-
-        <h4>
-
-          Farben
-
-        </h4>
-
-        <div class="color-options">
-
-          <button
-            class="color-btn active-color"
-            data-slide="0"
-            style="background:#101010;"
-          ></button>
-
-          <button
-            class="color-btn"
-            data-slide="1"
-            style="background:#5c1015;"
-          ></button>
-
-          <button
-            class="color-btn"
-            data-slide="2"
-            style="background:#203a73;"
-          ></button>
-
+        <div class="option-group">
+          <h2>Menge</h2>
+          <div class="quantity-box">
+            <button id="minusBtn" type="button" aria-label="Menge verringern">−</button>
+            <span id="quantityValue">1</span>
+            <button id="plusBtn" type="button" aria-label="Menge erhöhen">+</button>
+          </div>
         </div>
 
-      </div>
+        <button class="buy-btn" id="buy" type="button">In den Warenkorb</button>
 
-
-
-      <!-- QUANTITY -->
-
-      <div class="option-group">
-
-        <h4>
-
-          Menge
-
-        </h4>
-
-        <div class="quantity-box">
-
-          <button id="minusBtn">
-
-            −
-
-          </button>
-
-          <span id="quantityValue">
-
-            1
-
-          </span>
-
-          <button id="plusBtn">
-
-            +
-
-          </button>
-
+        <div class="shipping-info">
+          <span>✓ Kostenloser Versand</span>
+          <span>✓ 30 Tage Rückgabe</span>
+          <span>✓ Sichere Zahlung</span>
         </div>
-
       </div>
+    </section>
 
+    <section class="shop-features">
+      <article class="feature-card reveal"><h2>Fokus</h2><p>Konzentration auf das Wesentliche.</p></article>
+      <article class="feature-card reveal"><h2>Struktur</h2><p>Plane deinen Tag bewusst.</p></article>
+      <article class="feature-card reveal"><h2>Motivation</h2><p>Mehr Klarheit und Energie.</p></article>
+      <article class="feature-card reveal"><h2>Reflexion</h2><p>Wachstum sichtbar machen.</p></article>
+    </section>
 
-
-      <!-- BUY BUTTON -->
-
-      <button class="buy-btn" id="buy">
-
-        In den Warenkorb
-
-      </button>
-
-
-
-      <!-- SHIPPING -->
-
-      <div class="shipping-info">
-
-        <div class="shipping-item">
-
-          ✓ Kostenloser Versand
-
-        </div>
-
-        <div class="shipping-item">
-
-          ✓ 30 Tage Rückgabe
-
-        </div>
-
-        <div class="shipping-item">
-
-          ✓ Sichere Zahlung
-
-        </div>
-
+    <section class="inside-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Ein Blick hinein</p>
+        <h2>So sieht dein Alltag mit Future Me aus.</h2>
       </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       FEATURES
-  ========================== -->
-
-  <section class="shop-features">
-
-    <div class="feature-card">
-
-      <h3>
-
-        Fokus
-
-      </h3>
-
-      <p>
-
-        Konzentration auf das Wesentliche
-
-      </p>
-
-    </div>
-
-
-    <div class="feature-card">
-
-      <h3>
-
-        Struktur
-
-      </h3>
-
-      <p>
-
-        Plane deinen Tag bewusst
-
-      </p>
-
-    </div>
-
-
-    <div class="feature-card">
-
-      <h3>
-
-        Motivation
-
-      </h3>
-
-      <p>
-
-        Mehr Klarheit und Energie
-
-      </p>
-
-    </div>
-
-
-    <div class="feature-card">
-
-      <h3>
-
-        Reflexion
-
-      </h3>
-
-      <p>
-
-        Wachstum sichtbar machen
-
-      </p>
-
-    </div>
-
-  </section>
-
-<!-- =========================
-     INSIDE PLANNER
-========================= -->
-
-<section class="inside-section">
-
-  <div class="inside-header">
-
-    <p class="small-label">
-      Ein Blick in den Planner
-    </p>
-
-    <h2>
-      So sieht dein<br>
-      Alltag mit Future Me aus
-    </h2>
-
-    <p class="inside-subtext">
-
-      Entdecke die Seiten, Methoden und Systeme,
-      die dir helfen fokussierter zu arbeiten
-      und deine Ziele klar zu verfolgen.
-
-    </p>
-
-  </div>
-
-
-  <!-- SLIDER -->
-
-  <div class="inside-slider-wrapper">
-
-    <button class="inside-arrow inside-prev">
-      ←
-    </button>
-
-    <div class="inside-slider">
-
-      <div class="inside-track">
-
-        <img
-          src="images/gallery/planner-open.webp"
-          class="inside-slide"
-          alt=""
-        >
-
-        <img
-          src="images/gallery/planner-black.webp"
-          class="inside-slide"
-          alt=""
-        >
-
-        <img
-          src="images/gallery/planner-blue.webp"
-          class="inside-slide"
-          alt=""
-        >
-
-        <img
-          src="images/gallery/planner-red.webp"
-          class="inside-slide"
-          alt=""
-        >
-
+      <div class="inside-slider-wrapper reveal">
+        <button class="inside-arrow inside-prev" type="button" aria-label="Vorheriger Einblick">‹</button>
+        <div class="inside-slider">
+          <div class="inside-track">
+            <img src="images/gallery/planner-open.webp" class="inside-slide" alt="Offene Planner Seiten">
+            <img src="images/gallery/planner-black.webp" class="inside-slide" alt="Schwarzer Planner">
+            <img src="images/gallery/planner-blue.webp" class="inside-slide" alt="Blauer Planner">
+            <img src="images/gallery/planner-red.webp" class="inside-slide" alt="Roter Planner">
+          </div>
+        </div>
+        <button class="inside-arrow inside-next" type="button" aria-label="Nächster Einblick">›</button>
       </div>
-
-    </div>
-
-    <button class="inside-arrow inside-next">
-      →
-    </button>
-
-  </div>
-
-</section>
-  
-
-  <!-- =========================
-       DETAILS
-  ========================== -->
-
-  <section class="details-section" id="details">
-
-    <div class="details-content">
-
-      <p class="small-label">
-
-        Was macht ihn besonders?
-
-      </p>
-
-      <h2>
-
-        Mehr als nur<br>
-        ein Notizbuch.
-
-      </h2>
-
-      <p class="details-text">
-
-        Der Future Me Planner kombiniert moderne
-        Produktivitätstechniken mit einem minimalistischen Design,
-        damit du fokussierter arbeitest und deine Ziele erreichst.
-
-      </p>
-
-
-      <ul>
-
-        <li>
-
-          Wochen-, Tages- & Monatsplanung
-
-        </li>
-
-        <li>
-
-          Fokus-Time Methode
-
-        </li>
-
-        <li>
-
-          Reflexions- & Review-Seiten
-
-        </li>
-
-        <li>
-
-          Zielsetzung & Fortschrittstracking
-
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <div class="details-image">
-
-      <img
-        src="images/gallery/planner-open.webp"
-        alt=""
-      >
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       FAQ
-  ========================== -->
-
- 
-
-<!-- =========================
-     HOW IT WORKS
-========================== -->
-
-<section class="how-section">
-
-  <!-- BLOCK 1 -->
-
-  <div class="how-row">
-
-    <div class="how-image">
-
-      <img
-        src="images/gallery/planner-black.webp"
-        alt=""
-      >
-
-    </div>
-
-    <div class="how-text">
-
-      <p class="small-label">
-
-        So funktioniert es
-
-      </p>
-
-      <h2>
-
-        Mehr Fokus<br>
-        im Alltag
-
-      </h2>
-
-      <p>
-
-        Der Future Me Planner hilft dir,
-        deine Gedanken zu ordnen und
-        deine wichtigsten Aufgaben klar
-        zu priorisieren.
-
-      </p>
-
-      <p>
-
-        Durch tägliche Reflexion und
-        bewusste Planung entwickelst du
-        bessere Routinen und arbeitest
-        konzentrierter.
-
-      </p>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- BLOCK 2 -->
-
-  <div class="how-row reverse">
-
-    <div class="how-image">
-
-      <img
-        src="images/gallery/planner-open.webp"
-        alt=""
-      >
-
-    </div>
-
-    <div class="how-text">
-
-      <p class="small-label">
-
-        Wochenplanung
-
-      </p>
-
-      <h2>
-
-        Plane deine<br>
-        ganze Woche
-
-      </h2>
-
-      <p>
-
-        Nutze die Wochenübersicht,
-        um Prioritäten zu setzen und
-        deine Zeit effizienter zu
-        organisieren.
-
-      </p>
-
-      <p>
-
-        So behältst du deine Ziele
-        jederzeit im Blick und vermeidest
-        unnötigen Stress.
-
-      </p>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- BLOCK 3 -->
-
-  <div class="how-row">
-
-    <div class="how-image">
-
-      <img
-        src="images/gallery/planner-blue.webp"
-        alt=""
-      >
-
-    </div>
-
-    <div class="how-text">
-
-      <p class="small-label">
-
-        Tagesplanung
-
-      </p>
-
-      <h2>
-
-        Konzentriere dich<br>
-        auf das Wesentliche
-
-      </h2>
-
-      <p>
-
-        Teile große Ziele in kleinere,
-        klare Aufgaben auf und arbeite
-        Schritt für Schritt fokussiert.
-
-      </p>
-
-      <p>
-
-        Dadurch fühlst du dich produktiver
-        und erreichst deine Ziele
-        nachhaltiger.
-
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
+    </section>
+
+    <section class="planner-steps">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Was macht ihn besonders?</p>
+        <h2>Mehr als nur ein Notizbuch.</h2>
+      </div>
+      <article class="step-row reveal">
+        <div class="step-copy">
+          <span>01</span>
+          <h3>Fokus statt Aufgabenflut</h3>
+          <p>Starte jeden Tag mit drei klaren Prioritäten und einem Plan, der dich nicht überfordert.</p>
+          <ul class="check-list">
+            <li>Tagesplanung mit Fokus-Time</li>
+            <li>Wichtiges zuerst, Kleinkram später</li>
+          </ul>
+        </div>
+        <img src="images/gallery/steps-1.jpg" alt="Future Me Planner in Dunkelrot">
+      </article>
+      <article class="step-row reverse reveal">
+        <div class="step-copy">
+          <span>02</span>
+          <h3>Woche sehen, Ruhe behalten</h3>
+          <p>Die Wochenübersicht verbindet Termine, Aufgaben und Ziele, damit du nicht ständig neu sortieren musst.</p>
+          <ul class="check-list">
+            <li>Wochen-, Tages- und Monatsplanung</li>
+            <li>Ziele in machbare Schritte teilen</li>
+          </ul>
+        </div>
+        <img src="images/gallery/steps-2.jpg" alt="Future Me Planner in Rot und Blau">
+      </article>
+      <article class="step-row reveal">
+        <div class="step-copy">
+          <span>03</span>
+          <h3>Review, das wirklich hilft</h3>
+          <p>Reflexionsseiten zeigen dir, was funktioniert und wo du deine Routinen verbessern kannst.</p>
+          <ul class="check-list">
+            <li>Reflexions- und Review-Seiten</li>
+            <li>Fortschrittstracking ohne App-Chaos</li>
+          </ul>
+        </div>
+        <img src="images/gallery/steps-3.jpg" alt="Future Me Planner in Blau">
+      </article>
+    </section>
+
+    <section class="shop-confidence">
+      <article class="confidence-card reveal">
+        <h2>30 Tage testen</h2>
+        <p>Wenn Future Me nicht zu deinem Alltag passt, kannst du ihn unkompliziert zurückgeben.</p>
+      </article>
+      <article class="confidence-card reveal">
+        <h2>Start jederzeit</h2>
+        <p>Undatierte Seiten bedeuten: kein Druck, keine verlorenen Wochen, kein schlechter Moment zum Beginnen.</p>
+      </article>
+      <article class="confidence-card reveal">
+        <h2>Launch-Preis</h2>
+        <p>Aktuell als Vorbestellung mit reduziertem Preis und kostenloser Lieferung verfügbar.</p>
+      </article>
+    </section>
+  </main>
 
   <footer class="footer">
-
     <div class="footer-top">
-
-      <div class="footer-logo">
-
-        Future Me
-
-      </div>
-
-      <div class="footer-links">
-
+      <a href="index.html" class="footer-logo">Future Me</a>
+      <nav class="footer-links" aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
-
-      </div>
-
+      </nav>
     </div>
-
-    <div class="footer-bottom">
-
-      <p>
-
-        © 2026 Future Me.
-        Alle Rechte vorbehalten.
-
-      </p>
-
-    </div>
-
+    <p>© 2026 Future Me. Alle Rechte vorbehalten.</p>
   </footer>
 
-<!-- =========================
-     PREORDER POPUP
-========================= -->
-
-<div class="preorder-overlay" id="preorderOverlay">
-
-  <div class="preorder-popup">
-
-    <!-- CLOSE -->
-
-    <button class="preorder-close" id="closePreorder">
-      ✕
-    </button>
-
-    <!-- LEFT IMAGE -->
-
-    <div class="preorder-image">
-
-      <img
-        id="plannerPreview"
-        src="images/gallery/planner-black.webp"
-        alt="Planner"
-      >
-
-      <div class="preorder-badge">
-        Limited Preorder
+  <div class="preorder-modal" id="preorderModal" aria-hidden="true">
+    <div class="preorder-box" role="dialog" aria-modal="true" aria-labelledby="shopPreorderTitle">
+      <button class="close-preorder" id="closePreorderModal" type="button" aria-label="Popup schließen">×</button>
+      <p class="eyebrow">Exklusive Vorbestellung</p>
+      <h2 id="shopPreorderTitle">Der Planner ist aktuell als Vorbestellung verfügbar.</h2>
+      <p>Sichere dir den Launch-Preis von 12 € statt 25 €. Wir informieren dich, sobald deine Farbe verschickt wird.</p>
+      <div class="preorder-pricing">
+        <span class="preorder-old">25 €</span>
+        <span class="preorder-new">12 €</span>
+        <span class="preorder-save">Spare 52%</span>
       </div>
-
+      <input id="preorderEmail" type="email" placeholder="Deine E-Mail Adresse" class="preorder-email" autocomplete="email">
+      <button class="preorder-cta" id="preorderSubmit" type="button">Vorbestellung sichern</button>
     </div>
-
-    <!-- RIGHT CONTENT -->
-
-    <div class="preorder-content">
-
-      <p class="preorder-small">
-        EXKLUSIVE VORBESTELLUNG
-      </p>
-
-      <h2>
-        Future Me Planner<br>
-        jetzt vorbestellen.
-      </h2>
-
-      <p class="preorder-text">
-
-        Zur Feier unseres Shop-Launches
-        kannst du den Future Me Planner
-        für die nächsten 14 Tage
-        exklusiv vorbestellen.
-
-        Statt 25€ erhältst du ihn
-        heute bereits für nur 12€.
-
-      </p>
-
-      <!-- PRICE -->
-
-      <div class="preorder-price">
-
-        <span class="old-price">
-          25€
-        </span>
-
-        <span class="new-price">
-          12€
-        </span>
-
-        <span class="save-badge">
-          Spare 52%
-        </span>
-
-      </div>
-
-      <!-- EMAIL -->
-
-      <input
-        type="email"
-        class="preorder-input"
-        placeholder="Deine E-Mail Adresse"
-      >
-
-      <!-- COLORS -->
-
-      <div class="popup-colors">
-
-        <button
-          class="popup-color active-popup-color"
-          data-image="images/gallery/planner-black.webp"
-          style="background:#111;"
-        ></button>
-
-        <button
-          class="popup-color"
-          data-image="images/gallery/planner-red.webp"
-          style="background:#64141b;"
-        ></button>
-
-        <button
-          class="popup-color"
-          data-image="images/gallery/planner-blue.webp"
-          style="background:#233f7d;"
-        ></button>
-
-      </div>
-
-      <!-- BUTTON -->
-
-      <button class="preorder-btn">
-
-        Jetzt Vorbestellen
-
-      </button>
-
-    </div>
-
   </div>
 
-</div>
-
-
-<!-- =========================
-     STICKY OFFER BUTTON
-========================= -->
-
-<button class="offer-trigger" id="offerTrigger">
-
-  <span>
-    Angebot öffnen
-  </span>
-
-</button>
-<!-- =========================
-     PREORDER MODAL
-========================= -->
-
-<div
-  class="preorder-modal"
-  id="preorderModal"
->
-
-  <div class="preorder-box">
-
-    <!-- CLOSE -->
-
-    <button
-      class="close-preorder"
-      id="closePreorderModal"
-    >
-
-      ✕
-
-    </button>
-
-
-    <!-- LABEL -->
-
-    <p class="preorder-label">
-
-      EXKLUSIVE VORBESTELLUNG
-
-    </p>
-
-
-    <!-- TITLE -->
-
-    <h2>
-
-      Der Planner ist aktuell<br>
-      nur als Vorbestellung verfügbar.
-
-    </h2>
-
-
-    <!-- TEXT -->
-
-    <p class="preorder-description">
-
-      Aufgrund der hohen Nachfrage
-      nehmen wir momentan ausschließlich
-      Vorbestellungen entgegen.
-
-      Trage deine E-Mail ein und
-      sichere dir den exklusiven
-      Launch-Preis von nur 12€
-      statt 25€.
-
-    </p>
-
-
-    <!-- PRICE -->
-
-    <div class="preorder-pricing">
-
-      <span class="preorder-old">
-
-        25€
-
-      </span>
-
-      <span class="preorder-new">
-
-        12€
-
-      </span>
-
-      <span class="preorder-save">
-
-        Spare 52%
-
-      </span>
-
-    </div>
-
-<!-- COLORS -->
-
-<div class="preorder-colors">
-
-  <button
-    class="preorder-color active-preorder-color"
-    style="background:#111;"
-  ></button>
-
-  <button
-    class="preorder-color"
-    style="background:#64141b;"
-  ></button>
-
-  <button
-    class="preorder-color"
-    style="background:#233f7d;"
-  ></button>
-
-</div>
-    
-    <!-- INPUT -->
-
-    <input
-      type="email"
-      placeholder="Deine E-Mail Adresse"
-      class="preorder-email"
-    >
-
-
-    <!-- CTA -->
-
-    <button class="preorder-cta">
-
-      Vorbestellung sichern
-
-    </button>
-
-  </div>
-
-</div>
-  
-  <!-- JS -->
-
-<script src="js/main.js"></script>
-<script src="js/faq.js"></script>
-<script src="js/shop.js"></script>
-  
+  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
 </body>
 </html>

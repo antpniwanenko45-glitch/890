@@ -1,188 +1,63 @@
-/* =========================
-   HERO
-========================= */
-
-.legal-hero{
-
-  padding:120px 20px 70px;
-
-  text-align:center;
-
+.legal-hero {
+  padding: 150px clamp(20px, 6vw, 78px) 54px;
+  text-align: center;
 }
 
-.legal-label{
-
-  color:#999;
-
-  text-transform:uppercase;
-
-  letter-spacing:2px;
-
-  font-size:13px;
-
-  margin-bottom:20px;
-
+.legal-hero h1 {
+  margin: 14px auto 16px;
+  font-size: clamp(54px, 9vw, 104px);
+  line-height: 0.92;
 }
 
-.legal-hero h1{
-
-  font-family:'Cormorant Garamond', serif;
-
-  font-size:90px;
-
-  font-weight:500;
-
-  margin-bottom:20px;
-
+.legal-subtitle {
+  color: var(--muted);
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
 }
 
-.legal-subtitle{
-
-  color:#666;
-
-  font-size:18px;
-
+.legal-container {
+  padding: 0 clamp(20px, 6vw, 78px) 110px;
 }
 
-
-/* =========================
-   CONTAINER
-========================= */
-
-.legal-container{
-
-  width:100%;
-
-  display:flex;
-  justify-content:center;
-
-  padding:0 20px 120px;
-
+.legal-card {
+  width: min(940px, 100%);
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 70px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 248, 0.86);
+  box-shadow: var(--shadow);
 }
 
-
-/* =========================
-   CARD
-========================= */
-
-.legal-card{
-
-  width:100%;
-  max-width:950px;
-
-  background:white;
-
-  border:1px solid #ece7df;
-
-  padding:80px;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.04);
-
+.legal-block {
+  padding-bottom: 34px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--line);
 }
 
-
-/* =========================
-   BLOCKS
-========================= */
-
-.legal-block{
-
-  padding-bottom:45px;
-  margin-bottom:45px;
-
-  border-bottom:1px solid #eee8df;
-
+.legal-block:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
-.legal-block:last-child{
-
-  border-bottom:none;
-
-  margin-bottom:0;
-  padding-bottom:0;
-
+.legal-block h2 {
+  margin-bottom: 14px;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1;
 }
 
-.legal-block h2{
-
-  font-family:'Cormorant Garamond', serif;
-
-  font-size:48px;
-
-  margin-bottom:25px;
-
+.legal-block p {
+  color: var(--muted);
+  line-height: 1.85;
 }
 
-.legal-block h3{
-
-  font-size:18px;
-
-  margin-bottom:18px;
-
-  letter-spacing:1px;
-
-}
-
-.legal-block p{
-
-  color:#666;
-
-  line-height:2;
-
-  font-size:16px;
-
-}
-
-
-/* =========================
-   HOVER EFFECT
-========================= */
-
-.legal-card{
-
-  transition:0.4s ease;
-
-}
-
-.legal-card:hover{
-
-  transform:translateY(-4px);
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.06);
-
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:768px){
-
-  .legal-hero{
-
-    padding:90px 20px 50px;
-
+@media (max-width: 640px) {
+  .legal-hero {
+    padding: 116px 16px 42px;
   }
 
-  .legal-hero h1{
-
-    font-size:56px;
-
+  .legal-container {
+    padding: 0 16px 72px;
   }
-
-  .legal-card{
-
-    padding:40px 25px;
-
-  }
-
-  .legal-block h2{
-
-    font-size:38px;
-
-  }
-
 }

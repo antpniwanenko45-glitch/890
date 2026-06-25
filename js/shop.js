@@ -1,613 +1,179 @@
-// =========================
-// SLIDER
-// =========================
-
-const track =
-document.querySelector(".slider-track");
-
-const slides =
-document.querySelectorAll(".slider-image");
-
-const nextBtn =
-document.querySelector(".right-arrow");
-
-const prevBtn =
-document.querySelector(".left-arrow");
-
-const thumbs =
-document.querySelectorAll(".thumb");
-
-const colorButtons =
-document.querySelectorAll(".color-btn");
-
+const sliderTrack = document.querySelector(".slider-track");
+const slides = [...document.querySelectorAll(".slider-image")];
+const nextBtn = document.querySelector(".right-arrow");
+const prevBtn = document.querySelector(".left-arrow");
+const thumbs = [...document.querySelectorAll(".thumb")];
+const colorButtons = [...document.querySelectorAll(".color-btn")];
 let currentSlide = 0;
 
+const updateSlider = () => {
+  if (!sliderTrack || !slides.length) return;
+  sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-// =========================
-// UPDATE SLIDER
-// =========================
-
-function updateSlider(){
-
-  track.style.transform =
-    `translateX(-${currentSlide * 100}%)`;
-
-  thumbs.forEach((thumb) => {
-
-    thumb.classList.remove("active-thumb");
-
+  thumbs.forEach((thumb, index) => thumb.classList.toggle("active-thumb", index === currentSlide));
+  colorButtons.forEach((button) => {
+    button.classList.toggle("active-color", Number(button.dataset.slide) === currentSlide);
   });
+};
 
-  if(thumbs[currentSlide]){
-
-    thumbs[currentSlide].classList.add("active-thumb");
-
-  }
-
-}
-
-
-// =========================
-// NEXT
-// =========================
-
-nextBtn.addEventListener("click", () => {
-
-  currentSlide++;
-
-  if(currentSlide >= slides.length){
-
-    currentSlide = 0;
-
-  }
-
+nextBtn?.addEventListener("click", () => {
+  currentSlide = (currentSlide + 1) % slides.length;
   updateSlider();
-
 });
 
-
-// =========================
-// PREV
-// =========================
-
-prevBtn.addEventListener("click", () => {
-
-  currentSlide--;
-
-  if(currentSlide < 0){
-
-    currentSlide = slides.length - 1;
-
-  }
-
+prevBtn?.addEventListener("click", () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
   updateSlider();
-
 });
-
-
-// =========================
-// THUMBNAILS
-// =========================
 
 thumbs.forEach((thumb) => {
-
   thumb.addEventListener("click", () => {
-
-    currentSlide =
-      parseInt(thumb.dataset.index);
-
+    currentSlide = Number(thumb.dataset.index || 0);
     updateSlider();
-
   });
-
 });
-
-
-// =========================
-// COLOR SWITCH
-// =========================
 
 colorButtons.forEach((button) => {
-
   button.addEventListener("click", () => {
-
-    currentSlide =
-      parseInt(button.dataset.slide);
-
+    currentSlide = Number(button.dataset.slide || 0);
     updateSlider();
-
-    colorButtons.forEach((btn) => {
-
-      btn.classList.remove("active-color");
-
-    });
-
-    button.classList.add("active-color");
-
   });
-
 });
 
+let touchStartX = 0;
 
-// =========================
-// AUTO SLIDE
-// =========================
+sliderTrack?.addEventListener("touchstart", (event) => {
+  touchStartX = event.touches[0].clientX;
+}, { passive: true });
 
-setInterval(() => {
-
-  currentSlide++;
-
-  if(currentSlide >= slides.length){
-
-    currentSlide = 0;
-
-  }
-
+sliderTrack?.addEventListener("touchend", (event) => {
+  const delta = event.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(delta) < 42 || !slides.length) return;
+  currentSlide = delta < 0
+    ? (currentSlide + 1) % slides.length
+    : (currentSlide - 1 + slides.length) % slides.length;
   updateSlider();
+}, { passive: true });
 
-}, 5000);
-
-
-// =========================
-// QUANTITY + PRICE
-// =========================
-
-const minusBtn =
-document.getElementById("minusBtn");
-
-const plusBtn =
-document.getElementById("plusBtn");
-
-const quantityValue =
-document.getElementById("quantityValue");
-
-const priceValue =
-document.getElementById("priceValue");
-
+const minusBtn = document.getElementById("minusBtn");
+const plusBtn = document.getElementById("plusBtn");
+const quantityValue = document.getElementById("quantityValue");
+const priceValue = document.getElementById("priceValue");
 let quantity = 1;
+const singlePrice = 39.9;
 
-const singlePrice = 39.90;
+const updatePrice = () => {
+  if (quantityValue) quantityValue.textContent = String(quantity);
+  if (priceValue) priceValue.textContent = (singlePrice * quantity).toFixed(2).replace(".", ",");
+};
 
-
-// =========================
-// UPDATE PRICE
-// =========================
-
-function updatePrice(){
-
-  const total =
-    (singlePrice * quantity)
-    .toFixed(2)
-    .replace(".", ",");
-
-  priceValue.textContent = total;
-
-  quantityValue.textContent = quantity;
-
-}
-
-
-// =========================
-// PLUS
-// =========================
-
-plusBtn.addEventListener("click", () => {
-
-  quantity++;
-
+plusBtn?.addEventListener("click", () => {
+  quantity += 1;
   updatePrice();
-
 });
 
-
-// =========================
-// MINUS
-// =========================
-
-minusBtn.addEventListener("click", () => {
-
-  if(quantity > 1){
-
-    quantity--;
-
-    updatePrice();
-
-  }
-
+minusBtn?.addEventListener("click", () => {
+  quantity = Math.max(1, quantity - 1);
+  updatePrice();
 });
-
 
 updatePrice();
 
-// =========================
-// STRIPE CHECKOUT
-// =========================
+const preorderModal = document.getElementById("preorderModal");
+const closePreorderModal = document.getElementById("closePreorderModal");
+const buyBtn = document.querySelector(".buy-btn");
+const preorderSubmit = document.getElementById("preorderSubmit");
+const preorderEmail = document.getElementById("preorderEmail");
 
-const buyBtn =
-document.querySelector(".buy-btn");
+const openShopModal = () => {
+  if (!preorderModal) return;
+  preorderModal.classList.add("show-preorder-modal");
+  preorderModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  preorderEmail?.focus();
+};
 
-buyBtn.addEventListener("click", () => {
+const closeShopModal = () => {
+  if (!preorderModal) return;
+  preorderModal.classList.remove("show-preorder-modal");
+  preorderModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+};
 
-  preorderModal.classList.add(
-    "show-preorder-modal"
-  );
+buyBtn?.addEventListener("click", openShopModal);
+closePreorderModal?.addEventListener("click", closeShopModal);
 
-  document.body.style.overflow =
-    "hidden";
-
+preorderModal?.addEventListener("click", (event) => {
+  if (event.target === preorderModal) closeShopModal();
 });
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeShopModal();
+});
 
-// =========================
-// INFINITE INSIDE SLIDER
-// =========================
+preorderSubmit?.addEventListener("click", async () => {
+  const email = preorderEmail?.value.trim() || "";
 
-const insideTrack =
-document.querySelector(".inside-track");
-
-const insideSlides =
-document.querySelectorAll(".inside-slide");
-
-const insidePrev =
-document.querySelector(".inside-prev");
-
-const insideNext =
-document.querySelector(".inside-next");
-
-
-// CLONES
-
-const firstClone =
-insideSlides[0].cloneNode(true);
-
-const lastClone =
-insideSlides[
-  insideSlides.length - 1
-].cloneNode(true);
-
-insideTrack.appendChild(firstClone);
-
-insideTrack.prepend(lastClone);
-
-
-// ALL SLIDES
-
-const allSlides =
-document.querySelectorAll(".inside-slide");
-
-let insideIndex = 1;
-
-
-// UPDATE
-
-function updateInsideSlider(
-  animate = true
-){
-
-  const slideWidth =
-    allSlides[0].offsetWidth + 30;
-
-  const wrapper =
-    document.querySelector(".inside-slider");
-
-  const centerOffset =
-    (wrapper.offsetWidth -
-    allSlides[0].offsetWidth) / 2;
-
-  insideTrack.style.transition =
-    animate
-      ? "transform 0.7s ease"
-      : "none";
-
-  insideTrack.style.transform =
-    `translateX(${
-      centerOffset -
-      (insideIndex * slideWidth)
-    }px)`;
-
-}
-
-
-// INITIAL POSITION
-
-updateInsideSlider(false);
-
-
-// NEXT
-
-insideNext.addEventListener(
-  "click",
-  () => {
-
-    insideIndex++;
-
-    updateInsideSlider();
-
+  if (!email || !email.includes("@")) {
+    preorderEmail?.focus();
+    preorderEmail?.setAttribute("aria-invalid", "true");
+    return;
   }
-);
 
+  preorderEmail?.removeAttribute("aria-invalid");
+  const activeColor = document.querySelector(".active-color");
+  const color = activeColor?.dataset.color || "Black";
+  const image = slides[currentSlide]?.getAttribute("src") || "";
+  const originalText = preorderSubmit.textContent;
 
-// PREV
+  preorderSubmit.textContent = "Wird gesendet...";
+  preorderSubmit.disabled = true;
 
-insidePrev.addEventListener(
-  "click",
-  () => {
+  try {
+    await fetch("/api/preorders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        color,
+        image,
+        quantity,
+        product: "Future Me Planner",
+        source: "shop-popup"
+      })
+    });
 
-    insideIndex--;
-
-    updateInsideSlider();
-
+    preorderSubmit.textContent = "Vorbestellung gesichert ✓";
+    preorderEmail.value = "";
+  } catch {
+    preorderSubmit.textContent = "Bitte später erneut";
+  } finally {
+    setTimeout(() => {
+      preorderSubmit.disabled = false;
+      preorderSubmit.textContent = originalText || "Vorbestellung sichern";
+    }, 2400);
   }
-);
+});
 
+const insideTrack = document.querySelector(".inside-track");
+const insideSlides = [...document.querySelectorAll(".inside-slide")];
+const insidePrev = document.querySelector(".inside-prev");
+const insideNext = document.querySelector(".inside-next");
+const insideSlider = document.querySelector(".inside-slider");
 
-// INFINITE LOOP
-
-insideTrack.addEventListener(
-  "transitionend",
-  () => {
-
-    if(
-      insideIndex ===
-      allSlides.length - 1
-    ){
-
-      insideIndex = 1;
-
-      updateInsideSlider(false);
-
-    }
-
-    if(insideIndex === 0){
-
-      insideIndex =
-        allSlides.length - 2;
-
-      updateInsideSlider(false);
-
-    }
-
-  }
-);
-
-// =========================
-// HOW SECTION REVEAL
-// =========================
-
-const howRows =
-document.querySelectorAll(".how-row");
-
-const revealHowRows = () => {
-
-  const trigger =
-    window.innerHeight * 0.85;
-
-  howRows.forEach((row) => {
-
-    const top =
-      row.getBoundingClientRect().top;
-
-    if(top < trigger){
-
-      row.classList.add("show");
-
-    }
-
+const scrollInsideSlider = (direction) => {
+  if (!insideSlider || !insideSlides.length) return;
+  const slideWidth = insideSlides[0].getBoundingClientRect().width + 18;
+  insideSlider.scrollBy({
+    left: direction * slideWidth,
+    behavior: "smooth"
   });
-
 };
 
-window.addEventListener(
-  "scroll",
-  revealHowRows
-);
-
-revealHowRows();
-
-// =========================
-// DETAILS REVEAL
-// =========================
-
-const detailsSection =
-document.querySelector(
-  ".details-section"
-);
-
-const revealDetails = () => {
-
-  const trigger =
-    window.innerHeight * 0.85;
-
-  const top =
-    detailsSection
-    .getBoundingClientRect()
-    .top;
-
-  if(top < trigger){
-
-    detailsSection.classList.add(
-      "show"
-    );
-
-  }
-
-};
-
-window.addEventListener(
-  "scroll",
-  revealDetails
-);
-
-revealDetails();
-
-// =========================
-// PREORDER MODAL
-// =========================
-
-const preorderModal =
-document.getElementById(
-  "preorderModal"
-);
-
-const closePreorderModal =
-document.getElementById(
-  "closePreorderModal"
-);
-
-
-// CLOSE
-
-closePreorderModal
-.addEventListener("click", () => {
-
-  preorderModal.classList.remove(
-    "show-preorder-modal"
-  );
-
-  document.body.style.overflow =
-    "auto";
-
+insideNext?.addEventListener("click", () => {
+  scrollInsideSlider(1);
 });
 
-
-// CLOSE ON OVERLAY
-
-preorderModal
-.addEventListener("click", (e) => {
-
-  if(
-    e.target === preorderModal
-  ){
-
-    preorderModal.classList.remove(
-      "show-preorder-modal"
-    );
-
-    document.body.style.overflow =
-      "auto";
-
-  }
-
+insidePrev?.addEventListener("click", () => {
+  scrollInsideSlider(-1);
 });
-
-// =========================
-// PREORDER COLORS
-// =========================
-
-const preorderColors =
-document.querySelectorAll(
-  ".preorder-color"
-);
-
-preorderColors.forEach((color) => {
-
-  color.addEventListener(
-    "click",
-    () => {
-
-      preorderColors.forEach((btn) => {
-
-        btn.classList.remove(
-          "active-preorder-color"
-        );
-
-      });
-
-      color.classList.add(
-        "active-preorder-color"
-      );
-
-    }
-  );
-
-});
-
-// =========================
-// PREORDER SUBMIT
-// =========================
-
-const preorderSubmit =
-document.getElementById(
-  "preorderSubmit"
-);
-
-const preorderEmail =
-document.getElementById(
-  "preorderEmail"
-);
-
-if(preorderSubmit){
-
-  preorderSubmit.addEventListener(
-    "click",
-    async () => {
-
-      const email =
-        preorderEmail.value.trim();
-
-      if(!email){
-
-        alert(
-          "Bitte E-Mail eingeben"
-        );
-
-        return;
-
-      }
-
-      const activeColor =
-        document.querySelector(
-          ".active-preorder-color"
-        );
-
-      const color =
-        activeColor.dataset.color;
-
-      preorderSubmit.textContent =
-        "Wird gesendet...";
-
-      try{
-
-        await fetch(
-          "https://script.google.com/macros/s/AKfycby1kDhcqp03fEye89Lv-Jkl4Fbi1vNENrqfrvg9lazhyKc_fCkzeJLSu_GJl7mOobNr/exec",
-          {
-
-            method:"POST",
-
-            headers:{
-              "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-
-              email,
-              color,
-              source:"shop-popup"
-
-            })
-
-          }
-        );
-
-        preorderSubmit.textContent =
-          "Vorbestellung ✓";
-
-        preorderSubmit.style.background =
-          "#1d7a43";
-
-        preorderEmail.value = "";
-
-      }
-
-      catch(error){
-
-        preorderSubmit.textContent =
-          "Fehler";
-
-      }
-
-    }
-  );
-
-}

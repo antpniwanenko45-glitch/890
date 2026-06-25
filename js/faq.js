@@ -1,36 +1,23 @@
-const faqItems =
-document.querySelectorAll(".faq-item");
+document.querySelectorAll(".faq-item").forEach((item) => {
+  const button = item.querySelector(".faq-question");
+  const icon = item.querySelector(".faq-icon");
 
-faqItems.forEach((item) => {
-
-  const button =
-  item.querySelector(".faq-question");
-
-  const icon =
-  item.querySelector(".faq-icon");
+  if (!button || !icon) return;
 
   button.addEventListener("click", () => {
+    const isActive = item.classList.contains("active");
 
-    const isActive =
-    item.classList.contains("active");
-
-    faqItems.forEach((faq) => {
-
+    document.querySelectorAll(".faq-item").forEach((faq) => {
       faq.classList.remove("active");
-
-      faq.querySelector(".faq-icon")
-      .textContent = "+";
-
+      faq.querySelector(".faq-question")?.setAttribute("aria-expanded", "false");
+      const faqIcon = faq.querySelector(".faq-icon");
+      if (faqIcon) faqIcon.textContent = "+";
     });
 
-    if(!isActive){
-
+    if (!isActive) {
       item.classList.add("active");
-
+      button.setAttribute("aria-expanded", "true");
       icon.textContent = "−";
-
     }
-
   });
-
 });

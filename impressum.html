@@ -1,223 +1,86 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Impressum — Future Me</title>
-
-  <!-- Fonts -->
-
+  <title>Impressum - Future Me</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/legal.css">
-
 </head>
-
 <body>
-
-  <!-- =========================
-       NAVBAR
-  ========================== -->
-
-  <header class="navbar">
-
-    <a href="index.html" class="logo">
-
-      <span class="logo-star">✦</span>
+  <header class="navbar" data-nav>
+    <a href="index.html" class="logo" aria-label="Future Me Startseite">
+      <span class="logo-mark">✦</span>
       <span>Future Me</span>
-
     </a>
-
-    <nav class="nav-links">
-
+    <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" data-menu-toggle>
+      <span aria-hidden="true">☰</span>
+    </button>
+    <nav class="nav-links" data-menu>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="datenschutz.html">Datenschutz</a>
-
+      <a href="shop.html" class="nav-cta">Jetzt kaufen</a>
     </nav>
-
-    <a href="shop.html" class="btn-nav">
-      Jetzt Kaufen
-    </a>
-
   </header>
 
+  <main>
+    <section class="legal-hero reveal">
+      <p class="eyebrow">Rechtliche Informationen</p>
+      <h1>Impressum</h1>
+      <p class="legal-subtitle">Angaben gemäß § 5 TMG</p>
+    </section>
 
-  <!-- =========================
-       HERO
-  ========================== -->
-
-  <section class="legal-hero">
-
-    <p class="legal-label">
-      Rechtliche Informationen
-    </p>
-
-    <h1>
-      Impressum
-    </h1>
-
-    <p class="legal-subtitle">
-
-      Angaben gemäß § 5 TMG
-
-    </p>
-
-  </section>
-
-
-  <!-- =========================
-       CONTENT
-  ========================== -->
-
-  <section class="legal-container">
-
-    <div class="legal-card">
-
-      <div class="legal-block">
-
-        <h2>
-          Future Me GmbH
-        </h2>
-
-        <p>
-          Future Me GmbH<br>
-          Mariahilfer Straße 102<br>
-          1070 Wien<br>
-          Österreich
-        </p>
-
+    <section class="legal-container reveal">
+      <div class="legal-card">
+        <article class="legal-block">
+          <h2>Future Me GmbH</h2>
+          <p>Future Me GmbH<br>Mariahilfer Straße 102<br>1070 Wien<br>Österreich</p>
+        </article>
+        <article class="legal-block">
+          <h2>Kontakt</h2>
+          <p>Telefon: +43 660 1234567<br>E-Mail: hello@futureme.at</p>
+        </article>
+        <article class="legal-block">
+          <h2>Vertreten durch</h2>
+          <p>Max Mustermann</p>
+        </article>
+        <article class="legal-block">
+          <h2>Firmenbuchnummer</h2>
+          <p>FN 123456a</p>
+        </article>
+        <article class="legal-block">
+          <h2>Umsatzsteuer-ID</h2>
+          <p>ATU12345678</p>
+        </article>
+        <article class="legal-block">
+          <h2>Aufsichtsbehörde</h2>
+          <p>Magistratisches Bezirksamt Wien</p>
+        </article>
+        <article class="legal-block">
+          <h2>Haftungsausschluss</h2>
+          <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+        </article>
       </div>
-
-
-      <div class="legal-block">
-
-        <h3>
-          Kontakt
-        </h3>
-
-        <p>
-          Telefon: +43 660 1234567<br>
-          E-Mail: hello@futureme.at
-        </p>
-
-      </div>
-
-
-      <div class="legal-block">
-
-        <h3>
-          Vertreten durch
-        </h3>
-
-        <p>
-          Max Mustermann
-        </p>
-
-      </div>
-
-
-      <div class="legal-block">
-
-        <h3>
-          Firmenbuchnummer
-        </h3>
-
-        <p>
-          FN 123456a
-        </p>
-
-      </div>
-
-
-      <div class="legal-block">
-
-        <h3>
-          Umsatzsteuer-ID
-        </h3>
-
-        <p>
-          ATU12345678
-        </p>
-
-      </div>
-
-
-      <div class="legal-block">
-
-        <h3>
-          Aufsichtsbehörde
-        </h3>
-
-        <p>
-          Magistratisches Bezirksamt Wien
-        </p>
-
-      </div>
-
-
-      <div class="legal-block">
-
-        <h3>
-          Haftungsausschluss
-        </h3>
-
-        <p>
-
-          Trotz sorgfältiger inhaltlicher Kontrolle
-          übernehmen wir keine Haftung für die Inhalte
-          externer Links. Für den Inhalt der verlinkten
-          Seiten sind ausschließlich deren Betreiber verantwortlich.
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
+    </section>
+  </main>
 
   <footer class="footer">
-
     <div class="footer-top">
-
-      <div class="footer-logo">
-        Future Me
-      </div>
-
-      <div class="footer-links">
-
+      <a href="index.html" class="footer-logo">Future Me</a>
+      <nav class="footer-links" aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
-
-      </div>
-
+      </nav>
     </div>
-
-    <div class="footer-bottom">
-
-      <p>
-        © 2026 Future Me.
-        Alle Rechte vorbehalten.
-      </p>
-
-    </div>
-
+    <p>© 2026 Future Me. Alle Rechte vorbehalten.</p>
   </footer>
 
+  <script src="js/main.js"></script>
 </body>
 </html>

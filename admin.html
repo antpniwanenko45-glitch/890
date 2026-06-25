@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Me Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="login-panel" data-login-panel>
+      <div>
+        <p class="eyebrow">Future Me</p>
+        <h1>Admin Login</h1>
+        <p>Secure access is configured through the local environment file.</p>
+      </div>
+      <form class="login-form" data-login-form>
+        <input name="username" placeholder="Login" autocomplete="username" required>
+        <input name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+        <button type="submit">Sign in</button>
+        <p data-login-error></p>
+      </form>
+    </section>
+
+    <section class="dashboard hidden" data-dashboard>
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Future Me Admin</p>
+          <h1>Leads & Preorders</h1>
+        </div>
+        <div class="header-actions">
+          <a class="admin-link" href="index.html">Website</a>
+          <button type="button" data-export>CSV Export</button>
+          <button type="button" data-logout>Logout</button>
+        </div>
+      </header>
+
+      <section class="stats-grid" data-stats></section>
+
+      <section class="insights-grid">
+        <article class="insight-panel">
+          <div class="panel-title">
+            <span>Status Pipeline</span>
+            <strong data-new-count>0 new</strong>
+          </div>
+          <div data-status-bars></div>
+        </article>
+        <article class="insight-panel">
+          <div class="panel-title">
+            <span>Color Demand</span>
+            <strong data-book-count>0 books</strong>
+          </div>
+          <div data-color-bars></div>
+        </article>
+        <article class="insight-panel">
+          <div class="panel-title">
+            <span>Sources</span>
+            <strong data-source-count>0 channels</strong>
+          </div>
+          <div data-source-bars></div>
+        </article>
+      </section>
+
+      <section class="toolbar">
+        <input data-search placeholder="Search email, color, source, note">
+        <select data-type>
+          <option value="">All types</option>
+          <option value="preorder">Preorders</option>
+          <option value="newsletter">Newsletter</option>
+        </select>
+        <select data-status>
+          <option value="">All statuses</option>
+          <option value="new">New</option>
+          <option value="contacted">Contacted</option>
+          <option value="paid">Paid</option>
+          <option value="shipped">Shipped</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <select data-color>
+          <option value="">All colors</option>
+          <option value="Black">Black</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+        </select>
+        <button type="button" data-refresh>Refresh</button>
+      </section>
+
+      <section class="leads-layout">
+        <div class="leads-table-wrap">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Email</th>
+                <th>Color / Image</th>
+                <th>Qty</th>
+                <th>Status</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody data-leads></tbody>
+          </table>
+        </div>
+
+        <aside class="lead-detail" data-detail>
+          <p class="empty-state">Select a lead.</p>
+        </aside>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

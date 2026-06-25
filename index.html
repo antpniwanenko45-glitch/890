@@ -1,779 +1,277 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Future Me — Produktivitätsplaner</title>
-
-  <!-- Fonts -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Me - Produktivitätsplaner</title>
+  <meta name="description" content="Future Me Planner: ein hochwertiger Planer für Fokus, klare Ziele und bewusstere Tage.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
-<body>
-</header>
-  <!-- =========================
-       NAVBAR
-  ========================== -->
-<header class="navbar">
-
-  <div class="nav-left">
-
-   <a href="index.html" class="logo">
-
-      <span class="logo-star">
-        ✦
-      </span>
-
-      <span>
-        Future Me
-      </span>
-
+<body class="page-home">
+  <header class="navbar" data-nav>
+    <a href="index.html" class="logo" aria-label="Future Me Startseite">
+      <span class="logo-mark">✦</span>
+      <span>Future Me</span>
     </a>
 
-    <nav class="nav-links">
-
-      <a href="index.html">Home</a>
-      
-      <a href="#vorteile">
-        Vorteile
-      </a>
-
-      <a href="#faq">
-        FAQ
-      </a>
-
-    </nav>
-
-  </div>
-
-  <a href="shop.html" class="btn-nav">
-
-    Jetzt Kaufen
-
-  </a>
-
-</header>
-  <!-- =========================
-       HERO SECTION
-  ========================== -->
-
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <h1>
-        Dein Plan.<br>
-        Deine Zukunft.
-      </h1>
-
-      <p>
-        Der Future Me Planner hilft dir,
-        fokussiert zu bleiben, deine Ziele
-        zu erreichen und jeden Tag bewusst
-        zu gestalten.
-      </p>
-
-      <a href="shop.html" class="btn-primary">
-        Jetzt entdecken
-      </a>
-
-      <div class="hero-benefits">
-
-        <div class="benefit-item">
-          <span>◎</span>
-          Mehr Fokus
-        </div>
-
-        <div class="benefit-item">
-          <span>◎</span>
-          Klarheit
-        </div>
-
-        <div class="benefit-item">
-          <span>◎</span>
-          Erfolg
-        </div>
-
-        <div class="benefit-item">
-          <span>◎</span>
-          Nachhaltig
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="hero-image"></div>
-
-  </section>
-
-  <!-- =========================
-       VIDEO CAROUSEL
-  ========================== -->
-
-  <section class="video-section">
-
-    <div class="video-text">
-
-<h2>
-  Erhalte den<br>
-  Future Me Planner<br>
-  vor allen anderen.
-</h2>
-
-      <p>
-        Ein durchdachtes System aus
-        bewährten Methoden, das dir hilft,
-        deinen Fokus zu stärken und
-        produktiver zu leben.
-      </p>
-
-      <a href="#">
-        So funktioniert’s →
-      </a>
-
-    </div>
-
-    <div class="video-grid">
-
-      <!-- VIDEO 1 -->
-
-      <div
-        class="video-card"
-        data-video="videos/video-1.mp4"
-      >
-
-        <img src="images/hero/gallery-1.jpg" alt="">
-
-        <div class="play-btn">▶</div>
-
-        <h4>Warum Future Me?</h4>
-
-      </div>
-
-
-      <!-- VIDEO 2 -->
-
-      <div
-        class="video-card"
-        data-video="videos/video-2.mp4"
-      >
-
-        <img src="images/hero/gallery-2.jpg" alt="">
-
-        <div class="play-btn">▶</div>
-
-        <h4>Fokus & Klarheit</h4>
-
-      </div>
-
-
-      <!-- VIDEO 3 -->
-
-      <div
-        class="video-card"
-        data-video="videos/video-3.mp4"
-      >
-
-        <img src="images/hero/gallery-3.jpg" alt="">
-
-        <div class="play-btn">▶</div>
-
-        <h4>Dein tägliches System</h4>
-
-      </div>
-
-
-      <!-- VIDEO 4 -->
-
-      <div
-        class="video-card"
-        data-video="videos/video-4.mp4"
-      >
-
-        <img src="images/hero/gallery-4.jpg" alt="">
-
-        <div class="play-btn">▶</div>
-
-        <h4>Mehr erreichen</h4>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       LUXURY VIDEO EXPERIENCE
-  ========================== -->
-
-  <div class="video-overlay">
-
-    <button class="video-close">
-
-      ✕
-
+    <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" data-menu-toggle>
+      <span aria-hidden="true">☰</span>
     </button>
 
+    <nav class="nav-links" data-menu>
+      <a href="index.html">Home</a>
+      <a href="#vorteile">Vorteile</a>
+      <a href="#faq">FAQ</a>
+      <a href="shop.html" class="nav-cta">Jetzt kaufen</a>
+    </nav>
+  </header>
 
-    <!-- THUMBNAILS -->
-
-    <div class="video-thumbs">
-
-      <img
-        src="images/hero/gallery-1.jpg"
-        data-video="videos/video-1.mp4"
-        class="video-thumb active-thumb"
-      >
-
-      <img
-        src="images/hero/gallery-2.jpg"
-        data-video="videos/video-2.mp4"
-        class="video-thumb"
-      >
-
-      <img
-        src="images/hero/gallery-3.jpg"
-        data-video="videos/video-3.mp4"
-        class="video-thumb"
-      >
-
-      <img
-        src="images/hero/gallery-4.jpg"
-        data-video="videos/video-4.mp4"
-        class="video-thumb"
-      >
-
-    </div>
-
-
-    <!-- VIDEO -->
-
-    <div class="video-wrapper">
-
-      <video
-        id="luxuryVideo"
-        autoplay
-        controls
-      >
-
-        <source src="" type="video/mp4">
-
-      </video>
-
-    </div>
-
-  </div>
-
-  <!-- =========================
-       VORTEILE
-  ========================== -->
-
-  <section class="vorteile" id="vorteile">
-
-    <div class="vorteile-image">
-
-      <img src="images/hero/planner-stack.jpg" alt="">
-
-    </div>
-
-    <div class="vorteile-content">
-
-      <h2>
-        Designed für<br>
-        mehr als nur Pläne.
-      </h2>
-
-      <div class="vorteile-list">
-
-        <div class="vorteil">
-          <span>✦</span>
-
-          <div>
-            <h4>Hochwertige Materialien</h4>
-            <p>
-              Für ein Gefühl von Qualität
-              und Beständigkeit.
-            </p>
-          </div>
+  <main>
+    <section class="hero">
+      <div class="hero-content reveal">
+        <p class="eyebrow">Produktivität mit Ruhe</p>
+        <h1>Dein Plan.<br>Deine Zukunft.</h1>
+        <p class="hero-copy">Der Future Me Planner bringt Ziele, Fokus und tägliche Reflexion in ein klares System, das sich gut anfühlt und leicht durchzuhalten ist.</p>
+        <div class="hero-actions">
+          <a href="shop.html" class="btn-primary">Planner entdecken</a>
+          <a href="#vorteile" class="btn-secondary">Mehr erfahren</a>
         </div>
-
-        <div class="vorteil">
-          <span>✦</span>
-
-          <div>
-            <h4>Klare Struktur</h4>
-            <p>
-              Maximale Übersicht und Fokus
-              für deinen Alltag.
-            </p>
-          </div>
+        <div class="hero-benefits" aria-label="Produktvorteile">
+          <span>Mehr Fokus</span>
+          <span>Klare Routinen</span>
+          <span>Undatiert</span>
+          <span>Soft-Touch Cover</span>
         </div>
+      </div>
+      <div class="hero-media reveal" aria-label="Future Me Planner Produktbild"></div>
+    </section>
 
-        <div class="vorteil">
-          <span>✦</span>
+    <section class="product-strip reveal" aria-label="Planner Farben">
+      <img src="images/gallery/planner-black.webp" alt="Future Me Planner in Schwarz">
+      <img src="images/gallery/planner-red.webp" alt="Future Me Planner in Dunkelrot">
+      <img src="images/gallery/planner-blue.webp" alt="Future Me Planner in Dunkelblau">
+      <img src="images/gallery/planner-open.webp" alt="Future Me Planner geöffnet">
+    </section>
 
-          <div>
-            <h4>Nachhaltig produziert</h4>
-            <p>
-              Minimalistisch und langlebig.
-            </p>
+    <section class="video-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">In 60 Sekunden</p>
+        <h2>Sieh, wie Future Me deinen Tag sortiert.</h2>
+      </div>
+      <div class="video-grid reveal">
+        <button class="video-card" type="button" data-video-title="Morgen klar starten" data-video-text="Prioritäten, Fokuszeit und kleine Schritte für einen ruhigen Start in den Tag.">
+          <img src="images/gallery/steps-1.jpg" alt="Future Me Planner als Lifestyle-Aufnahme">
+          <span class="play-btn">▶</span>
+          <strong>Morgen klar starten</strong>
+        </button>
+        <button class="video-card" type="button" data-video-title="Woche planen" data-video-text="Plane deine Woche bewusst, ohne dich in endlosen To-do-Listen zu verlieren.">
+          <img src="images/gallery/steps-2.jpg" alt="Future Me Planner Farben">
+          <span class="play-btn">▶</span>
+          <strong>Woche planen</strong>
+        </button>
+        <button class="video-card" type="button" data-video-title="Fortschritt sehen" data-video-text="Reviews machen sichtbar, was funktioniert und was du als Nächstes anpasst.">
+          <img src="images/gallery/steps-3.jpg" alt="Blauer Future Me Planner">
+          <span class="play-btn">▶</span>
+          <strong>Fortschritt sehen</strong>
+        </button>
+      </div>
+    </section>
+
+    <section class="intro-section" id="vorteile">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Warum es funktioniert</p>
+        <h2>Ein Planer, der nicht lauter ist als dein Alltag.</h2>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit-card reveal">
+          <span>01</span>
+          <h3>Fokus ohne Überforderung</h3>
+          <p>Tages- und Wochenplanung geben dir klare Prioritäten, ohne deinen Tag in ein starres System zu pressen.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <span>02</span>
+          <h3>Reflexion, die bleibt</h3>
+          <p>Kurze Review-Seiten machen Fortschritt sichtbar und helfen dir, bessere Entscheidungen zu treffen.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <span>03</span>
+          <h3>Hochwertig im Gebrauch</h3>
+          <p>Ein ruhiges Design, robuste Materialien und ein Format, das auf dem Schreibtisch und unterwegs funktioniert.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="showcase showcase-dark" id="design">
+      <div class="showcase-image showcase-stack reveal" aria-label="Future Me Planner Kollektion"></div>
+      <div class="showcase-content reveal">
+        <p class="eyebrow">Designed für</p>
+        <h2>mehr als nur Pläne.</h2>
+        <ul class="check-list">
+          <li><strong>Hochwertige Materialien</strong><span>Für ein Gefühl von Beständigkeit und Qualität.</span></li>
+          <li><strong>Klar strukturierte Seiten</strong><span>Für maximale Übersicht und Fokus.</span></li>
+          <li><strong>Nachhaltig produziert</strong><span>Für dich, für morgen, für unseren Planeten.</span></li>
+        </ul>
+        <a href="#vorteile" class="showcase-link">Mehr über unsere Werte</a>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Stimmen</p>
+        <h2>Für Menschen, die Struktur mögen, aber Freiheit brauchen.</h2>
+      </div>
+      <div class="testimonial-grid">
+        <article class="testimonial-card reveal">
+          <p>„Ich plane weniger, aber treffe bessere Entscheidungen. Genau das habe ich gebraucht.”</p>
+          <span>Lea, Selbstständig</span>
+        </article>
+        <article class="testimonial-card reveal">
+          <p>„Die Wochenübersicht macht meine Ziele endlich greifbar. Kein App-Chaos mehr.”</p>
+          <span>Marc, Student</span>
+        </article>
+        <article class="testimonial-card reveal">
+          <p>„Sieht hochwertig aus und bleibt trotzdem praktisch. Ich nutze ihn jeden Morgen.”</p>
+          <span>Sofia, Team Lead</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote reveal">
+      <h2>„Dein Leben ist das Ergebnis deiner täglichen Entscheidungen.”</h2>
+      <p>Future Me</p>
+    </section>
+
+    <section class="newsletter-section reveal">
+      <div class="newsletter-copy">
+        <h2>Trage dich für unseren Newsletter ein und erhalte exklusive Informationen & Rabatte!</h2>
+        <p>Erhalte regelmäßig Tipps zu Fokus, Persönlichkeitsentwicklung, Motivation und bewusster Planung. Außerdem informieren wir dich zuerst über neue Farben und Launch-Angebote.</p>
+        <form class="newsletter-form" data-newsletter-form>
+          <label for="newsletterEmail">Deine E-Mail</label>
+          <div class="newsletter-input-row">
+            <input id="newsletterEmail" type="email" name="email" placeholder="Deine E-Mail" autocomplete="email" required>
+            <button type="submit" aria-label="Newsletter abonnieren">→</button>
           </div>
-        </div>
+          <p class="newsletter-status" data-newsletter-status aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="newsletter-icon" aria-hidden="true">
+        <span>◎</span>
+        <b>↗</b>
+      </div>
+    </section>
 
+    <section class="faq-section" id="faq">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Fragen</p>
+        <h2>Alles Wichtige kurz beantwortet.</h2>
       </div>
 
-    </div>
-
-  </section>
-
-  <!-- =========================
-       QUOTE
-  ========================== -->
-
-  <section class="quote">
-
-    <h2>
-      „Dein Leben ist das Ergebnis<br>
-      deiner täglichen Entscheidungen.“
-    </h2>
-
-    <p>— Future Me</p>
-
-  </section>
-
-  <!-- =========================
-       FAQ
-  ========================== -->
-
-  <section class="faq-section" id="faq">
-
-    <div class="faq-item active">
-
-      <button class="faq-question">
-
-        <span>
-          Was ist die Focus Time Methode?
-        </span>
-
-        <span class="faq-icon">
-          −
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Die Focus Time Methode hilft dir,
-          konzentriert und ohne Ablenkung
-          zu arbeiten, indem du in klaren
-          Zeitblöcken planst.
-        </p>
-
-        <p>
-          Dadurch arbeitest du produktiver
-          und behältst deine wichtigsten
-          Ziele im Fokus.
-        </p>
-
+      <div class="faq-list reveal">
+        <article class="faq-item active">
+          <button class="faq-question" type="button" aria-expanded="true">
+            <span>Ist der Planner datiert?</span>
+            <span class="faq-icon">−</span>
+          </button>
+          <div class="faq-answer">
+            <p>Nein. Du kannst jederzeit starten und pausieren, ohne Seiten zu verlieren.</p>
+          </div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Welche Farben gibt es?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Der Planner ist aktuell in Schwarz, Dunkelrot und Dunkelblau verfügbar.</p>
+          </div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Wie lange dauert der Versand?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Innerhalb Europas dauert der Versand normalerweise 2 bis 4 Werktage.</p>
+          </div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Kann ich den Planner zurückgeben?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Ja. Du hast ein 30-tägiges Rückgaberecht nach Erhalt deiner Bestellung.</p>
+          </div>
+        </article>
       </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Wie unterscheidet sich der Planner von normalen Notizbüchern?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Der Future Me Planner kombiniert
-          Zielsetzung, Zeitmanagement und
-          Reflexion in einem minimalistischen
-          System.
-        </p>
-
-        <p>
-          Er wurde entwickelt, um Struktur,
-          Fokus und persönliche Entwicklung
-          im Alltag zu unterstützen.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Ist der Planner datiert?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Nein. Du kannst jederzeit starten,
-          ohne an ein bestimmtes Datum
-          gebunden zu sein.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Wie lange dauert der Versand?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Innerhalb Europas dauert der
-          Versand normalerweise zwischen
-          2 und 4 Werktagen.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Kann ich den Planner zurückgeben?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Ja. Du hast ein 30-tägiges
-          Rückgaberecht nach Erhalt
-          deiner Bestellung.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Gibt es verschiedene Farben?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Ja. Der Planner ist aktuell in
-          Schwarz, Dunkelrot und Dunkelblau
-          verfügbar.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Aus welchem Material besteht das Cover?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Das Cover besteht aus hochwertigen,
-          langlebigen Materialien mit einer
-          angenehmen Soft-Touch Oberfläche.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Ist der Planner für Studenten geeignet?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Absolut. Viele Studenten nutzen
-          den Planner, um Studium, Arbeit
-          und persönliche Ziele besser
-          zu organisieren.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <button class="faq-question">
-
-        <span>
-          Kann ich den Planner täglich verwenden?
-        </span>
-
-        <span class="faq-icon">
-          +
-        </span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Ja. Der Planner wurde speziell
-          für die tägliche Nutzung entwickelt
-          und unterstützt langfristige
-          Gewohnheiten.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
+    </section>
+  </main>
 
   <footer class="footer">
-
     <div class="footer-top">
-
-      <div class="footer-logo">
-        Future Me
-      </div>
-
-      <div class="footer-links">
-
+      <a href="index.html" class="footer-logo">Future Me</a>
+      <nav class="footer-links" aria-label="Footer">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
-
-      </div>
-
+      </nav>
     </div>
-
-    <div class="footer-bottom">
-
-      <p>
-        © 2026 Future Me.
-        Alle Rechte vorbehalten.
-      </p>
-
-    </div>
-
+    <p>© 2026 Future Me. Alle Rechte vorbehalten.</p>
   </footer>
 
-  <!-- =========================
-     PREORDER POPUP
-========================= -->
+  <button class="offer-trigger" type="button" data-offer-trigger>Launch-Angebot</button>
 
-<div class="preorder-overlay" id="preorderOverlay">
-
-  <div class="preorder-popup">
-
-    <!-- CLOSE -->
-
-    <button class="preorder-close" id="closePreorder">
-      ✕
-    </button>
-
-    <!-- LEFT IMAGE -->
-
-    <div class="preorder-image">
-
-      <img
-        id="plannerPreview"
-        src="images/gallery/planner-black.webp"
-        alt="Planner"
-      >
-
-      <div class="preorder-badge">
-        Limited Preorder
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-box" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button class="video-modal-close" type="button" aria-label="Video schließen" data-close-video>×</button>
+      <div class="video-modal-preview">
+        <span>▶</span>
       </div>
-
-    </div>
-
-    <!-- RIGHT CONTENT -->
-
-    <div class="preorder-content">
-
-      <p class="preorder-small">
-        EXKLUSIVE VORBESTELLUNG
-      </p>
-
-<h2>
-  Future Me Planner<br>
-  jetzt vorbestellen.
-</h2>
-
-<p class="preorder-text">
-
-  Zur Feier unseres Shop-Launches
-  kannst du den Future Me Planner
-  für die nächsten 14 Tage
-  exklusiv vorbestellen.
-
-  Statt 25€ erhältst du ihn
-  heute bereits für nur 12€.
-
-</p>
-
-      <!-- PRICE -->
-
-<div class="preorder-price">
-
-  <span class="old-price">
-    25€
-  </span>
-
-  <span class="new-price">
-    12€
-  </span>
-
-  <span class="save-badge">
-    Spare 52%
-  </span>
-
-</div>
-
-      <!-- EMAIL -->
-
-      <input
-        type="email"
-        class="preorder-input"
-        placeholder="Deine E-Mail Adresse"
-      >
-
-      <!-- COLORS -->
-
-      <div class="popup-colors">
-
-        <button
-          class="popup-color active-popup-color"
-          data-image="images/gallery/planner-black.webp"
-          style="background:#111;"
-        ></button>
-
-        <button
-          class="popup-color"
-          data-image="images/gallery/planner-red.webp"
-          style="background:#64141b;"
-        ></button>
-
-        <button
-          class="popup-color"
-          data-image="images/gallery/planner-blue.webp"
-          style="background:#233f7d;"
-        ></button>
-
+      <div>
+        <p class="eyebrow">Video</p>
+        <h2 id="videoModalTitle">Future Me</h2>
+        <p id="videoModalText">Kurzer Einblick in den Planner.</p>
       </div>
-
-      <!-- BUTTON -->
-
-      <button class="preorder-btn">
-
-        Jetzt Vorbestellen
-
-      </button>
-
     </div>
-
   </div>
 
-</div>
+  <div class="preorder-overlay" id="preorderOverlay" aria-hidden="true">
+    <div class="preorder-popup" role="dialog" aria-modal="true" aria-labelledby="preorderTitle">
+      <button class="preorder-close" type="button" aria-label="Popup schließen" data-close-preorder>×</button>
+      <div class="preorder-image">
+        <img id="plannerPreview" src="images/gallery/planner-black.webp" alt="Future Me Planner Vorschau">
+      </div>
+      <div class="preorder-content">
+        <p class="eyebrow">Exklusive Vorbestellung</p>
+        <h2 id="preorderTitle">Future Me Planner jetzt sichern.</h2>
+        <p>Zum Launch erhältst du den Planner für kurze Zeit für 12 € statt 25 €.</p>
+        <div class="preorder-price">
+          <span class="old-price">25 €</span>
+          <span class="new-price">12 €</span>
+          <span class="save-badge">Spare 52%</span>
+        </div>
+        <input type="email" class="preorder-input" placeholder="Deine E-Mail Adresse" autocomplete="email">
+        <label class="preorder-quantity-label" for="preorderQuantity">Menge</label>
+        <div class="preorder-quantity">
+          <button type="button" data-preorder-minus aria-label="Menge verringern">-</button>
+          <input id="preorderQuantity" type="number" min="1" max="99" value="1" inputmode="numeric">
+          <button type="button" data-preorder-plus aria-label="Menge erhoehen">+</button>
+        </div>
+        <div class="popup-colors" aria-label="Farbe wählen">
+          <button class="popup-color active-popup-color" type="button" data-image="images/gallery/planner-black.webp" data-color="Black" style="background:#111" aria-label="Schwarz"></button>
+          <button class="popup-color" type="button" data-image="images/gallery/planner-red.webp" data-color="Red" style="background:#64141b" aria-label="Dunkelrot"></button>
+          <button class="popup-color" type="button" data-image="images/gallery/planner-blue.webp" data-color="Blue" style="background:#233f7d" aria-label="Dunkelblau"></button>
+        </div>
+        <button class="preorder-btn" type="button">Jetzt vorbestellen</button>
+      </div>
+    </div>
+  </div>
 
-  <!-- =========================
-     STICKY OFFER BUTTON
-========================= -->
-
-<button class="offer-trigger" id="offerTrigger">
-
-  <span>
-    Angebot öffnen
-  </span>
-
-</button>
-  
   <script src="js/main.js"></script>
   <script src="js/faq.js"></script>
-  
 </body>
 </html>

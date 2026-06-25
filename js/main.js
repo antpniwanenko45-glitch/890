@@ -1,422 +1,260 @@
-// =========================
-// NAVBAR SCROLL EFFECT
-// =========================
+const nav = document.querySelector("[data-nav]");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const menu = document.querySelector("[data-menu]");
 
-const navbar = document.querySelector(".navbar");
-
-window.addEventListener("scroll", () => {
-
-  if (window.scrollY > 40) {
-
-    navbar.classList.add("navbar-scrolled");
-
-  } else {
-
-    navbar.classList.remove("navbar-scrolled");
-
-  }
-
-});
-
-
-// =========================
-// SMOOTH APPEAR ANIMATION
-// =========================
-
-const revealElements = document.querySelectorAll(
-  ".hero, .video-section, .vorteile, .quote, .faq"
-);
-
-const revealOnScroll = () => {
-
-  const triggerBottom = window.innerHeight * 0.85;
-
-  revealElements.forEach((element) => {
-
-    const boxTop = element.getBoundingClientRect().top;
-
-    if (boxTop < triggerBottom) {
-
-      element.classList.add("show");
-
-    }
-
-  });
-
+const setScrolledNav = () => {
+  if (!nav) return;
+  nav.classList.toggle("is-scrolled", window.scrollY > 16);
 };
 
-window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("scroll", setScrolledNav, { passive: true });
+setScrolledNav();
 
-revealOnScroll();
-
-
-// =========================
-// BUTTON RIPPLE EFFECT
-// =========================
-
-const buttons = document.querySelectorAll(
-  ".btn-primary, .btn-nav"
-);
-
-buttons.forEach((button) => {
-
-  button.addEventListener("mouseenter", () => {
-
-    button.classList.add("btn-hover");
-
+if (menuToggle && menu) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("is-open");
+    menuToggle.classList.toggle("is-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  button.addEventListener("mouseleave", () => {
-
-    button.classList.remove("btn-hover");
-
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("is-open");
+      menuToggle.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
   });
-
-});
-
-
-// =========================
-// PARALLAX HERO IMAGE
-// =========================
-
-const heroImage =
-document.querySelector(".hero-image");
-
-window.addEventListener("scroll", () => {
-
-  const scroll = window.scrollY;
-
-  if(heroImage){
-
-    heroImage.style.transform =
-      `translateY(${scroll * 0.05}px)`;
-
-  }
-
-});
-
-// =========================
-// LUXURY VIDEO EXPERIENCE
-// =========================
-
-const videoCards =
-document.querySelectorAll(".video-card");
-
-const videoOverlay =
-document.querySelector(".video-overlay");
-
-const luxuryVideo =
-document.getElementById("luxuryVideo");
-
-const videoClose =
-document.querySelector(".video-close");
-
-const videoThumbs =
-document.querySelectorAll(".video-thumb");
-
-
-// OPEN
-
-videoCards.forEach((card, index) => {
-
-  card.addEventListener("click", () => {
-
-    const videoSrc =
-    card.dataset.video;
-
-    luxuryVideo.src = videoSrc;
-
-    videoOverlay.classList.add("active");
-
-    luxuryVideo.play();
-
-    updateActiveThumb(index);
-
-  });
-
-});
-
-
-// CLOSE
-
-if(videoClose){
-
-  videoClose.addEventListener("click", () => {
-
-    closeLuxuryVideo();
-
-  });
-
 }
 
+const revealElements = document.querySelectorAll(".reveal");
 
-// CLICK OUTSIDE
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14 }
+  );
 
-if(videoOverlay){
-
-  videoOverlay.addEventListener("click", (e) => {
-
-    if(e.target === videoOverlay){
-
-      closeLuxuryVideo();
-
-    }
-
-  });
-
+  revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
 }
 
+document.querySelectorAll("button, .btn-primary, .btn-secondary, .nav-links a").forEach((element) => {
+  element.addEventListener("click", (event) => {
+    const rect = element.getBoundingClientRect();
+    const ripple = document.createElement("span");
+    ripple.className = "click-ripple";
+    ripple.style.left = `${event.clientX - rect.left}px`;
+    ripple.style.top = `${event.clientY - rect.top}px`;
 
-// THUMB SWITCH
+    element.classList.add("is-clicked");
+    element.appendChild(ripple);
 
-videoThumbs.forEach((thumb, index) => {
-
-  thumb.addEventListener("click", () => {
-
-    luxuryVideo.src =
-    thumb.dataset.video;
-
-    luxuryVideo.play();
-
-    updateActiveThumb(index);
-
+    window.setTimeout(() => element.classList.remove("is-clicked"), 150);
+    window.setTimeout(() => ripple.remove(), 560);
   });
-
 });
 
+const preorderOverlay = document.getElementById("preorderOverlay");
+const closePreorderButtons = document.querySelectorAll("[data-close-preorder]");
+const offerTrigger = document.querySelector("[data-offer-trigger]");
+const popupColors = document.querySelectorAll(".popup-color");
+const plannerPreview = document.getElementById("plannerPreview");
+const preorderBtn = document.querySelector(".preorder-btn");
+const preorderInput = document.querySelector(".preorder-input");
+const preorderQuantity = document.getElementById("preorderQuantity");
+const preorderMinus = document.querySelector("[data-preorder-minus]");
+const preorderPlus = document.querySelector("[data-preorder-plus]");
+const videoModal = document.getElementById("videoModal");
+const videoModalTitle = document.getElementById("videoModalTitle");
+const videoModalText = document.getElementById("videoModalText");
+const closeVideoButtons = document.querySelectorAll("[data-close-video]");
+const newsletterForm = document.querySelector("[data-newsletter-form]");
+const newsletterStatus = document.querySelector("[data-newsletter-status]");
 
-// FUNCTIONS
+const openPreorder = () => {
+  if (!preorderOverlay) return;
+  preorderOverlay.classList.add("active");
+  preorderOverlay.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  preorderInput?.focus();
+};
 
-function closeLuxuryVideo(){
-
-  if(videoOverlay){
-
-    videoOverlay.classList.remove("active");
-
-  }
-
-  if(luxuryVideo){
-
-    luxuryVideo.pause();
-
-    luxuryVideo.currentTime = 0;
-
-  }
-
-}
-
-
-function updateActiveThumb(index){
-
-  videoThumbs.forEach((thumb) => {
-
-    thumb.classList.remove("active-thumb");
-
-  });
-
-  videoThumbs[index]
-  .classList.add("active-thumb");
-
-}
-
-// =========================
-// PREORDER POPUP
-// =========================
-
-const preorderOverlay =
-document.getElementById("preorderOverlay");
-
-const closePreorder =
-document.getElementById("closePreorder");
-
-const popupColors =
-document.querySelectorAll(".popup-color");
-
-const plannerPreview =
-document.getElementById("plannerPreview");
-
-
-// OPEN AFTER DELAY
-
-window.addEventListener("load", () => {
-
-  setTimeout(() => {
-
-    preorderOverlay.classList.add("active");
-
-  }, 1200);
-
-});
-
-
-// CLOSE
-
-closePreorder.addEventListener("click", () => {
-
+const closePreorder = () => {
+  if (!preorderOverlay) return;
   preorderOverlay.classList.remove("active");
+  preorderOverlay.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+};
 
+offerTrigger?.addEventListener("click", openPreorder);
+closePreorderButtons.forEach((button) => button.addEventListener("click", closePreorder));
+
+preorderOverlay?.addEventListener("click", (event) => {
+  if (event.target === preorderOverlay) closePreorder();
 });
 
-
-// CLICK OUTSIDE
-
-preorderOverlay.addEventListener("click", (e) => {
-
-  if(e.target === preorderOverlay){
-
-    preorderOverlay.classList.remove("active");
-
-  }
-
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closePreorder();
 });
 
+const openVideoModal = (title, text) => {
+  if (!videoModal) return;
+  if (videoModalTitle) videoModalTitle.textContent = title || "Future Me";
+  if (videoModalText) videoModalText.textContent = text || "Kurzer Einblick in den Planner.";
+  videoModal.classList.add("active");
+  videoModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+};
 
-// CHANGE IMAGE
+const closeVideoModal = () => {
+  if (!videoModal) return;
+  videoModal.classList.remove("active");
+  videoModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+};
+
+document.querySelectorAll(".video-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    openVideoModal(card.dataset.videoTitle, card.dataset.videoText);
+  });
+});
+
+closeVideoButtons.forEach((button) => button.addEventListener("click", closeVideoModal));
+
+videoModal?.addEventListener("click", (event) => {
+  if (event.target === videoModal) closeVideoModal();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeVideoModal();
+});
 
 popupColors.forEach((button) => {
-
   button.addEventListener("click", () => {
+    popupColors.forEach((color) => color.classList.remove("active-popup-color"));
+    button.classList.add("active-popup-color");
 
-    const image =
-    button.dataset.image;
-
-    plannerPreview.src = image;
-
-    popupColors.forEach((btn) => {
-
-      btn.classList.remove(
-        "active-popup-color"
-      );
-
-    });
-
-    button.classList.add(
-      "active-popup-color"
-    );
-
+    if (plannerPreview && button.dataset.image) {
+      plannerPreview.src = button.dataset.image;
+    }
   });
-
 });
 
-// =========================
-// STICKY OFFER BUTTON
-// =========================
+const clampPreorderQuantity = () => {
+  if (!preorderQuantity) return 1;
+  const value = Number.parseInt(preorderQuantity.value, 10);
+  const next = Number.isFinite(value) ? Math.min(99, Math.max(1, value)) : 1;
+  preorderQuantity.value = String(next);
+  return next;
+};
 
-const offerTrigger =
-document.getElementById("offerTrigger");
+preorderMinus?.addEventListener("click", () => {
+  if (!preorderQuantity) return;
+  preorderQuantity.value = String(clampPreorderQuantity() - 1);
+  clampPreorderQuantity();
+});
 
-if(offerTrigger){
+preorderPlus?.addEventListener("click", () => {
+  if (!preorderQuantity) return;
+  preorderQuantity.value = String(clampPreorderQuantity() + 1);
+  clampPreorderQuantity();
+});
 
-  offerTrigger.addEventListener("click", () => {
+preorderQuantity?.addEventListener("input", clampPreorderQuantity);
 
-    preorderOverlay.classList.add("active");
+preorderBtn?.addEventListener("click", async () => {
+  const email = preorderInput?.value.trim() || "";
 
-  });
-
-}
-
-// =========================
-// PREORDER SUBMIT
-// =========================
-
-const preorderBtn =
-document.querySelector(
-  ".preorder-btn"
-);
-
-const preorderInput =
-document.querySelector(
-  ".preorder-input"
-);
-
-preorderBtn.addEventListener(
-  "click",
-  async () => {
-
-    const email =
-      preorderInput.value.trim();
-
-    if(!email){
-
-      alert(
-        "Bitte E-Mail eingeben"
-      );
-
-      return;
-
-    }
-
-    const activeColor =
-      document.querySelector(
-        ".active-popup-color"
-      );
-
-    let color = "Black";
-
-    if(activeColor){
-
-      const image =
-        activeColor.dataset.image;
-
-      if(image.includes("red")){
-
-        color = "Red";
-
-      }
-
-      else if(
-        image.includes("blue")
-      ){
-
-        color = "Blue";
-
-      }
-
-    }
-
-    preorderBtn.textContent =
-      "Wird gesendet...";
-
-    try{
-
-      await fetch(
-        "https://script.google.com/macros/s/AKfycby1kDhcqp03fEye89Lv-Jkl4Fbi1vNENrqfrvg9lazhyKc_fCkzeJLSu_GJl7mOobNr/exec",
-        {
-
-          method:"POST",
-
-          headers:{
-            "Content-Type":
-              "application/json"
-          },
-
-          body:JSON.stringify({
-
-            email,
-            color,
-            source:"main-popup"
-
-          })
-
-        }
-      );
-
-      preorderBtn.textContent =
-        "Gesendet ✓";
-
-      preorderBtn.style.background =
-        "#1d7a43";
-
-      preorderInput.value = "";
-
-    }
-
-    catch(error){
-
-      preorderBtn.textContent =
-        "Fehler";
-
-    }
-
+  if (!email || !email.includes("@")) {
+    preorderInput?.focus();
+    preorderInput?.setAttribute("aria-invalid", "true");
+    return;
   }
-);
+
+  preorderInput?.removeAttribute("aria-invalid");
+  const activeColor = document.querySelector(".active-popup-color");
+  const color = activeColor?.dataset.color || "Black";
+  const quantity = clampPreorderQuantity();
+  const originalText = preorderBtn.textContent;
+
+  preorderBtn.textContent = "Wird gesendet...";
+  preorderBtn.disabled = true;
+
+  try {
+    const activeColor = document.querySelector(".active-popup-color");
+    await fetch("/api/preorders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        color,
+        image: activeColor?.dataset.image || "",
+        product: "Future Me Planner",
+        quantity,
+        source: "main-popup"
+      })
+    });
+
+    preorderBtn.textContent = "Gesendet ✓";
+    preorderInput.value = "";
+  } catch {
+    preorderBtn.textContent = "Bitte später erneut";
+  } finally {
+    setTimeout(() => {
+      preorderBtn.disabled = false;
+      preorderBtn.textContent = originalText || "Jetzt vorbestellen";
+    }, 2200);
+  }
+});
+
+newsletterForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const input = newsletterForm.querySelector("input[type='email']");
+  const email = input?.value.trim() || "";
+
+  if (!email || !email.includes("@")) {
+    if (newsletterStatus) newsletterStatus.textContent = "Bitte gib eine gültige E-Mail ein.";
+    input?.focus();
+    return;
+  }
+
+  const submit = newsletterForm.querySelector("button");
+  const originalText = submit?.textContent;
+
+  if (submit) {
+    submit.disabled = true;
+    submit.textContent = "...";
+  }
+
+  fetch("/api/newsletter", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email,
+      source: "homepage-newsletter"
+    })
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Request failed");
+      if (newsletterStatus) newsletterStatus.textContent = "Danke! Du bist eingetragen.";
+      input.value = "";
+    })
+    .catch(() => {
+      if (newsletterStatus) newsletterStatus.textContent = "Bitte später erneut versuchen.";
+    })
+    .finally(() => {
+      if (submit) {
+        submit.disabled = false;
+        submit.textContent = originalText || "→";
+      }
+    });
+});
