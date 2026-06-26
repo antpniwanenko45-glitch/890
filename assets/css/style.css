@@ -230,8 +230,8 @@ button {
   padding: 120px clamp(20px, 6vw, 78px) 62px;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(247, 243, 235, 0.96) 0%, rgba(247, 243, 235, 0.84) 34%, rgba(247, 243, 235, 0.2) 58%, rgba(247, 243, 235, 0.02) 100%),
-    linear-gradient(180deg, rgba(247, 243, 235, 0.1), rgba(31, 25, 17, 0.08)),
+    linear-gradient(90deg, rgba(247, 243, 235, 0.92) 0%, rgba(247, 243, 235, 0.62) 34%, rgba(247, 243, 235, 0.06) 58%, rgba(247, 243, 235, 0) 100%),
+    linear-gradient(180deg, rgba(247, 243, 235, 0.02), rgba(31, 25, 17, 0.16)),
     url("../../images/hero/hero-main.webp") 64% center / cover no-repeat;
 }
 
@@ -240,8 +240,8 @@ button {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 22% 46%, rgba(255, 253, 248, 0.5), transparent 32%),
-    linear-gradient(180deg, rgba(247, 243, 235, 0.08), rgba(247, 243, 235, 0.18));
+    radial-gradient(circle at 22% 46%, rgba(255, 253, 248, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(247, 243, 235, 0.02), rgba(247, 243, 235, 0.08));
   pointer-events: none;
 }
 
@@ -1574,8 +1574,8 @@ h3 {
     padding: 104px 16px 36px;
     align-items: flex-start;
     background:
-      linear-gradient(180deg, rgba(247, 243, 235, 0.99) 0%, rgba(247, 243, 235, 0.95) 54%, rgba(247, 243, 235, 0.22) 82%),
-      linear-gradient(90deg, rgba(247, 243, 235, 0.92), rgba(247, 243, 235, 0.08)),
+      linear-gradient(180deg, rgba(247, 243, 235, 0.96) 0%, rgba(247, 243, 235, 0.84) 54%, rgba(247, 243, 235, 0.08) 82%),
+      linear-gradient(90deg, rgba(247, 243, 235, 0.74), rgba(247, 243, 235, 0.02)),
       url("../../images/gallery/planner-black.webp") 50% calc(100% + 84px) / 108% auto no-repeat;
   }
 
