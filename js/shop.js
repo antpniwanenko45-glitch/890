@@ -60,7 +60,7 @@ const plusBtn = document.getElementById("plusBtn");
 const quantityValue = document.getElementById("quantityValue");
 const priceValue = document.getElementById("priceValue");
 let quantity = 1;
-const singlePrice = 39.9;
+const singlePrice = 19.99;
 
 const updatePrice = () => {
   if (quantityValue) quantityValue.textContent = String(quantity);
@@ -84,6 +84,10 @@ const closePreorderModal = document.getElementById("closePreorderModal");
 const buyBtn = document.querySelector(".buy-btn");
 const preorderSubmit = document.getElementById("preorderSubmit");
 const preorderEmail = document.getElementById("preorderEmail");
+const shopPreorderQuantity = document.getElementById("shopPreorderQuantity");
+const shopPreorderMinus = document.getElementById("shopPreorderMinus");
+const shopPreorderPlus = document.getElementById("shopPreorderPlus");
+const shopPopupColors = [...document.querySelectorAll("#preorderModal .popup-color")];
 
 const openShopModal = () => {
   if (!preorderModal) return;
@@ -111,6 +115,35 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeShopModal();
 });
 
+const clampShopPreorderQuantity = () => {
+  if (!shopPreorderQuantity) return quantity;
+  const value = Number.parseInt(shopPreorderQuantity.value, 10);
+  const next = Number.isFinite(value) ? Math.min(99, Math.max(1, value)) : 1;
+  shopPreorderQuantity.value = String(next);
+  return next;
+};
+
+shopPreorderMinus?.addEventListener("click", () => {
+  if (!shopPreorderQuantity) return;
+  shopPreorderQuantity.value = String(clampShopPreorderQuantity() - 1);
+  clampShopPreorderQuantity();
+});
+
+shopPreorderPlus?.addEventListener("click", () => {
+  if (!shopPreorderQuantity) return;
+  shopPreorderQuantity.value = String(clampShopPreorderQuantity() + 1);
+  clampShopPreorderQuantity();
+});
+
+shopPreorderQuantity?.addEventListener("input", clampShopPreorderQuantity);
+
+shopPopupColors.forEach((button) => {
+  button.addEventListener("click", () => {
+    shopPopupColors.forEach((color) => color.classList.remove("active-popup-color"));
+    button.classList.add("active-popup-color");
+  });
+});
+
 preorderSubmit?.addEventListener("click", async () => {
   const email = preorderEmail?.value.trim() || "";
 
@@ -121,9 +154,11 @@ preorderSubmit?.addEventListener("click", async () => {
   }
 
   preorderEmail?.removeAttribute("aria-invalid");
-  const activeColor = document.querySelector(".active-color");
+  const activePopupColor = document.querySelector("#preorderModal .active-popup-color");
+  const activeColor = activePopupColor || document.querySelector(".active-color");
   const color = activeColor?.dataset.color || "Black";
-  const image = slides[currentSlide]?.getAttribute("src") || "";
+  const image = "images/gallery/steps-2.jpg";
+  const preorderQuantity = clampShopPreorderQuantity();
   const originalText = preorderSubmit.textContent;
 
   preorderSubmit.textContent = "Wird gesendet...";
@@ -137,7 +172,7 @@ preorderSubmit?.addEventListener("click", async () => {
         email,
         color,
         image,
-        quantity,
+        quantity: preorderQuantity,
         product: "Future Me Planner",
         source: "shop-popup"
       })

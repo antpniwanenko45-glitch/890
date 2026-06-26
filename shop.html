@@ -53,7 +53,7 @@
         <p class="eyebrow">Produktivitätsplaner</p>
         <h1>Future Me Planner</h1>
         <div class="rating" aria-label="5 von 5 Sternen">★★★★★ <span>(842 Bewertungen)</span></div>
-        <div class="price">€<span id="priceValue">39,90</span></div>
+        <div class="price">€<span id="priceValue">19,99</span></div>
         <p class="tax-info">inkl. MwSt. und kostenlosem Versand</p>
 
         <div class="option-group">
@@ -183,18 +183,34 @@
   </footer>
 
   <div class="preorder-modal" id="preorderModal" aria-hidden="true">
-    <div class="preorder-box" role="dialog" aria-modal="true" aria-labelledby="shopPreorderTitle">
+    <div class="preorder-popup shop-preorder-popup" role="dialog" aria-modal="true" aria-labelledby="shopPreorderTitle">
       <button class="close-preorder" id="closePreorderModal" type="button" aria-label="Popup schließen">×</button>
-      <p class="eyebrow">Exklusive Vorbestellung</p>
-      <h2 id="shopPreorderTitle">Der Planner ist aktuell als Vorbestellung verfügbar.</h2>
-      <p>Sichere dir den Launch-Preis von 12 € statt 25 €. Wir informieren dich, sobald deine Farbe verschickt wird.</p>
-      <div class="preorder-pricing">
-        <span class="preorder-old">25 €</span>
-        <span class="preorder-new">12 €</span>
-        <span class="preorder-save">Spare 52%</span>
+      <div class="preorder-image">
+        <img id="shopPlannerPreview" src="images/gallery/steps-2.jpg" alt="Future Me Planner vor Porsche Rad">
       </div>
-      <input id="preorderEmail" type="email" placeholder="Deine E-Mail Adresse" class="preorder-email" autocomplete="email">
-      <button class="preorder-cta" id="preorderSubmit" type="button">Vorbestellung sichern</button>
+      <div class="preorder-content">
+        <p class="eyebrow">Exklusive Vorbestellung</p>
+        <h2 id="shopPreorderTitle">Future Me Planner jetzt sichern.</h2>
+        <p>Zum Launch erhältst du den Planner für kurze Zeit für 12 € statt 19,90 €.</p>
+        <div class="preorder-pricing">
+          <span class="preorder-old">19,90 €</span>
+          <span class="preorder-new">12 €</span>
+          <span class="preorder-save">Spare 40%</span>
+        </div>
+        <input id="preorderEmail" type="email" placeholder="Deine E-Mail Adresse" class="preorder-email" autocomplete="email">
+        <label class="preorder-quantity-label" for="shopPreorderQuantity">Menge</label>
+        <div class="preorder-quantity">
+          <button id="shopPreorderMinus" type="button" aria-label="Menge verringern">-</button>
+          <input id="shopPreorderQuantity" type="number" min="1" max="99" value="1" inputmode="numeric">
+          <button id="shopPreorderPlus" type="button" aria-label="Menge erhöhen">+</button>
+        </div>
+        <div class="popup-colors" aria-label="Farbe wählen">
+          <button class="popup-color active-popup-color" type="button" data-color="Black" style="background:#111" aria-label="Schwarz"></button>
+          <button class="popup-color" type="button" data-color="Red" style="background:#64141b" aria-label="Dunkelrot"></button>
+          <button class="popup-color" type="button" data-color="Blue" style="background:#233f7d" aria-label="Dunkelblau"></button>
+        </div>
+        <button class="preorder-cta" id="preorderSubmit" type="button">Vorbestellung sichern</button>
+      </div>
     </div>
   </div>
 
