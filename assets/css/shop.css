@@ -11,17 +11,17 @@
 .product-gallery {
   position: sticky;
   top: 106px;
+  width: 100%;
+  max-width: 540px;
   min-width: 0;
+  justify-self: end;
   overflow: visible;
 }
 
 .slider-container {
   overflow: hidden;
   border-radius: 8px;
-  background:
-    linear-gradient(145deg, rgba(185, 146, 84, 0.12), rgba(88, 107, 91, 0.08)),
-    #ece6d9;
-  box-shadow: 0 24px 70px rgba(31, 25, 17, 0.13);
+  background: transparent;
 }
 
 .slider-track {
@@ -32,9 +32,12 @@
 .slider-image {
   width: 100%;
   min-width: 100%;
-  height: clamp(390px, 42vw, 520px);
-  object-fit: cover;
+  height: clamp(390px, 38vw, 500px);
+  object-fit: contain;
+  object-position: center;
   padding: 0;
+  border-radius: 8px;
+  filter: drop-shadow(0 24px 42px rgba(31, 25, 17, 0.12));
   user-select: none;
 }
 
