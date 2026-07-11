@@ -9,10 +9,11 @@ let currentSlide = 0;
 const updateSlider = () => {
   if (!sliderTrack || !slides.length) return;
   sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+  const currentColor = currentSlide % 2 === 0 ? "Red" : "Blue";
 
   thumbs.forEach((thumb, index) => thumb.classList.toggle("active-thumb", index === currentSlide));
   colorButtons.forEach((button) => {
-    button.classList.toggle("active-color", Number(button.dataset.slide) === currentSlide);
+    button.classList.toggle("active-color", button.dataset.color === currentColor);
   });
 };
 
@@ -88,6 +89,7 @@ const shopPreorderQuantity = document.getElementById("shopPreorderQuantity");
 const shopPreorderMinus = document.getElementById("shopPreorderMinus");
 const shopPreorderPlus = document.getElementById("shopPreorderPlus");
 const shopPopupColors = [...document.querySelectorAll("#preorderModal .popup-color")];
+const shopPlannerPreview = document.getElementById("shopPlannerPreview");
 
 const openShopModal = () => {
   if (!preorderModal) return;
@@ -141,6 +143,9 @@ shopPopupColors.forEach((button) => {
   button.addEventListener("click", () => {
     shopPopupColors.forEach((color) => color.classList.remove("active-popup-color"));
     button.classList.add("active-popup-color");
+    if (shopPlannerPreview && button.dataset.image) {
+      shopPlannerPreview.src = button.dataset.image;
+    }
   });
 });
 
@@ -156,8 +161,8 @@ preorderSubmit?.addEventListener("click", async () => {
   preorderEmail?.removeAttribute("aria-invalid");
   const activePopupColor = document.querySelector("#preorderModal .active-popup-color");
   const activeColor = activePopupColor || document.querySelector(".active-color");
-  const color = activeColor?.dataset.color || "Black";
-  const image = "images/gallery/steps-2.jpg";
+  const color = activeColor?.dataset.color || "Red";
+  const image = activePopupColor?.dataset.image || (color === "Blue" ? "images/gallery/product-blue-1-enhanced.jpg" : "images/gallery/product-red-1-enhanced.jpg");
   const preorderQuantity = clampShopPreorderQuantity();
   const originalText = preorderSubmit.textContent;
 
@@ -190,25 +195,31 @@ preorderSubmit?.addEventListener("click", async () => {
   }
 });
 
-const insideTrack = document.querySelector(".inside-track");
-const insideSlides = [...document.querySelectorAll(".inside-slide")];
+const insideMain = document.querySelector("[data-inside-main]");
+const insideThumbs = [...document.querySelectorAll("[data-inside-thumb]")];
 const insidePrev = document.querySelector(".inside-prev");
 const insideNext = document.querySelector(".inside-next");
-const insideSlider = document.querySelector(".inside-slider");
+let activeInsideIndex = 0;
 
-const scrollInsideSlider = (direction) => {
-  if (!insideSlider || !insideSlides.length) return;
-  const slideWidth = insideSlides[0].getBoundingClientRect().width + 18;
-  insideSlider.scrollBy({
-    left: direction * slideWidth,
-    behavior: "smooth"
+const setInsideImage = (index) => {
+  if (!insideMain || !insideThumbs.length) return;
+  activeInsideIndex = (index + insideThumbs.length) % insideThumbs.length;
+  const activeThumb = insideThumbs[activeInsideIndex];
+  insideMain.src = activeThumb.dataset.src || insideMain.src;
+  insideMain.alt = activeThumb.dataset.alt || insideMain.alt;
+  insideThumbs.forEach((thumb, thumbIndex) => {
+    thumb.classList.toggle("active-inside-thumb", thumbIndex === activeInsideIndex);
   });
 };
 
-insideNext?.addEventListener("click", () => {
-  scrollInsideSlider(1);
+insideThumbs.forEach((thumb, index) => {
+  thumb.addEventListener("click", () => setInsideImage(index));
 });
 
 insidePrev?.addEventListener("click", () => {
-  scrollInsideSlider(-1);
+  setInsideImage(activeInsideIndex - 1);
+});
+
+insideNext?.addEventListener("click", () => {
+  setInsideImage(activeInsideIndex + 1);
 });

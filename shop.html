@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/shop.css">
+  <link rel="stylesheet" href="assets/css/mobile-ux.css">
 </head>
 <body>
   <header class="navbar" data-nav>
@@ -34,18 +35,18 @@
         <button class="slider-arrow left-arrow" type="button" aria-label="Vorheriges Bild">‹</button>
         <div class="slider-container">
           <div class="slider-track">
-            <img src="images/gallery/planner-black.webp" class="slider-image" alt="Future Me Planner schwarz">
-            <img src="images/gallery/planner-red.webp" class="slider-image" alt="Future Me Planner dunkelrot">
-            <img src="images/gallery/planner-blue.webp" class="slider-image" alt="Future Me Planner dunkelblau">
-            <img src="images/gallery/planner-open.webp" class="slider-image" alt="Future Me Planner geöffnet">
+            <img src="images/gallery/product-red-1-enhanced.jpg" class="slider-image" alt="Future Me Planner dunkelrot">
+            <img src="images/gallery/product-blue-1-enhanced.jpg" class="slider-image" alt="Future Me Planner dunkelblau">
+            <img src="images/gallery/product-red-2-enhanced.jpg" class="slider-image" alt="Future Me Planner dunkelrot">
+            <img src="images/gallery/product-blue-2-enhanced.jpg" class="slider-image" alt="Future Me Planner dunkelblau">
           </div>
         </div>
         <button class="slider-arrow right-arrow" type="button" aria-label="Nächstes Bild">›</button>
         <div class="thumbnail-row" aria-label="Produktbilder">
-          <button class="thumb active-thumb" type="button" data-index="0" style="background-image:url('images/gallery/planner-black.webp')" aria-label="Schwarz"></button>
-          <button class="thumb" type="button" data-index="1" style="background-image:url('images/gallery/planner-red.webp')" aria-label="Dunkelrot"></button>
-          <button class="thumb" type="button" data-index="2" style="background-image:url('images/gallery/planner-blue.webp')" aria-label="Dunkelblau"></button>
-          <button class="thumb" type="button" data-index="3" style="background-image:url('images/gallery/planner-open.webp')" aria-label="Geöffnet"></button>
+          <button class="thumb active-thumb" type="button" data-index="0" style="background-image:url('images/gallery/product-red-1-enhanced.jpg')" aria-label="Dunkelrot"></button>
+          <button class="thumb" type="button" data-index="1" style="background-image:url('images/gallery/product-blue-1-enhanced.jpg')" aria-label="Dunkelblau"></button>
+          <button class="thumb" type="button" data-index="2" style="background-image:url('images/gallery/product-red-2-enhanced.jpg')" aria-label="Dunkelrot"></button>
+          <button class="thumb" type="button" data-index="3" style="background-image:url('images/gallery/product-blue-2-enhanced.jpg')" aria-label="Dunkelblau"></button>
         </div>
       </div>
 
@@ -59,9 +60,8 @@
         <div class="option-group">
           <h2>Farbe</h2>
           <div class="color-options">
-            <button class="color-btn active-color" type="button" data-slide="0" data-color="Black" style="background:#101010" aria-label="Schwarz"></button>
-            <button class="color-btn" type="button" data-slide="1" data-color="Red" style="background:#64141b" aria-label="Dunkelrot"></button>
-            <button class="color-btn" type="button" data-slide="2" data-color="Blue" style="background:#203a73" aria-label="Dunkelblau"></button>
+            <button class="color-btn active-color" type="button" data-slide="0" data-color="Red" style="background:#64141b" aria-label="Dunkelrot"></button>
+            <button class="color-btn" type="button" data-slide="1" data-color="Blue" style="background:#203a73" aria-label="Dunkelblau"></button>
           </div>
         </div>
 
@@ -91,22 +91,35 @@
       <article class="feature-card reveal"><h2>Reflexion</h2><p>Wachstum sichtbar machen.</p></article>
     </section>
 
-    <section class="inside-section">
+    <section class="inside-section" id="inside">
       <div class="section-heading reveal">
         <p class="eyebrow">Ein Blick hinein</p>
         <h2>So sieht dein Alltag mit Future Me aus.</h2>
       </div>
-      <div class="inside-slider-wrapper reveal">
-        <button class="inside-arrow inside-prev" type="button" aria-label="Vorheriger Einblick">‹</button>
-        <div class="inside-slider">
-          <div class="inside-track">
-            <img src="images/gallery/planner-open.webp" class="inside-slide" alt="Offene Planner Seiten">
-            <img src="images/gallery/planner-black.webp" class="inside-slide" alt="Schwarzer Planner">
-            <img src="images/gallery/planner-blue.webp" class="inside-slide" alt="Blauer Planner">
-            <img src="images/gallery/planner-red.webp" class="inside-slide" alt="Roter Planner">
-          </div>
+      <div class="inside-gallery reveal">
+        <div class="inside-stage">
+          <button class="inside-arrow inside-prev" type="button" aria-label="Vorheriger Einblick">‹</button>
+          <img class="inside-main" src="images/inside/inside-1-enhanced.jpg" alt="Geöffneter Future Me Planner mit Einführung" data-inside-main>
+          <button class="inside-arrow inside-next" type="button" aria-label="Nächster Einblick">›</button>
         </div>
-        <button class="inside-arrow inside-next" type="button" aria-label="Nächster Einblick">›</button>
+        <div class="inside-thumbs" aria-label="Einblicke auswählen">
+          <button class="inside-thumb active-inside-thumb" type="button" data-inside-thumb data-src="images/inside/inside-1-enhanced.jpg" data-alt="Geöffneter Future Me Planner mit Einführung">
+            <img src="images/inside/inside-1-enhanced.jpg" alt="">
+            <span>Start</span>
+          </button>
+          <button class="inside-thumb" type="button" data-inside-thumb data-src="images/inside/inside-2-enhanced.jpg" data-alt="Future Me Planner Wochenplanung">
+            <img src="images/inside/inside-2-enhanced.jpg" alt="">
+            <span>Woche</span>
+          </button>
+          <button class="inside-thumb" type="button" data-inside-thumb data-src="images/inside/inside-3-enhanced.jpg" data-alt="Future Me Planner Tagesplanung">
+            <img src="images/inside/inside-3-enhanced.jpg" alt="">
+            <span>Tag</span>
+          </button>
+          <button class="inside-thumb" type="button" data-inside-thumb data-src="images/inside/inside-4-enhanced.jpg" data-alt="Future Me Planner Wochenergebnis">
+            <img src="images/inside/inside-4-enhanced.jpg" alt="">
+            <span>Ergebnis</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -125,7 +138,7 @@
             <li>Wichtiges zuerst, Kleinkram später</li>
           </ul>
         </div>
-        <img src="images/gallery/steps-1.jpg" alt="Future Me Planner in Dunkelrot">
+        <img src="images/gallery/product-red-1-enhanced.jpg" alt="Future Me Planner in Dunkelrot">
       </article>
       <article class="step-row reverse reveal">
         <div class="step-copy">
@@ -137,7 +150,7 @@
             <li>Ziele in machbare Schritte teilen</li>
           </ul>
         </div>
-        <img src="images/gallery/steps-2.jpg" alt="Future Me Planner in Rot und Blau">
+        <img src="images/gallery/product-red-2-enhanced.jpg" alt="Future Me Planner in Dunkelrot">
       </article>
       <article class="step-row reveal">
         <div class="step-copy">
@@ -149,7 +162,7 @@
             <li>Fortschrittstracking ohne App-Chaos</li>
           </ul>
         </div>
-        <img src="images/gallery/steps-3.jpg" alt="Future Me Planner in Blau">
+        <img src="images/gallery/product-blue-2-enhanced.jpg" alt="Future Me Planner in Dunkelblau">
       </article>
     </section>
 
@@ -186,7 +199,7 @@
     <div class="preorder-popup shop-preorder-popup" role="dialog" aria-modal="true" aria-labelledby="shopPreorderTitle">
       <button class="close-preorder" id="closePreorderModal" type="button" aria-label="Popup schließen">×</button>
       <div class="preorder-image">
-        <img id="shopPlannerPreview" src="images/gallery/steps-2.jpg" alt="Future Me Planner vor Porsche Rad">
+        <img id="shopPlannerPreview" src="images/gallery/product-red-1-enhanced.jpg" alt="Future Me Planner in Dunkelrot">
       </div>
       <div class="preorder-content">
         <p class="eyebrow">Exklusive Vorbestellung</p>
@@ -205,9 +218,8 @@
           <button id="shopPreorderPlus" type="button" aria-label="Menge erhöhen">+</button>
         </div>
         <div class="popup-colors" aria-label="Farbe wählen">
-          <button class="popup-color active-popup-color" type="button" data-color="Black" style="background:#111" aria-label="Schwarz"></button>
-          <button class="popup-color" type="button" data-color="Red" style="background:#64141b" aria-label="Dunkelrot"></button>
-          <button class="popup-color" type="button" data-color="Blue" style="background:#233f7d" aria-label="Dunkelblau"></button>
+          <button class="popup-color active-popup-color" type="button" data-color="Red" data-image="images/gallery/product-red-1-enhanced.jpg" style="background:#64141b" aria-label="Dunkelrot"></button>
+          <button class="popup-color" type="button" data-color="Blue" data-image="images/gallery/product-blue-1-enhanced.jpg" style="background:#233f7d" aria-label="Dunkelblau"></button>
         </div>
         <button class="preorder-cta" id="preorderSubmit" type="button">Vorbestellung sichern</button>
       </div>

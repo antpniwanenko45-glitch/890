@@ -231,8 +231,8 @@ button {
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(247, 243, 235, 0.92) 0%, rgba(247, 243, 235, 0.62) 34%, rgba(247, 243, 235, 0.06) 58%, rgba(247, 243, 235, 0) 100%),
-    linear-gradient(180deg, rgba(247, 243, 235, 0.02), rgba(31, 25, 17, 0.16)),
-    url("../../images/hero/hero-main.webp") 64% center / cover no-repeat;
+    linear-gradient(180deg, rgba(247, 243, 235, 0.01), rgba(31, 25, 17, 0.06)),
+    url("../../images/hero/hero-sharp.png") 64% center / cover no-repeat;
 }
 
 .hero::after {
@@ -240,8 +240,8 @@ button {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 22% 46%, rgba(255, 253, 248, 0.16), transparent 32%),
-    linear-gradient(180deg, rgba(247, 243, 235, 0.02), rgba(247, 243, 235, 0.08));
+    radial-gradient(circle at 22% 46%, rgba(255, 253, 248, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(247, 243, 235, 0.01), rgba(247, 243, 235, 0.03));
   pointer-events: none;
 }
 
@@ -1311,10 +1311,9 @@ h3 {
 }
 
 .page-home .hero-content > * {
-  opacity: 0;
-  transform: translateY(28px);
-  filter: blur(10px);
-  animation: premium-copy-in 900ms cubic-bezier(0.18, 0.82, 0.2, 1) both;
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 
 .page-home .hero-content .eyebrow {
@@ -1339,14 +1338,14 @@ h3 {
 
 .page-home .hero-media {
   opacity: 1;
-  filter: blur(14px) saturate(0.86);
-  transform: translateY(34px) scale(0.965);
+  filter: none;
+  transform: none;
   transform-origin: 50% 62%;
   animation: none;
 }
 
 .page-home .hero {
-  animation: premium-hero-bg-in 1150ms cubic-bezier(0.16, 0.84, 0.22, 1) 60ms both;
+  animation: none;
 }
 
 .page-home .hero-media::before {
@@ -1389,16 +1388,13 @@ h3 {
 @keyframes premium-copy-in {
   0% {
     opacity: 0.18;
-    filter: blur(8px);
     transform: translateY(22px);
   }
   60% {
     opacity: 1;
-    filter: blur(0);
   }
   100% {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0);
   }
 }
@@ -1579,7 +1575,7 @@ h3 {
     background:
       linear-gradient(180deg, rgba(247, 243, 235, 0.96) 0%, rgba(247, 243, 235, 0.84) 54%, rgba(247, 243, 235, 0.08) 82%),
       linear-gradient(90deg, rgba(247, 243, 235, 0.74), rgba(247, 243, 235, 0.02)),
-      url("../../images/gallery/planner-black.webp") 50% calc(100% + 84px) / 108% auto no-repeat;
+      url("../../images/hero/hero-sharp.png") 50% calc(100% + 84px) / 108% auto no-repeat;
   }
 
   .hero-media {

@@ -181,7 +181,7 @@ preorderBtn?.addEventListener("click", async () => {
 
   preorderInput?.removeAttribute("aria-invalid");
   const activeColor = document.querySelector(".active-popup-color");
-  const color = activeColor?.dataset.color || "Black";
+  const color = activeColor?.dataset.color || "Red";
   const quantity = clampPreorderQuantity();
   const originalText = preorderBtn.textContent;
 
