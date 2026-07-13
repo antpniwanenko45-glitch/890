@@ -26,13 +26,18 @@
 
   .hero {
     min-height: 0;
-    padding: 86px 16px 24px;
+    padding: 88px 16px 34px;
     background:
-      linear-gradient(180deg, rgba(247, 243, 235, 0.96) 0%, rgba(247, 243, 235, 0.84) 48%, rgba(247, 243, 235, 0.18) 76%),
-      url("../../images/hero/hero-sharp.png") 50% 100% / 118% auto no-repeat;
+      linear-gradient(135deg, rgba(88, 107, 91, 0.12), transparent 44%),
+      linear-gradient(315deg, rgba(184, 151, 91, 0.12), transparent 42%),
+      var(--bg);
   }
 
   .hero::after {
+    display: none;
+  }
+
+  .page-home .hero-media {
     display: none;
   }
 
@@ -49,25 +54,25 @@
   }
 
   .hero h1 {
-    max-width: 330px;
-    margin: 10px 0 14px;
-    font-size: clamp(42px, 14.2vw, 58px);
-    line-height: 0.94;
+    max-width: 320px;
+    margin: 8px 0 12px;
+    font-size: clamp(40px, 11.8vw, 50px);
+    line-height: 0.98;
   }
 
   .hero-copy {
-    max-width: 330px;
-    margin-bottom: 18px;
-    font-size: 16px;
-    line-height: 1.55;
+    max-width: 320px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.58;
   }
 
   .hero-actions {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
-    max-width: 330px;
+    max-width: 320px;
   }
 
   .btn-primary,
@@ -76,23 +81,26 @@
   .preorder-btn,
   .preorder-cta {
     width: 100%;
-    min-height: 48px;
-    padding: 14px 18px;
-    font-size: 13px;
+    min-height: 46px;
+    padding: 12px 16px;
+    font-size: 12px;
   }
 
-  .hero-tags {
+  .hero-tags,
+  .hero-benefits {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
     width: 100%;
-    max-width: 330px;
-    margin-top: 18px;
+    max-width: 320px;
+    margin-top: 14px;
   }
 
-  .hero-tags span {
+  .hero-tags span,
+  .hero-benefits span {
     min-width: 0;
-    padding: 9px 8px;
+    padding: 8px 8px;
+    font-size: 12px;
     text-align: center;
     white-space: normal;
   }
@@ -157,11 +165,18 @@
   }
 
   .preorder-popup {
-    width: calc(100% - 24px);
-    max-height: calc(100dvh - 24px);
+    width: calc(100% - 20px);
+    max-height: calc(100dvh - 20px);
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     grid-template-columns: 1fr;
     border-radius: 8px;
+  }
+
+  .preorder-overlay,
+  .preorder-modal {
+    overscroll-behavior: contain;
   }
 
   .preorder-image {
@@ -303,9 +318,34 @@
   }
 
   .shop-preorder-popup {
-    width: calc(100% - 24px);
-    max-height: calc(100dvh - 24px);
+    width: calc(100% - 20px);
+    max-height: calc(100dvh - 20px);
     grid-template-columns: 1fr;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding-bottom: 30px;
+    background:
+      linear-gradient(135deg, rgba(88, 107, 91, 0.12), transparent 44%),
+      linear-gradient(315deg, rgba(184, 151, 91, 0.12), transparent 42%),
+      var(--bg);
+  }
+
+  .hero-content,
+  .hero h1,
+  .hero-copy,
+  .hero-actions,
+  .hero-tags,
+  .hero-benefits {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 11.5vw, 46px);
   }
 }

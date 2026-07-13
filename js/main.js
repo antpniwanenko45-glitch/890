@@ -79,11 +79,40 @@ const closeVideoButtons = document.querySelectorAll("[data-close-video]");
 const newsletterForm = document.querySelector("[data-newsletter-form]");
 const newsletterStatus = document.querySelector("[data-newsletter-status]");
 
+let lockedScrollY = 0;
+
+const lockPageScroll = () => {
+  if (document.body.classList.contains("modal-open")) return;
+  lockedScrollY = window.scrollY;
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${lockedScrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+  document.body.classList.add("modal-open");
+};
+
+const unlockPageScroll = () => {
+  if (!document.body.classList.contains("modal-open")) return;
+  document.body.classList.remove("modal-open");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  window.scrollTo(0, lockedScrollY);
+};
+
+window.futureMeScrollLock = {
+  lock: lockPageScroll,
+  unlock: unlockPageScroll
+};
+
 const openPreorder = () => {
   if (!preorderOverlay) return;
   preorderOverlay.classList.add("active");
   preorderOverlay.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
+  lockPageScroll();
   preorderInput?.focus();
 };
 
@@ -91,7 +120,7 @@ const closePreorder = () => {
   if (!preorderOverlay) return;
   preorderOverlay.classList.remove("active");
   preorderOverlay.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
+  unlockPageScroll();
 };
 
 offerTrigger?.addEventListener("click", openPreorder);
@@ -111,14 +140,14 @@ const openVideoModal = (title, text) => {
   if (videoModalText) videoModalText.textContent = text || "Kurzer Einblick in den Planner.";
   videoModal.classList.add("active");
   videoModal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
+  lockPageScroll();
 };
 
 const closeVideoModal = () => {
   if (!videoModal) return;
   videoModal.classList.remove("active");
   videoModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
+  unlockPageScroll();
 };
 
 document.querySelectorAll(".video-card").forEach((card) => {

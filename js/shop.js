@@ -91,11 +91,27 @@ const shopPreorderPlus = document.getElementById("shopPreorderPlus");
 const shopPopupColors = [...document.querySelectorAll("#preorderModal .popup-color")];
 const shopPlannerPreview = document.getElementById("shopPlannerPreview");
 
+const lockShopScroll = () => {
+  if (window.futureMeScrollLock) {
+    window.futureMeScrollLock.lock();
+    return;
+  }
+  document.body.classList.add("modal-open");
+};
+
+const unlockShopScroll = () => {
+  if (window.futureMeScrollLock) {
+    window.futureMeScrollLock.unlock();
+    return;
+  }
+  document.body.classList.remove("modal-open");
+};
+
 const openShopModal = () => {
   if (!preorderModal) return;
   preorderModal.classList.add("show-preorder-modal");
   preorderModal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
+  lockShopScroll();
   preorderEmail?.focus();
 };
 
@@ -103,7 +119,7 @@ const closeShopModal = () => {
   if (!preorderModal) return;
   preorderModal.classList.remove("show-preorder-modal");
   preorderModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
+  unlockShopScroll();
 };
 
 buyBtn?.addEventListener("click", openShopModal);
