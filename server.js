@@ -341,6 +341,7 @@ function isBlockedStaticPath(pathname) {
 function serveStatic(req, res, pathname) {
   if (isBlockedStaticPath(pathname)) return send(res, 404, "Not found");
   let filePath = pathname === "/" ? "/index.html" : pathname;
+  if (filePath === "/admin") filePath = "/admin.html";
   filePath = decodeURIComponent(filePath).replaceAll("\\", "/");
   const fullPath = path.normalize(path.join(ROOT, filePath));
   if (!fullPath.startsWith(ROOT)) return send(res, 403, "Forbidden");
@@ -472,5 +473,5 @@ http.createServer(async (req, res) => {
   }
 }).listen(PORT, () => {
   console.log(`Future Me server running at http://127.0.0.1:${PORT}`);
-  console.log(`Admin: http://127.0.0.1:${PORT}/admin.html`);
+  console.log(`Admin: http://127.0.0.1:${PORT}/admin`);
 });
