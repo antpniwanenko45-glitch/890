@@ -69,7 +69,7 @@ const updatePrice = () => {
 };
 
 plusBtn?.addEventListener("click", () => {
-  quantity += 1;
+  quantity = Math.min(99, quantity + 1);
   updatePrice();
 });
 
@@ -109,17 +109,26 @@ const unlockShopScroll = () => {
 
 const openShopModal = () => {
   if (!preorderModal) return;
+  if (shopPreorderQuantity) shopPreorderQuantity.value = String(quantity);
+  const selectedColor = document.querySelector(".active-color")?.dataset.color || "Red";
+  shopPopupColors.forEach((button) => {
+    button.classList.toggle("active-popup-color", button.dataset.color === selectedColor);
+    if (button.dataset.color === selectedColor && shopPlannerPreview) {
+      shopPlannerPreview.src = button.dataset.image;
+    }
+  });
   preorderModal.classList.add("show-preorder-modal");
   preorderModal.setAttribute("aria-hidden", "false");
   lockShopScroll();
-  preorderEmail?.focus();
+  closePreorderModal?.focus({ preventScroll: true });
 };
 
 const closeShopModal = () => {
-  if (!preorderModal) return;
+  if (!preorderModal || !preorderModal.classList.contains("show-preorder-modal")) return;
   preorderModal.classList.remove("show-preorder-modal");
   preorderModal.setAttribute("aria-hidden", "true");
   unlockShopScroll();
+  buyBtn?.focus({ preventScroll: true });
 };
 
 buyBtn?.addEventListener("click", openShopModal);
@@ -168,7 +177,7 @@ shopPopupColors.forEach((button) => {
 preorderSubmit?.addEventListener("click", async () => {
   const email = preorderEmail?.value.trim() || "";
 
-  if (!email || !email.includes("@")) {
+  if (!email || !preorderEmail.checkValidity()) {
     preorderEmail?.focus();
     preorderEmail?.setAttribute("aria-invalid", "true");
     return;
@@ -186,7 +195,7 @@ preorderSubmit?.addEventListener("click", async () => {
   preorderSubmit.disabled = true;
 
   try {
-    await fetch("/api/preorders", {
+    const response = await fetch("/api/preorders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -198,6 +207,7 @@ preorderSubmit?.addEventListener("click", async () => {
         source: "shop-popup"
       })
     });
+    if (!response.ok) throw new Error("Request failed");
 
     preorderSubmit.textContent = "Vorbestellung gesichert ✓";
     preorderEmail.value = "";

@@ -346,13 +346,40 @@ function serveStatic(req, res, pathname) {
   const fullPath = path.normalize(path.join(ROOT, filePath));
   if (!fullPath.startsWith(ROOT)) return send(res, 403, "Forbidden");
 
-  fs.readFile(fullPath, (error, data) => {
-    if (error) return send(res, 404, "Not found");
-    res.writeHead(200, baseHeaders({
+  fs.stat(fullPath, (error, stat) => {
+    if (error || !stat.isFile()) return send(res, 404, "Not found");
+    const headers = {
       "Content-Type": MIME[path.extname(fullPath).toLowerCase()] || "application/octet-stream",
-      "Cache-Control": pathname === "/admin.html" ? "no-store" : "public, max-age=600"
-    }));
-    res.end(data);
+      "Cache-Control": path.extname(fullPath) === ".html" ? "no-store" : "public, max-age=600",
+      "Accept-Ranges": "bytes"
+    };
+    let start = 0;
+    let end = stat.size - 1;
+    let status = 200;
+    if (req.headers.range) {
+      const match = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range);
+      if (!match || (!match[1] && !match[2])) {
+        return send(res, 416, "Invalid range", { "Content-Range": `bytes */${stat.size}` });
+      }
+      if (match[1]) {
+        start = Number(match[1]);
+        end = match[2] ? Math.min(Number(match[2]), end) : end;
+      } else {
+        start = Math.max(0, stat.size - Number(match[2]));
+      }
+      if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start > end || start >= stat.size) {
+        return send(res, 416, "Invalid range", { "Content-Range": `bytes */${stat.size}` });
+      }
+      status = 206;
+      headers["Content-Range"] = `bytes ${start}-${end}/${stat.size}`;
+    }
+    headers["Content-Length"] = stat.size === 0 ? 0 : end - start + 1;
+    res.writeHead(status, baseHeaders(headers));
+    if (req.method === "HEAD" || stat.size === 0) return res.end();
+    const stream = fs.createReadStream(fullPath, { start, end });
+    stream.on("error", () => res.destroy());
+    res.on("close", () => stream.destroy());
+    stream.pipe(res);
   });
 }
 

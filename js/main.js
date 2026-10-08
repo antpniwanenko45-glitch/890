@@ -75,6 +75,13 @@ const preorderPlus = document.querySelector("[data-preorder-plus]");
 const videoModal = document.getElementById("videoModal");
 const videoModalTitle = document.getElementById("videoModalTitle");
 const videoModalText = document.getElementById("videoModalText");
+const videoPlayer = document.getElementById("videoPlayer");
+const videoError = document.getElementById("videoError");
+const videoDirectLink = document.getElementById("videoDirectLink");
+videoPlayer?.addEventListener("error", () => {
+  if (videoPlayer.hasAttribute("src") && videoError) videoError.hidden = false;
+});
+let videoTrigger = null;
 const closeVideoButtons = document.querySelectorAll("[data-close-video]");
 const newsletterForm = document.querySelector("[data-newsletter-form]");
 const newsletterStatus = document.querySelector("[data-newsletter-status]");
@@ -113,14 +120,15 @@ const openPreorder = () => {
   preorderOverlay.classList.add("active");
   preorderOverlay.setAttribute("aria-hidden", "false");
   lockPageScroll();
-  preorderInput?.focus();
+  closePreorderButtons[0]?.focus({ preventScroll: true });
 };
 
 const closePreorder = () => {
-  if (!preorderOverlay) return;
+  if (!preorderOverlay || !preorderOverlay.classList.contains("active")) return;
   preorderOverlay.classList.remove("active");
   preorderOverlay.setAttribute("aria-hidden", "true");
   unlockPageScroll();
+  offerTrigger?.focus({ preventScroll: true });
 };
 
 offerTrigger?.addEventListener("click", openPreorder);
@@ -134,25 +142,39 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closePreorder();
 });
 
-const openVideoModal = (title, text) => {
+const openVideoModal = (card) => {
+  const { videoTitle: title, videoText: text, videoSrc, videoPoster } = card.dataset;
+  if (!videoSrc || !videoPlayer) return;
+  videoTrigger = card;
+  if (videoError) videoError.hidden = true;
+  if (videoDirectLink) videoDirectLink.href = videoSrc;
+  videoPlayer.src = videoSrc;
+  videoPlayer.poster = videoPoster || "";
+  videoPlayer.setAttribute("aria-label", title);
   if (!videoModal) return;
   if (videoModalTitle) videoModalTitle.textContent = title || "Future Me";
   if (videoModalText) videoModalText.textContent = text || "Kurzer Einblick in den Planner.";
   videoModal.classList.add("active");
   videoModal.setAttribute("aria-hidden", "false");
   lockPageScroll();
+  closeVideoButtons[0]?.focus();
+  videoPlayer.play().catch(() => { /* Native controls remain available if autoplay is blocked. */ });
 };
 
 const closeVideoModal = () => {
-  if (!videoModal) return;
+  if (!videoModal || !videoModal.classList.contains("active")) return;
+  videoPlayer?.pause();
+  videoPlayer?.removeAttribute("src");
+  videoPlayer?.load();
   videoModal.classList.remove("active");
   videoModal.setAttribute("aria-hidden", "true");
   unlockPageScroll();
+  videoTrigger?.focus({ preventScroll: true });
 };
 
 document.querySelectorAll(".video-card").forEach((card) => {
   card.addEventListener("click", () => {
-    openVideoModal(card.dataset.videoTitle, card.dataset.videoText);
+    openVideoModal(card);
   });
 });
 
@@ -202,7 +224,7 @@ preorderQuantity?.addEventListener("input", clampPreorderQuantity);
 preorderBtn?.addEventListener("click", async () => {
   const email = preorderInput?.value.trim() || "";
 
-  if (!email || !email.includes("@")) {
+  if (!email || !preorderInput.checkValidity()) {
     preorderInput?.focus();
     preorderInput?.setAttribute("aria-invalid", "true");
     return;
@@ -219,7 +241,7 @@ preorderBtn?.addEventListener("click", async () => {
 
   try {
     const activeColor = document.querySelector(".active-popup-color");
-    await fetch("/api/preorders", {
+    const response = await fetch("/api/preorders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -231,6 +253,7 @@ preorderBtn?.addEventListener("click", async () => {
         source: "main-popup"
       })
     });
+    if (!response.ok) throw new Error("Request failed");
 
     preorderBtn.textContent = "Gesendet ✓";
     preorderInput.value = "";
@@ -286,4 +309,16 @@ newsletterForm?.addEventListener("submit", (event) => {
         submit.textContent = originalText || "→";
       }
     });
+});
+
+videoModal?.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const close = closeVideoButtons[0];
+  if (event.shiftKey && document.activeElement === close) {
+    event.preventDefault();
+    videoPlayer.focus();
+  } else if (!event.shiftKey && document.activeElement === videoPlayer) {
+    event.preventDefault();
+    close.focus();
+  }
 });

@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/mobile-ux.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261008-mobile7">
+  <link rel="stylesheet" href="assets/css/mobile-ux.css?v=20261008-mobile7">
 </head>
 <body class="page-home">
   <header class="navbar" data-nav>
@@ -63,18 +63,18 @@
         <h2>Sieh, wie Future Me deinen Tag sortiert.</h2>
       </div>
       <div class="video-grid reveal">
-        <button class="video-card" type="button" data-video-title="Morgen klar starten" data-video-text="Prioritäten, Fokuszeit und kleine Schritte für einen ruhigen Start in den Tag.">
-          <img src="images/gallery/steps-1.jpg" alt="Future Me Planner als Lifestyle-Aufnahme">
+        <button class="video-card" type="button" data-video-src="videos/planner-1.mp4" data-video-poster="videos/planner-1.jpg" data-video-title="Morgen klar starten" data-video-text="Prioritäten, Fokuszeit und kleine Schritte für einen ruhigen Start in den Tag.">
+          <img src="videos/planner-1.jpg" alt="Vorschau des Future Me Videos">
           <span class="play-btn">▶</span>
           <strong>Morgen klar starten</strong>
         </button>
-        <button class="video-card" type="button" data-video-title="Woche planen" data-video-text="Plane deine Woche bewusst, ohne dich in endlosen To-do-Listen zu verlieren.">
-          <img src="images/gallery/product-red-1-enhanced.jpg" alt="Future Me Planner in Dunkelrot">
+        <button class="video-card" type="button" data-video-src="videos/planner-2.mp4" data-video-poster="videos/planner-2.jpg" data-video-title="Woche planen" data-video-text="Plane deine Woche bewusst, ohne dich in endlosen To-do-Listen zu verlieren.">
+          <img src="videos/planner-2.jpg" alt="Vorschau des Future Me Videos">
           <span class="play-btn">▶</span>
           <strong>Woche planen</strong>
         </button>
-        <button class="video-card" type="button" data-video-title="Fortschritt sehen" data-video-text="Reviews machen sichtbar, was funktioniert und was du als Nächstes anpasst.">
-          <img src="images/gallery/product-blue-1-enhanced.jpg" alt="Future Me Planner in Dunkelblau">
+        <button class="video-card" type="button" data-video-src="videos/planner-3.mp4" data-video-poster="videos/planner-3-cover.png" data-video-title="Fortschritt sehen" data-video-text="Reviews machen sichtbar, was funktioniert und was du als Nächstes anpasst.">
+          <img src="videos/planner-3-cover.png" alt="Vorschau des Future Me Videos">
           <span class="play-btn">▶</span>
           <strong>Fortschritt sehen</strong>
         </button>
@@ -230,7 +230,8 @@
     <div class="video-modal-box" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
       <button class="video-modal-close" type="button" aria-label="Video schließen" data-close-video>×</button>
       <div class="video-modal-preview">
-        <span>▶</span>
+        <video id="videoPlayer" controls playsinline preload="metadata" width="720" height="1280" aria-label="Future Me Video"></video>
+        <p id="videoError" hidden role="alert">Das Video konnte nicht geladen werden. <a id="videoDirectLink">Video direkt öffnen</a></p>
       </div>
       <div>
         <p class="eyebrow">Video</p>
@@ -255,7 +256,7 @@
           <span class="new-price">12 €</span>
           <span class="save-badge">Spare 40%</span>
         </div>
-        <input type="email" class="preorder-input" placeholder="Deine E-Mail Adresse" autocomplete="email">
+        <input type="email" class="preorder-input" aria-label="E-Mail f?r die Vorbestellung" placeholder="Deine E-Mail Adresse" autocomplete="email">
         <label class="preorder-quantity-label" for="preorderQuantity">Menge</label>
         <div class="preorder-quantity">
           <button type="button" data-preorder-minus aria-label="Menge verringern">-</button>
@@ -271,7 +272,7 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20261008-mobile7"></script>
   <script src="js/faq.js"></script>
 </body>
 </html>
