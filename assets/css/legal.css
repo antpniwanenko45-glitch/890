@@ -61,3 +61,11 @@
     padding: 0 16px 72px;
   }
 }
+
+.legal-hero h1 { overflow-wrap: anywhere; }
+.legal-block { overflow-wrap: anywhere; }
+.legal-block h2:not(:first-child) { margin-top: 36px; }
+.legal-block h3 { margin: 28px 0 14px; }
+.legal-block p + p { margin-top: 16px; }
+.legal-block ul { padding-left: 24px; color: var(--muted); line-height: 1.85; }
+.legal-block a { text-decoration: underline; text-underline-offset: 3px; }
